@@ -1,55 +1,111 @@
 import { Link } from "react-router-dom";
-import logo from "../assets/logo_a2z_seals.png";
+import {
+  FaFacebookF,
+  FaInstagram,
+  FaLinkedinIn,
+  FaYoutube,
+  FaMapMarkerAlt,
+  FaPhoneAlt,
+  FaEnvelope,
+  FaClock,
+} from "react-icons/fa";
+
+import logo from "../assets/logo/logoform.png";
 
 const quickLinks = [
   { label: "Home", to: "/" },
   { label: "About Us", to: "/about" },
+  { label: "Products", to: "/products" },
+  { label: "Industries", to: "/industries" },
+  { label: "Catalog", to: "/catalog" },
   { label: "Blog", to: "/blog" },
   { label: "Contact Us", to: "/contact" },
 ];
 
 const productLinks = [
-  { label: "Seal Kits", to: "/shop/categories" },
-  { label: "Hydraulic Seals", to: "/shop/products" },
-  { label: "Oil Seals", to: "/shop/products" },
-  { label: "O-Rings", to: "/shop/products" },
+  { label: "Hydraulic Seal Kits", to: "/products/hydraulic-seal-kits" },
+  { label: "Oil Seals", to: "/products/oil-seals" },
+  { label: "O-Rings", to: "/products/o-rings" },
+  { label: "Floating Seals", to: "/products/floating-seals" },
+  { label: "Rock Breaker Seal Kits", to: "/products/rock-breaker-seal-kits" },
+  { label: "Short Seals", to: "/products/short-seals" },
+  { label: "Custom Seal Kits", to: "/contact" },
 ];
 
-function Footer() {
+const Footer = () => {
   return (
-    <footer className="mt-auto bg-brand-900 text-gray-300">
-      <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
-        <div className="grid gap-10 border-b border-brand-800 pb-10 sm:grid-cols-2 lg:grid-cols-4">
-          {/* Company Info */}
+    <footer className="mt-auto overflow-hidden bg-[#031b3d] text-white">
+      {/* Main Footer */}
+      <div className="mx-auto max-w-7xl px-5 py-12 sm:px-6 lg:px-8 lg:py-14">
+        <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-[1.35fr_1fr_1fr_1.2fr] lg:gap-10">
+          {/* Company Information */}
           <div>
-            <img src={logo} alt="A2Z Seals" className="h-10 w-auto mb-4" />
-            <p className="text-sm leading-relaxed text-gray-400">
-              Trusted supplier of hydraulic &amp; oil seals and seal kits for
-              leading industrial machine brands since 1975.
-            </p>
-          </div>
+            <Link to="/" className="inline-block">
+              <img
+                src={logo}
+                alt="A2Z Seals"
+                className="h-16 w-52 rounded-md bg-white object-contain p-1.5 sm:h-[72px] sm:w-60"
+              />
+            </Link>
 
-          {/* Quick Links */}
-          <div>
-            <h3 className="mb-4 text-sm font-bold uppercase tracking-wider text-white">Quick Links</h3>
-            <ul className="space-y-3 text-sm">
-              {quickLinks.map((link) => (
-                <li key={link.label}>
-                  <Link to={link.to} className="text-gray-400 hover:text-white transition-colors">
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
+            <p className="mt-5 max-w-xs text-[15px] leading-7 text-slate-300">
+              A2Z Seals is a leading manufacturer, importer and exporter of
+              hydraulic seal kits, O-rings and industrial sealing solutions for
+              various industrial applications.
+            </p>
+
+            {/* Social Icons */}
+            <div className="mt-6 flex items-center gap-3">
+              <a
+                href="#facebook"
+                className="flex h-10 w-10 items-center justify-center rounded-full bg-white/10 text-base text-white transition-all duration-300 hover:-translate-y-1 hover:bg-[#f5b400] hover:text-[#031b3d]"
+                aria-label="Facebook"
+              >
+                <FaFacebookF />
+              </a>
+
+              <a
+                href="#linkedin"
+                className="flex h-10 w-10 items-center justify-center rounded-full bg-white/10 text-base text-white transition-all duration-300 hover:-translate-y-1 hover:bg-[#0a66c2]"
+                aria-label="LinkedIn"
+              >
+                <FaLinkedinIn />
+              </a>
+
+              <a
+                href="#instagram"
+                className="flex h-10 w-10 items-center justify-center rounded-full bg-white/10 text-base text-white transition-all duration-300 hover:-translate-y-1 hover:bg-pink-500"
+                aria-label="Instagram"
+              >
+                <FaInstagram />
+              </a>
+
+              <a
+                href="#youtube"
+                className="flex h-10 w-10 items-center justify-center rounded-full bg-white/10 text-base text-white transition-all duration-300 hover:-translate-y-1 hover:bg-red-600"
+                aria-label="YouTube"
+              >
+                <FaYoutube />
+              </a>
+            </div>
           </div>
 
           {/* Products */}
           <div>
-            <h3 className="mb-4 text-sm font-bold uppercase tracking-wider text-white">Products</h3>
-            <ul className="space-y-3 text-sm">
-              {productLinks.map((link, i) => (
-                <li key={i}>
-                  <Link to={link.to} className="text-gray-400 hover:text-white transition-colors">
+            <h3 className="mb-5 text-base font-bold uppercase tracking-wider text-[#f5b400]">
+              Products
+            </h3>
+
+            <ul className="space-y-3">
+              {productLinks.map((link) => (
+                <li key={link.label}>
+                  <Link
+                    to={link.to}
+                    className="group inline-flex text-[15px] text-slate-300 transition hover:text-[#f5b400]"
+                  >
+                    <span className="mr-2 text-[#f5b400] transition-transform duration-300 group-hover:translate-x-1">
+                      ›
+                    </span>
                     {link.label}
                   </Link>
                 </li>
@@ -57,44 +113,111 @@ function Footer() {
             </ul>
           </div>
 
-          {/* Contact */}
+          {/* Quick Links */}
           <div>
-            <h3 className="mb-4 text-sm font-bold uppercase tracking-wider text-white">Contact</h3>
-            <ul className="space-y-3 text-sm">
-              <li className="flex items-start gap-3">
-                <svg className="h-5 w-5 flex-shrink-0 text-brand-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                </svg>
-                <span className="text-gray-400">Industrial Area, Kolkata, India</span>
-              </li>
-              <li className="flex items-center gap-3">
-                <svg className="h-5 w-5 flex-shrink-0 text-brand-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-                </svg>
-                <a href="tel:+910000000000" className="text-gray-400 hover:text-white transition-colors">
-                  +91 00000 00000
-                </a>
-              </li>
-              <li className="flex items-center gap-3">
-                <svg className="h-5 w-5 flex-shrink-0 text-brand-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                </svg>
-                <a href="mailto:info@a2zseals.com" className="text-gray-400 hover:text-white transition-colors">
-                  info@a2zseals.com
-                </a>
-              </li>
+            <h3 className="mb-5 text-base font-bold uppercase tracking-wider text-[#f5b400]">
+              Quick Links
+            </h3>
+
+            <ul className="space-y-3">
+              {quickLinks.map((link) => (
+                <li key={link.label}>
+                  <Link
+                    to={link.to}
+                    className="group inline-flex text-[15px] text-slate-300 transition hover:text-[#f5b400]"
+                  >
+                    <span className="mr-2 text-[#f5b400] transition-transform duration-300 group-hover:translate-x-1">
+                      ›
+                    </span>
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
-        </div>
 
-        {/* Copyright */}
-        <div className="pt-8 text-center text-xs text-gray-500">
-          <p>&copy; {new Date().getFullYear()} A2Z Seals. All rights reserved.</p>
+          {/* Contact Details */}
+          <div>
+            <h3 className="mb-5 text-base font-bold uppercase tracking-wider text-[#f5b400]">
+              Contact Us
+            </h3>
+
+            <div className="space-y-5 text-[15px] leading-6 text-slate-300">
+              <div className="flex items-start gap-3">
+                <div className="mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-white/10 text-[#f5b400]">
+                  <FaMapMarkerAlt />
+                </div>
+
+                <p>
+                 P-27 PRINCEP STREET, 2ND FLOOR,
+                  <br />
+                
+Kolkata 700072, West Bengal
+                </p>
+              </div>
+
+              <a
+                href="tel:+919831098320"
+                className="flex items-center gap-3 transition hover:text-[#f5b400]"
+              >
+                <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-white/10 text-[#f5b400]">
+                  <FaPhoneAlt />
+                </div>
+
+                <span>+91 9831098320</span>
+              </a>
+
+              <a
+                href="mailto:a2zseals@gmail.com"
+                className="flex items-center gap-3 break-all transition hover:text-[#f5b400]"
+              >
+                <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-white/10 text-[#f5b400]">
+                  <FaEnvelope />
+                </div>
+
+                <span>a2zseals@gmail.com</span>
+              </a>
+
+              <div className="flex items-start gap-3">
+                <div className="mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-white/10 text-[#f5b400]">
+                  <FaClock />
+                </div>
+
+                <p>Mon - Sat: 9:00 AM - 6:00 PM</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Bottom Footer */}
+      <div className="border-t border-white/10 bg-[#02142f]">
+        <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-4 px-5 py-5 text-sm text-slate-300 sm:flex-row sm:px-6 lg:px-8">
+          <p className="text-center sm:text-left">
+            © {new Date().getFullYear()} A2Z Seals. All Rights Reserved.
+          </p>
+
+          <div className="flex items-center gap-4">
+            <Link
+              to="/privacy-policy"
+              className="transition hover:text-[#f5b400]"
+            >
+              Privacy Policy
+            </Link>
+
+            <span className="text-slate-600">|</span>
+
+            <Link
+              to="/terms-conditions"
+              className="transition hover:text-[#f5b400]"
+            >
+              Terms & Conditions
+            </Link>
+          </div>
         </div>
       </div>
     </footer>
   );
-}
+};
 
 export default Footer;

@@ -9,7 +9,6 @@ import Search from "./pages/Search";
 import Blog from "./pages/Blog";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
-import NotFound from "./pages/NotFound";
 
 import ShopCategories from "./pages/shop/Categories";
 import ShopBrands from "./pages/shop/Brands";
@@ -31,6 +30,27 @@ import AdminCustomers from "./pages/admin/Customers";
 import AdminMerchantFeed from "./pages/admin/MerchantFeed";
 import AdminReports from "./pages/admin/Reports";
 import AdminSettings from "./pages/admin/Settings";
+import Quote from "./pages/Quote";
+import Industries from "./pages/industries/Cement";
+import Construction from "./pages/industries/Construction";
+import Mining from "./pages/industries/Mining";
+import Cement from "./pages/industries/Cement";
+import Steel from "./pages/industries/Steel";
+import Manufacturing from "./pages/industries/Manufacturing";
+import Infrastructure from "./pages/industries/Infrastructure";
+import Login from "./pages/shopss/MyAccount";
+import Cart from "./pages/shopss/Cart";
+import Checkout from "./pages/shopss/Checkout";
+import terms from "./pages/shopss/Termsondition";
+import TermsCondition from "./pages/shopss/Termsondition";
+// Listitems
+import NokOilSealList from "./pages/list/NokOilSealList";
+import OEMList from "./pages/list/OEMList";
+import MachinesList from "./pages/list/MachinesList";
+import SealsProfilesList from "./pages/list/SealsProfilesList";
+import NotFound from "./pages/NotFound";
+
+
 
 function App() {
   return (
@@ -45,11 +65,35 @@ function App() {
         <Route path="shop/oem-models" element={<ShopOEMModels />} />
         <Route path="shop/seal-sizes" element={<ShopSealSizes />} />
         <Route path="shop/products" element={<ShopProducts />} />
+        <Route path="/industries" element={<Industries />} />
+
+        {/* industrie */}
+         <Route path="/industries/construction" element={<Construction />} />
+        <Route path="/industries/mining" element={<Mining />} />
+        <Route path="/industries/cement" element={<Cement />} />
+        <Route path="/industries/steel" element={<Steel />} />
+        <Route path="/industries/manufacturing" element={<Manufacturing />} />
+        <Route path="/industries/infrastructure" element={<Infrastructure />} />
+
+
         <Route path="search" element={<Search />} />
         <Route path="blog" element={<Blog />} />
         <Route path="about" element={<About />} />
         <Route path="contact" element={<Contact />} />
+        <Route path="quote" element={<Quote />} />
+        <Route path="login" element={<Login />} />
+        <Route path="cart" element={<Cart />} />
+        <Route path="checkout" element={<Checkout />} />
+        <Route path="terms-conditions" element={<TermsCondition />} />
+        {/* Listitems */}
+        {/* List dropdown pages */}
+<Route path="list/nok-oil-seal" element={<NokOilSealList />} />
+<Route path="list/oem" element={<OEMList />} />
+<Route path="list/machines" element={<MachinesList />} />
+<Route path="list/seal-profiles" element={<SealsProfilesList />} />
+        
         <Route path="*" element={<NotFound />} />
+        
       </Route>
 
       {/* Admin portal */}

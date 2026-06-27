@@ -1,6 +1,7 @@
 import { Outlet } from "react-router-dom";
 import Header from "./Header";
 import Footer from "./Footer";
+import FloatingWhatsApp from "./FloatingWhatsApp";
 
 function Layout() {
   return (
@@ -10,6 +11,8 @@ function Layout() {
         <Outlet />
       </main>
       <Footer />
+       {/* Floating WhatsApp icon visible on all public pages */}
+      <FloatingWhatsApp />
     </div>
   );
 }

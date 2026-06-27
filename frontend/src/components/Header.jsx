@@ -1,185 +1,349 @@
 import { useState } from "react";
-import { Link, NavLink } from "react-router-dom";
-import logo from "../assets/logo_a2z_seals.png";
+import { Link, NavLink, useNavigate } from "react-router-dom";
+import {
+  FaChevronDown,
+  FaChevronRight,
+  FaSearch,
+  FaArrowRight,
+} from "react-icons/fa";
+import logo from "../assets/logo/logoform.png";
 
-const navItems = [
-  { label: "Home", to: "/" },
-  {
-    label: "Shop",
-    to: "/shop",
-    children: [
-      { label: "Categories", to: "/shop/categories" },
-      { label: "Brands", to: "/shop/brands" },
-      { label: "Machine Types", to: "/shop/machine-types" },
-      { label: "OEM Models", to: "/shop/oem-models" },
-      { label: "Seal Sizes", to: "/shop/seal-sizes" },
-      { label: "Products", to: "/shop/products" },
-    ],
-  },
-  { label: "Search", to: "/search" },
-  { label: "Blog", to: "/blog" },
+/* =========================
+   DROPDOWN MENU DATA
+========================= */
+
+const homeItems = [
   { label: "About Us", to: "/about" },
-  { label: "Contact Us", to: "/contact" },
+  { label: "Disclaimer", to: "/disclaimer" },
+];
+
+const sealKitItems = [
+  { label: "OEM A - E", to: "/shop/oem-models?range=a-e", hasArrow: true },
+  { label: "OEM F - J", to: "/shop/oem-models?range=f-j", hasArrow: true },
+  { label: "OEM K - P", to: "/shop/oem-models?range=k-p", hasArrow: true },
+  { label: "OEM Q - U", to: "/shop/oem-models?range=q-u", hasArrow: true },
+  { label: "OEM V - Z", to: "/shop/oem-models?range=v-z", hasArrow: true },
+];
+
+const sealsItems = [
+  { label: "Different Type of Seals", to: "/shop/categories" },
+  {
+    label: "Rod & Piston Seals",
+    to: "/shop/products?type=rod-piston",
+    hasArrow: true,
+  },
+  { label: "Kastas Seals", to: "/shop/products?brand=kastas" },
+  { label: "Rod Seals", to: "/shop/products?type=rod-seals" },
+  {
+    label: "Parker Seals | A2Z Seals – A Leading Seal Kits Trader",
+    to: "/shop/products?brand=parker",
+  },
+  {
+    label: "Nok | Nok Seal | What are Nok Seals? | A2Z SEALS",
+    to: "/shop/products?brand=nok",
+  },
+  {
+    label: "Parker ORing Kit | Kit 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | A2Z SEALS",
+    to: "/shop/products?type=o-ring-kit",
+  },
+];
+
+const oilSealItems = [
+  { label: "Seal Kits and Oil Seals", to: "/shop/categories" },
+  {
+    label: "OIL SEAL/SHAFT SEAL 1",
+    to: "/shop/products?oil-seal=1",
+    hasArrow: true,
+  },
+  {
+    label: "OIL SEAL/SHAFT SEAL 2",
+    to: "/shop/products?oil-seal=2",
+    hasArrow: true,
+  },
+];
+
+const shopItems = [
+  { label: "My Account", to: "/login" },
+  { label: "Cart", to: "/cart" },
+  { label: "Checkout", to: "/checkout" },
+  {
+    label: "Supply Terms & Conditions",
+    to: "/terms-conditions",
+  },
+];
+
+const listItems = [
+  { label: "Nok Oil Seal List", to: "/list/nok-oil-seal" },
+  { label: "OEM List", to: "/list/oem" },
+  { label: "Machine's List", to: "/list/machines" },
+  { label: "Seals Profiles List", to: "/list/seal-profiles" },
 ];
 
 function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [shopOpen, setShopOpen] = useState(false);
+  const [openMobileMenu, setOpenMobileMenu] = useState("");
+  const [searchValue, setSearchValue] = useState("");
 
-  const linkClass = ({ isActive }) =>
-    `px-3 py-2 text-sm font-medium transition-colors ${
-      isActive ? "text-brand-600" : "text-gray-700 hover:text-brand-600"
+  const navigate = useNavigate();
+
+  const closeMobileMenu = () => {
+    setMobileOpen(false);
+    setOpenMobileMenu("");
+  };
+
+  const handleSearch = (event) => {
+    event.preventDefault();
+
+    const keyword = searchValue.trim();
+
+    if (!keyword) return;
+
+    navigate(`/search?query=${encodeURIComponent(keyword)}`);
+    setSearchValue("");
+    closeMobileMenu();
+  };
+
+  /* Main Navbar Links */
+  const navLinkClass = ({ isActive }) =>
+    `group relative flex h-full items-center gap-1.5 whitespace-nowrap px-3 py-3 text-[15px] font-bold transition-all duration-300 ${
+      isActive
+        ? "text-brand-700"
+        : "text-slate-700 hover:text-[#e5a600]"
     }`;
 
-  return (
-    <header className="sticky top-0 z-50 w-full">
-      {/* Top bar */}
-      <div className="hidden bg-brand-900 text-white md:block">
-        <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-2.5 text-xs sm:px-6 lg:px-8">
-          <span className="font-medium tracking-wide">Hydraulic &amp; Oil Seal Specialists</span>
-          <div className="flex items-center gap-6">
-            <a href="tel:+910000000000" className="flex items-center gap-2 hover:text-brand-200 transition-colors">
-              <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-              </svg>
-              +91 00000 00000
-            </a>
-            <a href="mailto:info@a2zseals.com" className="flex items-center gap-2 hover:text-brand-200 transition-colors">
-              <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-              </svg>
-              info@a2zseals.com
-            </a>
-          </div>
-        </div>
-      </div>
+  /* Desktop Dropdown */
+  const Dropdown = ({ label, to, items }) => (
+    <div className="group relative flex h-full items-center">
+      <NavLink to={to} className={navLinkClass}>
+        {label}
 
-      {/* Main nav */}
-      <div className="border-b border-brand-200 bg-white/95 backdrop-blur-md shadow-lg">
-        <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
-          <Link to="/" className="flex items-center gap-3">
-            <img src={logo} alt="A2Z Seals" className="h-12 w-auto" />
-          </Link>
+        <FaChevronDown className="mt-0.5 text-[9px] transition-transform duration-300 group-hover:rotate-180" />
 
-          {/* Desktop nav */}
-          <nav className="hidden items-center lg:flex">
-            {navItems.map((item) =>
-              item.children ? (
-                <div key={item.label} className="group relative">
-                  <NavLink to={item.to} className={linkClass}>
-                    {item.label}
-                  </NavLink>
-                  <div className="invisible absolute left-0 top-full z-50 w-56 rounded-xl border border-brand-100 bg-white py-3 opacity-0 shadow-2xl transition-all group-hover:visible group-hover:opacity-100">
-                    {item.children.map((child) => (
-                      <NavLink
-                        key={child.to}
-                        to={child.to}
-                        className="block px-5 py-2.5 text-sm text-gray-700 hover:bg-brand-50 hover:text-brand-700 transition-colors"
-                      >
-                        {child.label}
-                      </NavLink>
-                    ))}
-                  </div>
-                </div>
-              ) : (
-                <NavLink key={item.to} to={item.to} className={linkClass}>
-                  {item.label}
-                </NavLink>
-              )
-            )}
-            <Link
-              to="/admin"
-              className="ml-4 rounded-xl bg-brand-900 px-5 py-2.5 text-sm font-bold text-white shadow-lg shadow-brand-900/30 transition-all hover:bg-brand-800 hover:scale-105"
-            >
-              Admin Portal
-            </Link>
-          </nav>
+        {/* Yellow underline */}
+        <span className="absolute bottom-[16px] left-3 right-3 h-[2px] origin-left scale-x-0 rounded-full bg-[#f5b400] transition-transform duration-300 group-hover:scale-x-100" />
+      </NavLink>
 
-          {/* Mobile toggle */}
-          <button
-            type="button"
-            aria-label="Toggle menu"
-            onClick={() => setMobileOpen((v) => !v)}
-            className="inline-flex items-center justify-center rounded-xl p-2.5 text-brand-900 hover:bg-brand-50 lg:hidden transition-colors"
+      <div className="invisible absolute left-0 top-full z-50 w-[250px] translate-y-2 rounded-xl border border-slate-200 bg-white p-2 opacity-0 shadow-[0_15px_35px_rgba(15,23,42,0.16)] transition-all duration-200 group-hover:visible group-hover:translate-y-0 group-hover:opacity-100">
+        {items.map((item) => (
+          <NavLink
+            key={item.label}
+            to={item.to}
+            className="flex items-center justify-between border-b border-slate-100 px-3 py-2.5 text-[13px] font-medium leading-5 text-slate-700 transition-all duration-200 last:border-b-0 hover:bg-brand-50 hover:text-brand-700"
           >
-            <svg
-              className="h-6 w-6"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              viewBox="0 0 24 24"
-            >
-              {mobileOpen ? (
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M6 18L18 6M6 6l12 12"
-                />
-              ) : (
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M4 6h16M4 12h16M4 18h16"
-                />
-              )}
-            </svg>
-          </button>
-        </div>
+            <span>{item.label}</span>
 
-        {/* Mobile menu */}
-        {mobileOpen && (
-          <nav className="border-t border-brand-100 bg-white lg:hidden">
-            <div className="space-y-1 px-4 py-4">
-              {navItems.map((item) =>
-                item.children ? (
-                  <div key={item.label}>
-                    <button
-                      type="button"
-                      onClick={() => setShopOpen((v) => !v)}
-                      className="flex w-full items-center justify-between px-3 py-3 text-sm font-semibold text-gray-900 hover:bg-brand-50 rounded-lg transition-colors"
-                    >
-                      {item.label}
-                      <svg className={`h-4 w-4 transition-transform ${shopOpen ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                      </svg>
-                    </button>
-                    {shopOpen && (
-                      <div className="ml-4 mt-2 space-y-1 border-l-2 border-brand-200 pl-4">
-                        {item.children.map((child) => (
-                          <NavLink
-                            key={child.to}
-                            to={child.to}
-                            onClick={() => setMobileOpen(false)}
-                            className="block px-3 py-2 text-sm text-gray-600 hover:text-brand-700 hover:bg-brand-50 rounded-lg transition-colors"
-                          >
-                            {child.label}
-                          </NavLink>
-                        ))}
-                      </div>
-                    )}
-                  </div>
-                ) : (
-                  <NavLink
-                    key={item.to}
-                    to={item.to}
-                    onClick={() => setMobileOpen(false)}
-                    className="block px-3 py-3 text-sm font-semibold text-gray-900 hover:bg-brand-50 hover:text-brand-700 rounded-lg transition-colors"
-                  >
-                    {item.label}
-                  </NavLink>
-                )
-              )}
-              <Link
-                to="/admin"
-                onClick={() => setMobileOpen(false)}
-                className="mt-4 block rounded-xl bg-brand-900 px-4 py-3 text-center text-sm font-bold text-white shadow-lg"
+            {item.hasArrow && (
+              <FaChevronRight className="ml-3 shrink-0 text-[10px] text-slate-500" />
+            )}
+          </NavLink>
+        ))}
+      </div>
+    </div>
+  );
+
+  /* Mobile Dropdown */
+  const MobileDropdown = ({ label, items }) => {
+    const isOpen = openMobileMenu === label;
+
+    return (
+      <div className="border-b border-slate-100">
+        <button
+          type="button"
+          onClick={() => setOpenMobileMenu(isOpen ? "" : label)}
+          className="flex w-full items-center justify-between rounded-lg px-3 py-3.5 text-left text-[16px] font-bold text-slate-700 transition hover:bg-brand-50 hover:text-brand-700"
+        >
+          {label}
+
+          <FaChevronDown
+            className={`text-xs transition-transform duration-300 ${
+              isOpen ? "rotate-180" : ""
+            }`}
+          />
+        </button>
+
+        {isOpen && (
+          <div className="mb-3 ml-4 border-l-2 border-[#f5b400] pl-3">
+            {items.map((item) => (
+              <NavLink
+                key={item.label}
+                to={item.to}
+                onClick={closeMobileMenu}
+                className="flex items-center justify-between rounded-lg px-3 py-2.5 text-sm leading-5 text-slate-600 transition hover:bg-brand-50 hover:text-brand-700"
               >
-                Admin Portal
-              </Link>
-            </div>
-          </nav>
+                <span>{item.label}</span>
+
+                {item.hasArrow && (
+                  <FaChevronRight className="ml-3 shrink-0 text-xs" />
+                )}
+              </NavLink>
+            ))}
+          </div>
         )}
       </div>
+    );
+  };
+
+  return (
+    <header className="sticky top-0 z-50 w-full border-b border-slate-200 bg-white shadow-sm">
+      <div className="mx-auto flex h-[82px] max-w-[1550px] items-center gap-4 px-3 sm:px-5 lg:px-6">
+        {/* LOGO */}
+        <Link
+          to="/"
+          onClick={closeMobileMenu}
+          className="flex h-full shrink-0 items-center"
+        >
+          <img
+            src={logo}
+            alt="A2Z Seals"
+            className="h-[55px] w-[210px] object-contain lg:h-[62px] lg:w-[235px]"
+          />
+        </Link>
+
+        {/* DESKTOP SEARCH BAR */}
+        <form
+          onSubmit={handleSearch}
+          className="hidden w-[205px] shrink-0 lg:block xl:w-[270px]"
+        >
+          <div className="group flex h-10 items-center rounded-full border border-slate-200 bg-slate-50 px-3 shadow-sm transition-all duration-300 hover:border-[#f5b400] hover:bg-white hover:shadow-md focus-within:border-brand-600 focus-within:bg-white focus-within:ring-4 focus-within:ring-brand-100">
+            <FaSearch className="mr-2.5 text-[13px] text-slate-400 transition-colors group-focus-within:text-brand-600" />
+
+            <input
+              type="text"
+              value={searchValue}
+              onChange={(event) => setSearchValue(event.target.value)}
+              placeholder="Search products..."
+              className="w-full bg-transparent text-[12px] font-medium text-slate-700 outline-none placeholder:font-normal placeholder:text-slate-400"
+            />
+
+            <button
+              type="submit"
+              aria-label="Search"
+              className="ml-2 flex h-7 w-8 shrink-0 items-center justify-center rounded-full bg-brand-900 text-[12px] text-white shadow-sm transition-all duration-300 hover:scale-105 hover:bg-[#f5b400] hover:text-brand-900 active:scale-95"
+            >
+              <FaSearch />
+            </button>
+          </div>
+        </form>
+
+        {/* DESKTOP NAVBAR */}
+        <nav className="ml-auto hidden h-full items-center xl:flex">
+          <Dropdown label="Home" to="/" items={homeItems} />
+
+          <Dropdown
+            label="Seal Kit"
+            to="/shop/categories"
+            items={sealKitItems}
+          />
+
+          <Dropdown
+            label="Seals"
+            to="/shop/products"
+            items={sealsItems}
+          />
+
+          <Dropdown
+            label="Oil Seal"
+            to="/shop/products"
+            items={oilSealItems}
+          />
+
+          <NavLink to="/contact" className={navLinkClass}>
+            Contact Us
+            <span className="absolute bottom-[16px] left-3 right-3 h-[2px] origin-left scale-x-0 rounded-full bg-[#f5b400] transition-transform duration-300 hover:scale-x-100" />
+          </NavLink>
+
+          <Dropdown label="Shop" to="/shop" items={shopItems} />
+
+          <NavLink to="/blog" className={navLinkClass}>
+            Blog
+            <span className="absolute bottom-[16px] left-3 right-3 h-[2px] origin-left scale-x-0 rounded-full bg-[#f5b400] transition-transform duration-300 hover:scale-x-100" />
+          </NavLink>
+
+          <Dropdown label="List" to="/shop/categories" items={listItems} />
+
+          {/* GET QUOTE BUTTON */}
+          <Link
+            to="/quote"
+            className="ml-2 inline-flex items-center gap-1.5 rounded-lg bg-[#f5b400] px-3.5 py-2.5 text-[11px] font-extrabold uppercase tracking-wide text-brand-900 shadow-[0_5px_12px_rgba(245,180,0,0.28)] transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#ffc928] hover:shadow-[0_8px_18px_rgba(245,180,0,0.38)] active:translate-y-0"
+          >
+            Get Quote
+            <FaArrowRight className="text-[10px]" />
+          </Link>
+        </nav>
+
+        {/* MOBILE MENU BUTTON */}
+        <button
+          type="button"
+          aria-label="Toggle menu"
+          onClick={() => setMobileOpen((value) => !value)}
+          className="ml-auto flex h-10 w-10 items-center justify-center rounded-lg border border-slate-200 text-xl text-brand-900 transition hover:bg-brand-50 xl:hidden"
+        >
+          {mobileOpen ? "✕" : "☰"}
+        </button>
+      </div>
+
+      {/* MOBILE NAVBAR */}
+      {mobileOpen && (
+        <nav className="border-t border-slate-200 bg-white px-4 py-4 shadow-xl xl:hidden">
+          {/* MOBILE SEARCH */}
+          <form onSubmit={handleSearch} className="mb-4">
+            <div className="group flex h-10 items-center rounded-full border border-slate-200 bg-slate-50 px-3 transition focus-within:border-brand-600 focus-within:bg-white focus-within:ring-4 focus-within:ring-brand-100">
+              <FaSearch className="mr-2.5 text-[13px] text-slate-400 group-focus-within:text-brand-600" />
+
+              <input
+                type="text"
+                value={searchValue}
+                onChange={(event) => setSearchValue(event.target.value)}
+                placeholder="Search products..."
+                className="w-full bg-transparent text-sm text-slate-700 outline-none placeholder:text-slate-400"
+              />
+
+              <button
+                type="submit"
+                aria-label="Search"
+                className="ml-2 flex h-7 w-8 items-center justify-center rounded-full bg-brand-900 text-[12px] text-white"
+              >
+                <FaSearch />
+              </button>
+            </div>
+          </form>
+
+          <MobileDropdown label="Home" items={homeItems} />
+          <MobileDropdown label="Seal Kit" items={sealKitItems} />
+          <MobileDropdown label="Seals" items={sealsItems} />
+          <MobileDropdown label="Oil Seal" items={oilSealItems} />
+
+          <NavLink
+            to="/contact"
+            onClick={closeMobileMenu}
+            className="block border-b border-slate-100 px-3 py-3.5 text-[16px] font-bold text-slate-700 transition hover:bg-brand-50 hover:text-brand-700"
+          >
+            Contact Us
+          </NavLink>
+
+          <MobileDropdown label="Shop" items={shopItems} />
+
+          <NavLink
+            to="/blog"
+            onClick={closeMobileMenu}
+            className="block border-b border-slate-100 px-3 py-3.5 text-[16px] font-bold text-slate-700 transition hover:bg-brand-50 hover:text-brand-700"
+          >
+            Blog
+          </NavLink>
+
+          <MobileDropdown label="List" items={listItems} />
+
+          {/* MOBILE GET QUOTE */}
+          <Link
+            to="/quote"
+            onClick={closeMobileMenu}
+            className="mt-5 flex items-center justify-center gap-2 rounded-xl bg-[#f5b400] px-4 py-3.5 text-sm font-extrabold uppercase tracking-wide text-brand-900 shadow-md transition hover:bg-[#ffc928]"
+          >
+            Get Quote
+            <FaArrowRight />
+          </Link>
+        </nav>
+      )}
     </header>
   );
 }
