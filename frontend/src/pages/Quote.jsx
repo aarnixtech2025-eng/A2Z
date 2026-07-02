@@ -112,19 +112,19 @@ function Quote() {
 
               <div className="mt-10 border-t border-white/10 pt-7">
                 <a
-                  href="tel:+911234567890"
+                  href="tel:+91-98310 98320"
                   className="flex items-center gap-3 text-sm text-slate-200 transition hover:text-[#f5b400]"
                 >
                   <FaPhoneAlt className="text-[#f5b400]" />
-                  +91 12345 67890
+                  +91-98310 98320
                 </a>
 
                 <a
-                  href="mailto:info@a2zseals.com"
+                  href="mailto:a2zseals@gmail.com"
                   className="mt-4 flex items-center gap-3 text-sm text-slate-200 transition hover:text-[#f5b400]"
                 >
                   <FaEnvelope className="text-[#f5b400]" />
-                  info@a2zseals.com
+                  a2zseals@gmail.com
                 </a>
               </div>
             </div>
