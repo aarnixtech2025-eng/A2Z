@@ -1,18 +1,42 @@
-const Blog = require("../models/blog");
+const Blog = require("../models/Blog/blogs.js");
 const multer=require("multer");
 // Create Blog
 exports.createBlog = async (req, res) => {
-  try {
-    console.log("BODY:", req.body);
+try {
 
-    const blog = await Blog.create(req.body);
+        console.log(req.body);
 
-    res.status(201).json({
-      success: true,
-      message: "Blog created successfully",
-      data: blog,
-    });
-  } catch (error) {
+        console.log(req.file);
+
+        const blog = await Blog.create({
+
+            title: req.body.title,
+
+            slug: req.body.slug,
+
+            shortDescription: req.body.shortDescription,
+
+            description: req.body.description,
+
+            author: req.body.author,
+
+            status: req.body.status,
+
+            featuredImage: req.file
+                ? req.file.filename
+                : null,
+
+        });
+
+        res.status(201).json({
+
+            success:true,
+
+            data:blog
+
+        });
+
+    }catch (error) {
     console.log(error);
     res.status(500).json({
       success: false,

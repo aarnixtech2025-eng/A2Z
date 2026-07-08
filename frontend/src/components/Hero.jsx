@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
-import images from "../assets/images/images.jpg";
-import catalogPdf from "../assets/images/images.jpg";
+import images from "../assets/images/ChatGPT Image Jul 1, 2026, 02_12_37 PM.png";
 
 const features = [
   {
@@ -77,7 +76,7 @@ function Hero() {
   return (
     <section className="relative overflow-hidden bg-[#061a38]">
       {/* Hero Main Section */}
-      <div className="relative min-h-[530px] overflow-hidden lg:min-h-[510px]">
+      <div className="relative min-h-[320px] overflow-hidden sm:min-h-[360px] md:min-h-[380px] lg:min-h-[440px]">
         {/* Background Image */}
         <img
           src={images}
@@ -86,14 +85,14 @@ function Hero() {
         />
 
         {/* Dark Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-r from-[#061a38] via-[#061a38]/90 to-[#061a38]/20" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#061a38] via-[#061a38]/70 to-transparent" />
 
         {/* Extra Blue Layer */}
-        <div className="absolute inset-0 bg-[#061a38]/25" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#061a38]/20 via-[#061a38]/10 to-transparent" />
 
-        <div className="relative z-10 mx-auto flex min-h-[530px] max-w-7xl items-center px-4 py-14 sm:px-6 lg:min-h-[510px] lg:px-8">
-          <div className="max-w-2xl">
-            <h1 className="text-4xl font-black uppercase leading-[1.1] tracking-tight text-white sm:text-5xl lg:text-6xl">
+        <div className="relative z-10 mx-auto flex min-h-[320px] max-w-7xl items-center px-3 py-6 sm:min-h-[360px] sm:px-6 sm:py-8 md:min-h-[380px] lg:min-h-[440px] lg:px-8 lg:py-10">
+          <div className="w-full max-w-2xl">
+            <h1 className="text-xl font-black uppercase leading-[1.15] tracking-tight text-white sm:text-2xl md:text-3xl lg:text-4xl">
               Complete Hydraulic &amp;
               <br />
               <span className="text-[#f6b617]">Industrial Sealing</span>
@@ -101,19 +100,19 @@ function Hero() {
               Solutions
             </h1>
 
-            <p className="mt-6 max-w-xl text-base font-medium leading-7 text-gray-100 sm:text-lg">
+            <p className="mt-3 max-w-xl text-xs font-medium leading-5 text-gray-100 sm:text-sm sm:leading-6 md:text-base">
               Premium Oil Seals, Hydraulic Seal Kits, O-Rings and Customized
               Sealing Solutions for All Industrial Applications.
             </p>
 
-            <div className="mt-8 flex flex-col gap-4 sm:flex-row">
+            <div className="mt-4 flex flex-col gap-2.5 sm:mt-5 sm:gap-3 md:flex-row">
               <Link
                 to="/shop/products"
-                className="group inline-flex items-center justify-center gap-3 rounded-md bg-[#f6b617] px-7 py-4 text-sm font-extrabold uppercase text-[#071a37] shadow-lg transition-all duration-300 hover:-translate-y-1 hover:bg-yellow-400"
+                className="group inline-flex items-center justify-center gap-2 rounded-md bg-[#f6b617] px-4 py-2.5 text-[11px] font-extrabold uppercase text-[#071a37] shadow-lg transition-all duration-300 hover:-translate-y-1 hover:bg-yellow-400 sm:px-5 sm:text-xs md:text-sm"
               >
                 View Products
                 <svg
-                  className="h-5 w-5 transition-transform duration-300 group-hover:translate-x-1"
+                  className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-1 sm:h-4 sm:w-4"
                   fill="none"
                   stroke="currentColor"
                   strokeWidth="2.5"
@@ -127,28 +126,21 @@ function Hero() {
                 </svg>
               </Link>
 
-          <a
-  href={catalogPdf}
-  download="A2Z-Seals-Product-Catalog.pdf"
-  type="application/pdf"
-  className="group inline-flex items-center justify-center gap-3 rounded-md border-2 border-[#f6b617] px-7 py-4 text-sm font-extrabold uppercase text-white transition-all duration-300 hover:-translate-y-1 hover:bg-[#f6b617] hover:text-[#071a37]"
->
-  Download Catalog
-
-  <svg
-    className="h-5 w-5 transition-transform duration-300 group-hover:translate-y-1"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="2.5"
-    viewBox="0 0 24 24"
-  >
-    <path
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      d="M12 3v12m0 0 4-4m-4 4-4-4M5 21h14"
-    />
-  </svg>
-</a>
+              <Link
+                to="/quote"
+                className="group inline-flex items-center justify-center gap-2 rounded-md border-2 border-[#f6b617] px-4 py-2.5 text-[11px] font-extrabold uppercase text-white transition-all duration-300 hover:-translate-y-1 hover:bg-[#f6b617] hover:text-[#071a37] sm:px-5 sm:text-xs md:text-sm"
+              >
+                Get Instant Quote
+                <svg
+                  className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-1 sm:h-4 sm:w-4"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2.5"
+                  viewBox="0 0 24 24"
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+                </svg>
+              </Link>
             </div>
           </div>
         </div>
@@ -156,21 +148,21 @@ function Hero() {
 
       {/* Bottom Feature Bar */}
       <div className="relative z-20 border-t border-white/10 bg-[#071a37]">
-        <div className="mx-auto grid max-w-7xl grid-cols-2 divide-x divide-white/10 px-4 sm:px-6 md:grid-cols-4 lg:px-8">
+        <div className="mx-auto grid max-w-7xl grid-cols-2 divide-x divide-white/10 px-3 sm:px-6 md:grid-cols-4 lg:px-8">
           {features.map((feature) => (
             <div
               key={feature.title}
-              className="flex items-center gap-3 py-5 text-[#d8a93a] sm:gap-4 sm:py-6"
+              className="flex items-center gap-2 py-2.5 text-[#d8a93a] sm:gap-2.5 sm:py-3 md:gap-3 md:py-4"
             >
-              <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-[#d8a93a]/50 bg-[#0c2850]">
+              <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-[#d8a93a]/50 bg-[#0c2850] [&>svg]:h-5 [&>svg]:w-5 sm:h-9 sm:w-9 sm:[&>svg]:h-6 sm:[&>svg]:w-6">
                 {feature.icon}
               </div>
 
               <div>
-                <h3 className="text-xs font-extrabold uppercase tracking-wide text-white sm:text-sm">
+                <h3 className="text-[10px] font-extrabold uppercase tracking-wide text-white sm:text-[11px] md:text-xs">
                   {feature.title}
                 </h3>
-                <p className="mt-1 text-[10px] font-semibold uppercase tracking-wider text-gray-400 sm:text-xs">
+                <p className="mt-0.5 text-[8px] font-semibold uppercase tracking-wider text-gray-400 sm:text-[9px] md:text-[10px]">
                   {feature.subtitle}
                 </p>
               </div>

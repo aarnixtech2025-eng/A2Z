@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import axios from "axios";
 import { Link } from "react-router-dom";
 import {
   FaArrowLeft,
@@ -25,171 +26,8 @@ import nokSealDesign from "../assets/images/bearing.jpg";
 import nokOilComponents from "../assets/images/bearing.jpg";
 import nokSealant from "../assets/images/bearing.jpg";
 
-/* =========================
-   BLOG DATA
-========================= */
-const blogPosts = [
-  {
-    id: 1,
-    title: "Your One-Stop Shop for Oil Seals by Dimension – A2Z Seals",
-    category: "Oil Seals",
-    date: "02 Apr 2024",
-    image: oilSealDimension,
-    excerpt:
-      "Oil seals are used in many machines. These simple components play a critical role in preventing leaks, contamination and wear in industrial equipment.",
-    content: [
-      "Oil seals are important components used in rotating machinery, hydraulic systems, gearboxes, pumps and industrial equipment. Their primary purpose is to prevent oil leakage and stop dust, water and contamination from entering the machine.",
-      "At A2Z Seals, we provide oil seals by dimension for industrial machinery, construction equipment, automotive applications and hydraulic systems. Our team helps customers select the correct seal according to shaft diameter, housing diameter, width, material and operating conditions.",
-      "Selecting the correct oil seal improves machine reliability, reduces maintenance costs and protects internal components from damage. We offer dependable sealing solutions for many industrial applications.",
-    ],
-    points: [
-      "Oil seals available by shaft size and housing size",
-      "Suitable for hydraulic, automotive and industrial machines",
-      "Reliable protection against oil leakage and contamination",
-      "Support for selecting the correct seal size",
-    ],
-  },
-  {
-    id: 2,
-    title: "Hydraulic Cylinder Seals | A2Z SEALS",
-    category: "Hydraulic Seals",
-    date: "28 Mar 2024",
-    image: hydraulicCylinderSeals,
-    excerpt:
-      "Explore durable hydraulic cylinder seals designed for excavators, loaders, hydraulic systems and heavy industrial applications.",
-    content: [
-      "Hydraulic cylinder seals are essential for maintaining pressure and preventing fluid leakage in hydraulic machines. They are commonly used in excavators, loaders, cranes, presses and industrial equipment.",
-      "A2Z Seals offers piston seals, rod seals, wiper seals, wear rings and complete hydraulic cylinder seal kits. These products are selected for demanding industrial working conditions.",
-      "The right hydraulic seal helps improve machine performance, reduce downtime and increase the life of hydraulic components.",
-    ],
-    points: [
-      "Piston seals and rod seals",
-      "Wiper seals for dust protection",
-      "Wear rings and guide rings",
-      "Complete hydraulic cylinder seal kits",
-    ],
-  },
-  {
-    id: 3,
-    title: "Hydraulic Cylinder Dust Seal | Seal Kits Trader – A2Z Seals",
-    category: "Seal Kits",
-    date: "27 Mar 2024",
-    image: hydraulicDustSeal,
-    excerpt:
-      "Protect your hydraulic cylinders from dust, mud and external contamination with high-quality dust seals and wiper seals.",
-    content: [
-      "Hydraulic dust seals are designed to prevent dust, mud, moisture and external particles from entering hydraulic cylinders. These seals are also called wiper seals.",
-      "A high-quality dust seal protects internal hydraulic components and helps reduce wear on rod seals and piston seals.",
-      "A2Z Seals supplies durable dust seals for construction machinery, mining equipment, hydraulic cylinders and industrial machines.",
-    ],
-    points: [
-      "Protects hydraulic cylinders from dust and mud",
-      "Reduces wear on internal seals",
-      "Suitable for heavy machinery",
-      "Available for many hydraulic cylinder sizes",
-    ],
-  },
-  {
-    id: 4,
-    title: "NOK AB Oil Seal Technology | NOK Oil Seal Part Numbers",
-    category: "NOK Oil Seal",
-    date: "30 Jan 2024",
-    image: nokAbOilSeal,
-    excerpt:
-      "Understand NOK AB oil seal technology, oil seal part numbers and the importance of choosing the correct seal for your machine.",
-    content: [
-      "NOK oil seals are widely used in industrial equipment, vehicles, hydraulic machines and rotating machinery. They are known for dependable sealing performance.",
-      "Understanding oil seal part numbers helps customers choose the correct size, material and design for their machine.",
-      "A2Z Seals helps customers identify compatible NOK oil seals based on machine model, shaft size, housing size and operating requirements.",
-    ],
-    points: [
-      "NOK oil seal size support",
-      "Part number identification assistance",
-      "Industrial and automotive applications",
-      "Reliable sealing performance",
-    ],
-  },
-  {
-    id: 5,
-    title: "Bearing Oil Seal | A2Z SEALS | A Leading Oil Seals Trader in India",
-    category: "Oil Seals",
-    date: "24 Jan 2024",
-    image: bearingOilSeal,
-    excerpt:
-      "High-quality bearing oil seals help prevent lubricant leakage and protect bearings from dust, moisture and contamination.",
-    content: [
-      "Bearing oil seals help retain lubrication inside bearing housings and prevent dust, moisture and contaminants from entering sensitive components.",
-      "They are used in motors, pumps, gearboxes, industrial machinery and automotive equipment.",
-      "A2Z Seals provides bearing oil seal solutions for a variety of machine models and industrial applications.",
-    ],
-    points: [
-      "Prevents bearing lubricant leakage",
-      "Protects against dust and moisture",
-      "Suitable for motors, pumps and gearboxes",
-      "Industrial quality sealing solutions",
-    ],
-  },
-  {
-    id: 6,
-    title: "NOK Seal Design | NOK Oil Seal Dealer – A2Z Seals",
-    category: "NOK Oil Seal",
-    date: "17 Jan 2024",
-    image: nokSealDesign,
-    excerpt:
-      "Learn about NOK seal design and how the right oil seal improves the efficiency and life of industrial machinery.",
-    content: [
-      "Oil seal design is important for controlling lubrication, reducing friction and protecting rotating shafts from contamination.",
-      "Different seal designs are used depending on machine speed, pressure, temperature and the type of fluid being sealed.",
-      "A2Z Seals helps customers select suitable oil seals for demanding industrial applications.",
-    ],
-    points: [
-      "Different lip designs for different applications",
-      "Suitable material selection",
-      "Better lubrication control",
-      "Improved machine life",
-    ],
-  },
-  {
-    id: 7,
-    title: "NOK Oil Seal Components | Leading Oil Seals Trader – A2Z Seals",
-    category: "Industrial Seals",
-    date: "17 Jan 2024",
-    image: nokOilComponents,
-    excerpt:
-      "Know the major components of NOK oil seals and their role in preventing leakage in machinery and equipment.",
-    content: [
-      "Oil seals are made using important components such as sealing lips, metal cases, garter springs and elastomer materials.",
-      "Each component plays a role in preventing fluid leakage and protecting the rotating shaft from dust and contamination.",
-      "A2Z Seals supplies industrial sealing solutions for machines operating in demanding conditions.",
-    ],
-    points: [
-      "Sealing lip for fluid control",
-      "Metal case for strong fitting",
-      "Spring support for sealing pressure",
-      "Elastomer material for flexibility",
-    ],
-  },
-  {
-    id: 8,
-    title: "NOK Sealant | NOK Sealing Solutions – A2Z Seals",
-    category: "NOK Oil Seal",
-    date: "16 Jan 2024",
-    image: nokSealant,
-    excerpt:
-      "Discover dependable NOK sealing solutions for hydraulic, automotive, construction and industrial machinery.",
-    content: [
-      "NOK sealing solutions are used across hydraulic equipment, construction machines, automotive systems and industrial applications.",
-      "Selecting the correct sealing product helps reduce leakage, improve machine efficiency and protect expensive machine components.",
-      "A2Z Seals provides support for oil seals, hydraulic seals, O-rings, seal kits and custom sealing requirements.",
-    ],
-    points: [
-      "Oil seals and hydraulic seals",
-      "O-rings and industrial seal kits",
-      "Support for custom requirements",
-      "Suitable for multiple industries",
-    ],
-  },
-];
+
+
 
 const categories = [
   "Oil Seals",
@@ -200,10 +38,56 @@ const categories = [
 ];
 
 function Blog() {
-  const [selectedPost, setSelectedPost] = useState(null);
+const [blogPosts, setBlogPosts] = useState([]);
+const [selectedPost, setSelectedPost] = useState(null);
+const [loading, setLoading] = useState(true);
   const [searchValue, setSearchValue] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("All");
+      useEffect(() => {
+  fetchBlogs();
+}, []);
 
+const fetchBlogs = async () => {
+  try {
+    const res = await axios.get("http://localhost:5000/api/blogs");
+
+    const blogs = res.data.data.map((blog) => ({
+      id: blog.id,
+      title: blog.title,
+      category: "Blog",
+      date: new Date(blog.createdAt).toLocaleDateString("en-GB", {
+        day: "2-digit",
+        month: "short",
+        year: "numeric",
+      }),
+      image: blog.featuredImage
+        ? `http://localhost:5000/uploads/blogs/${blog.featuredImage}`
+        : bearingOilSeal, // default image
+
+      excerpt: blog.shortDescription,
+
+      content: [blog.description],
+
+      points: [],
+
+      author: blog.author,
+      slug: blog.slug,
+    }));
+
+    setBlogPosts(blogs);
+  } catch (err) {
+    console.log(err);
+  } finally {
+    setLoading(false);
+  }
+};
+if (loading) {
+  return (
+    <div className="flex h-screen items-center justify-center">
+      Loading...
+    </div>
+  );
+}
   const filteredPosts = blogPosts.filter((post) => {
     const matchesSearch =
       post.title.toLowerCase().includes(searchValue.toLowerCase()) ||
@@ -238,6 +122,7 @@ function Blog() {
     const relatedPosts = blogPosts
       .filter((post) => post.id !== selectedPost.id)
       .slice(0, 3);
+    
 
     return (
       <section className="min-h-screen bg-[#f5f8fc]">

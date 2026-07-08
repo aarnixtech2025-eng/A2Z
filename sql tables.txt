@@ -1,0 +1,2837 @@
+Table Name : a2z_posts
+
+Columns :
+
+ID                    : bigint UNSIGNED AUTO_INCREMENT PRIMARY KEY
+post_author           : bigint UNSIGNED
+post_date             : datetime
+post_date_gmt         : datetime
+post_content          : longtext
+post_title            : text
+post_excerpt          : text
+post_status           : varchar(20)
+comment_status        : varchar(20)
+ping_status           : varchar(20)
+post_password         : varchar(255)
+post_name             : varchar(200)
+to_ping               : text
+pinged                : text
+post_modified         : datetime
+post_modified_gmt     : datetime
+post_content_filtered : longtext
+post_parent           : bigint UNSIGNED
+guid                  : varchar(255)
+menu_order            : int
+post_type             : varchar(20)
+post_mime_type        : varchar(100)
+comment_count         : bigint
+
+
+
+
+
+
+Table Name : wpuz_404_to_301
+
+Columns :
+
+id       : bigint AUTO_INCREMENT PRIMARY KEY
+date     : datetime
+url      : varchar(512)
+ref      : varchar(512)
+ip       : varchar(40)
+ua       : varchar(512)
+redirect : varchar(512)
+options  : longtext
+status   : bigint
+
+
+
+
+
+Table Name : wpuz_actionscheduler_actions
+
+Columns :
+
+action_id            : bigint UNSIGNED AUTO_INCREMENT PRIMARY KEY
+hook                 : varchar(191)
+status               : varchar(20)
+scheduled_date_gmt   : datetime
+scheduled_date_local : datetime
+args                 : varchar(191)
+schedule             : longtext
+group_id             : bigint UNSIGNED
+attempts             : int
+last_attempt_gmt     : datetime
+last_attempt_local   : datetime
+claim_id             : bigint UNSIGNED
+extended_args        : varchar(8000)
+priority             : tinyint UNSIGNED
+
+
+
+
+Table Name : wpuz_actionscheduler_claims
+
+Columns :
+
+claim_id         : bigint UNSIGNED AUTO_INCREMENT PRIMARY KEY
+date_created_gmt : datetime
+
+
+
+
+Table Name : wpuz_actionscheduler_groups
+
+Columns :
+
+group_id : bigint UNSIGNED AUTO_INCREMENT PRIMARY KEY
+slug     : varchar(255)
+
+
+
+
+
+Table Name : wpuz_actionscheduler_logs
+
+Columns :
+
+log_id         : bigint UNSIGNED AUTO_INCREMENT PRIMARY KEY
+action_id      : bigint UNSIGNED
+message        : text
+log_date_gmt   : datetime
+log_date_local : datetime
+
+
+
+
+Table Name : wpuz_aioseo_cache
+
+Columns :
+
+id         : bigint UNSIGNED AUTO_INCREMENT PRIMARY KEY
+key        : varchar(80)
+value      : longtext
+expiration : datetime
+created    : datetime
+updated    : datetime
+
+
+
+
+
+Table Name : wpuz_aioseo_notifications
+
+Columns :
+
+id                : bigint UNSIGNED AUTO_INCREMENT PRIMARY KEY
+slug              : varchar(13)
+addon             : varchar(64)
+title             : text
+content           : longtext
+type              : varchar(64)
+level             : text
+notification_id   : bigint UNSIGNED
+notification_name : varchar(255)
+start             : datetime
+end               : datetime
+button1_label     : varchar(255)
+button1_action    : varchar(255)
+button2_label     : varchar(255)
+button2_action    : varchar(255)
+dismissed         : tinyint(1)
+new               : tinyint(1)
+created           : datetime
+updated           : datetime
+
+
+
+
+
+
+
+Table Name : wpuz_aioseo_posts
+
+Columns :
+
+id                          : bigint UNSIGNED AUTO_INCREMENT PRIMARY KEY
+post_id                     : bigint UNSIGNED
+title                       : text
+description                 : text
+keywords                    : mediumtext
+keyphrases                  : longtext
+page_analysis               : longtext
+primary_term                : longtext
+canonical_url               : text
+og_title                    : text
+og_description              : text
+og_object_type              : varchar(64)
+og_image_type               : varchar(64)
+og_image_url                : text
+og_image_width              : int
+og_image_height             : int
+og_image_custom_url         : text
+og_image_custom_fields      : text
+og_video                    : varchar(255)
+og_custom_url               : text
+og_article_section          : text
+og_article_tags             : text
+twitter_use_og              : tinyint(1)
+twitter_card                : varchar(64)
+twitter_image_type          : varchar(64)
+twitter_image_url           : text
+twitter_image_custom_url    : text
+twitter_image_custom_fields : text
+twitter_title               : text
+twitter_description         : text
+seo_score                   : int
+schema                      : longtext
+schema_type                 : varchar(20)
+schema_type_options         : longtext
+pillar_content              : tinyint(1)
+robots_default              : tinyint(1)
+robots_noindex              : tinyint(1)
+robots_noarchive            : tinyint(1)
+robots_nosnippet            : tinyint(1)
+robots_nofollow             : tinyint(1)
+robots_noimageindex         : tinyint(1)
+robots_noodp                : tinyint(1)
+robots_notranslate          : tinyint(1)
+robots_max_snippet          : int
+robots_max_videopreview     : int
+robots_max_imagepreview     : varchar(20)
+images                      : longtext
+image_scan_date             : datetime
+priority                    : float
+frequency                   : tinytext
+videos                      : longtext
+video_thumbnail             : text
+video_scan_date             : datetime
+local_seo                   : longtext
+limit_modified_date         : tinyint(1)
+options                     : longtext
+created                     : datetime
+updated                     : datetime
+
+
+
+
+
+
+Table Name : wpuz_aws_index
+
+Columns :
+
+id          : bigint UNSIGNED
+term        : varchar(50)
+term_source : varchar(50)
+type        : varchar(50)
+count       : bigint UNSIGNED
+in_stock    : int
+term_id     : bigint UNSIGNED
+visibility  : varchar(20)
+lang        : varchar(20)
+
+
+
+
+
+
+
+Table Name : wpuz_b2s_network_insights
+
+Columns :
+
+id                          : int AUTO_INCREMENT PRIMARY KEY
+blog_user_id                : int
+b2s_posts_network_details_id : int
+insight                     : longtext
+create_date                 : datetime
+
+
+
+
+
+
+Table Name : wpuz_b2s_posts
+
+Columns :
+
+id                     : int AUTO_INCREMENT PRIMARY KEY
+post_id                : int
+blog_user_id           : int
+last_edit_blog_user_id : int
+user_timezone          : tinyint
+sched_details_id       : int
+sched_type             : tinyint
+sched_date             : datetime
+sched_date_utc         : datetime
+publish_date           : datetime
+publish_link           : varchar(255)
+publish_error_code     : varchar(100)
+network_details_id     : int
+post_for_relay         : tinyint
+post_for_approve       : tinyint
+relay_primary_post_id  : int
+relay_delay_min        : int
+hook_action            : tinyint
+hide                   : tinyint
+v2_id                  : int
+post_format            : int
+
+
+
+
+
+
+Table Name : wpuz_b2s_posts_drafts
+
+Columns :
+
+id             : int AUTO_INCREMENT PRIMARY KEY
+last_save_date : datetime
+blog_user_id   : int
+post_id        : int
+save_origin    : tinyint
+data           : longtext
+
+
+
+
+
+
+Table Name : wpuz_b2s_posts_favorites
+
+Columns :
+
+id           : int AUTO_INCREMENT PRIMARY KEY
+blog_user_id : int
+post_id      : int
+save_date    : datetime
+
+
+
+
+
+Table Name : wpuz_b2s_posts_insights
+
+Columns :
+
+id                           : int AUTO_INCREMENT PRIMARY KEY
+blog_user_id                 : int
+b2s_posts_id                 : int
+network_post_id              : varchar(50)
+b2s_posts_network_details_id : int
+insight                      : longtext
+last_update                  : datetime
+active                       : tinyint
+
+
+
+
+
+Table Name : wpuz_b2s_posts_network_details
+
+Columns :
+
+id                   : int AUTO_INCREMENT PRIMARY KEY
+network_id           : tinyint
+network_type         : tinyint
+network_auth_id      : int
+network_display_name : varchar(100)
+data                 : text
+
+
+
+
+
+
+Table Name : wpuz_b2s_posts_sched_details
+
+Columns :
+
+id         : int AUTO_INCREMENT PRIMARY KEY
+sched_data : text
+image_url  : varchar(255)
+
+
+
+
+
+Table Name : wpuz_b2s_user
+
+Columns :
+
+id            : int AUTO_INCREMENT PRIMARY KEY
+token         : varchar(255)
+blog_user_id  : int
+feature       : tinyint
+state_url     : tinyint
+register_date : datetime
+
+
+
+
+
+Table Name : wpuz_b2s_user_contact
+
+Columns :
+
+id              : int AUTO_INCREMENT PRIMARY KEY
+blog_user_id    : int
+name_mandant    : varchar(100)
+created         : datetime
+name_presse     : varchar(100)
+anrede_presse   : enum('0','1','2')
+vorname_presse  : varchar(50)
+nachname_presse : varchar(50)
+strasse_presse  : varchar(100)
+nummer_presse   : varchar(5)
+plz_presse      : varchar(10)
+ort_presse      : varchar(75)
+land_presse     : varchar(3)
+email_presse    : varchar(75)
+telefon_presse  : varchar(30)
+fax_presse      : varchar(30)
+url_presse      : varchar(150)
+
+
+
+
+
+
+Table Name : wpuz_b2s_user_network_settings
+
+Columns :
+
+id              : int AUTO_INCREMENT PRIMARY KEY
+blog_user_id    : int
+mandant_id      : int
+network_auth_id : int
+
+
+
+
+
+Table Name : wpuz_bwt_failed_submissions
+
+Columns :
+
+id              : mediumint AUTO_INCREMENT PRIMARY KEY
+submission_date : bigint
+submission_type : tinytext
+type            : tinytext
+error           : text
+url             : varchar(200)
+
+
+
+
+
+Table Name : wpuz_bwt_passed_submissions
+
+Columns :
+
+id              : mediumint AUTO_INCREMENT PRIMARY KEY
+submission_date : bigint
+submission_type : tinytext
+type            : tinytext
+error           : text
+url             : varchar(200)
+
+
+
+
+
+
+
+Table Name : wpuz_commentmeta
+
+Columns :
+
+meta_id    : bigint UNSIGNED AUTO_INCREMENT PRIMARY KEY
+comment_id : bigint UNSIGNED
+meta_key   : varchar(255)
+meta_value : longtext
+
+
+
+
+
+
+Table Name : wpuz_comments
+
+Columns :
+
+comment_ID           : bigint UNSIGNED AUTO_INCREMENT PRIMARY KEY
+comment_post_ID      : bigint UNSIGNED
+comment_author       : tinytext
+comment_author_email : varchar(100)
+comment_author_url   : varchar(200)
+comment_author_IP    : varchar(100)
+comment_date         : datetime
+comment_date_gmt     : datetime
+comment_content      : text
+comment_karma        : int
+comment_approved     : varchar(20)
+comment_agent        : varchar(255)
+comment_type         : varchar(20)
+comment_parent       : bigint UNSIGNED
+user_id              : bigint UNSIGNED
+
+
+
+
+
+Table Name : wpuz_e_events
+
+Columns :
+
+id         : bigint UNSIGNED AUTO_INCREMENT PRIMARY KEY
+event_data : text
+created_at : datetime
+
+
+
+
+
+
+Table Name : wpuz_frmt_form_entry
+
+Columns :
+
+entry_id     : bigint UNSIGNED AUTO_INCREMENT PRIMARY KEY
+entry_type   : varchar(191)
+form_id      : bigint UNSIGNED
+is_spam      : tinyint(1)
+date_created : datetime
+draft_id     : varchar(12)
+status       : enum('active','spam','draft','abandoned')
+
+
+
+
+
+
+
+Table Name : wpuz_frmt_form_entry_meta
+
+Columns :
+
+meta_id      : bigint UNSIGNED AUTO_INCREMENT PRIMARY KEY
+entry_id     : bigint UNSIGNED
+meta_key     : varchar(191)
+meta_value   : longtext
+date_created : datetime
+date_updated : datetime
+
+
+
+
+
+
+
+
+
+Table Name : wpuz_frmt_form_reports
+
+Columns :
+
+report_id     : bigint UNSIGNED AUTO_INCREMENT PRIMARY KEY
+report_value  : longtext
+status        : varchar(200)
+date_created  : datetime
+date_updated  : datetime
+
+
+
+
+
+
+
+
+Table Name : wpuz_frmt_form_views
+
+Columns :
+
+view_id       : bigint UNSIGNED AUTO_INCREMENT PRIMARY KEY
+form_id       : bigint UNSIGNED
+page_id       : bigint UNSIGNED
+ip            : varchar(191)
+count         : mediumint UNSIGNED
+date_created  : datetime
+date_updated  : datetime
+
+
+
+
+
+
+
+Table Name : wpuz_gla_ads_recommendations
+
+Columns :
+
+recommendation_id             : bigint PRIMARY KEY
+recommendation_type           : varchar(64)
+recommendation_resource_name  : varchar(255)
+recommendation_campaign_id    : bigint
+recommendation_campaign_name  : varchar(255)
+recommendation_campaign_status: varchar(64)
+recommendation_customer_id    : bigint
+recommendation_last_synced    : datetime
+
+
+
+
+
+
+
+
+
+Table Name : wpuz_gla_attribute_mapping_rules
+
+Columns :
+
+id                      : bigint AUTO_INCREMENT PRIMARY KEY
+attribute               : varchar(255)
+source                  : varchar(100)
+category_condition_type : varchar(10)
+categories              : text
+
+
+
+
+
+
+
+Table Name : wpuz_gla_budget_recommendations
+
+Columns :
+
+id           : bigint AUTO_INCREMENT PRIMARY KEY
+currency     : varchar(3)
+country      : varchar(2)
+daily_budget : int
+
+
+
+
+
+
+
+
+Table Name : wpuz_gla_merchant_issues
+
+Columns :
+
+id                   : bigint AUTO_INCREMENT PRIMARY KEY
+product_id           : bigint
+issue                : varchar(200)
+code                 : varchar(100)
+severity             : varchar(20)
+product              : varchar(100)
+action               : text
+action_url           : varchar(1024)
+applicable_countries : text
+source               : varchar(10)
+type                 : varchar(10)
+created_at           : datetime
+
+
+
+
+
+
+
+Table Name : wpuz_gla_merchant_price_benchmarks
+
+Columns :
+
+product_id                                         : bigint PRIMARY KEY
+mc_product_id                                      : varchar(255)
+mc_product_offer_id                                : varchar(255)
+mc_product_price_micros                            : varchar(64)
+mc_product_currency_code                           : varchar(3)
+mc_price_country_code                              : varchar(2)
+mc_price_benchmark_price_micros                    : varchar(64)
+mc_price_benchmark_price_currency_code             : varchar(3)
+mc_insights_suggested_price_micros                 : varchar(64)
+mc_insights_suggested_price_currency_code          : varchar(3)
+mc_insights_predicted_impressions_change_fraction  : decimal(10,6)
+mc_insights_predicted_clicks_change_fraction       : decimal(10,6)
+mc_insights_predicted_conversions_change_fraction  : decimal(10,6)
+mc_insights_effectiveness                          : tinyint(1)
+mc_metrics_clicks                                  : varchar(64)
+mc_metrics_impressions                             : varchar(64)
+mc_metrics_ctr                                     : int
+mc_metrics_conversions                             : int
+price_compared_with_benchmark                      : tinyint(1)
+
+
+
+
+
+
+
+
+
+Table Name : wpuz_gla_shipping_rates
+
+Columns :
+
+id       : bigint AUTO_INCREMENT PRIMARY KEY
+country  : varchar(2)
+method   : varchar(30)
+currency : varchar(3)
+rate     : double
+options  : text
+
+
+
+
+
+
+
+
+Table Name : wpuz_gla_shipping_times
+
+Columns :
+
+id       : bigint AUTO_INCREMENT PRIMARY KEY
+country  : varchar(2)
+time     : bigint
+max_time : bigint
+
+
+
+
+
+
+
+
+Table Name : wpuz_jetpack_sync_queue
+
+Columns :
+
+ID            : bigint AUTO_INCREMENT PRIMARY KEY
+queue_id      : varchar(50)
+event_id      : varchar(100)
+event_payload : longtext
+timestamp     : timestamp
+
+
+
+
+
+
+
+Table Name : wpuz_links
+
+Columns :
+
+link_id          : bigint UNSIGNED AUTO_INCREMENT PRIMARY KEY
+link_url         : varchar(255)
+link_name        : varchar(255)
+link_image       : varchar(255)
+link_target      : varchar(25)
+link_description : varchar(255)
+link_visible     : varchar(20)
+link_owner       : bigint UNSIGNED
+link_rating      : int
+link_updated     : datetime
+link_rel         : varchar(255)
+link_notes       : mediumtext
+link_rss         : varchar(255)
+
+
+
+
+
+
+
+Table Name : wpuz_loginizer_logs
+
+Columns :
+
+username : varchar(255)
+time     : int
+count    : int
+lockout  : int
+ip       : varchar(255) PRIMARY KEY
+url      : varchar(255)
+
+
+
+
+
+
+
+Table Name : wpuz_nfd_data_event_queue
+
+Columns :
+
+id           : bigint AUTO_INCREMENT PRIMARY KEY
+event        : longtext
+attempts     : tinyint
+reserved_at  : datetime
+available_at : datetime
+created_at   : datetime
+
+
+
+
+
+
+
+Table Name : wpuz_options
+
+Columns :
+
+option_id    : bigint UNSIGNED AUTO_INCREMENT PRIMARY KEY
+option_name  : varchar(191)
+option_value : longtext
+autoload     : varchar(20)
+
+
+
+
+
+
+
+Table Name : wpuz_pmxi_files
+
+Columns :
+
+id            : bigint UNSIGNED AUTO_INCREMENT PRIMARY KEY
+import_id     : bigint UNSIGNED
+name          : text
+path          : text
+registered_on : datetime
+
+
+
+
+
+
+
+
+Table Name : wpuz_pmxi_hash
+
+Columns :
+
+hash      : binary(16) PRIMARY KEY
+post_id   : bigint UNSIGNED
+import_id : smallint UNSIGNED
+post_type : varchar(32)
+
+
+
+
+
+
+
+
+
+Table Name : wpuz_pmxi_history
+
+Columns :
+
+id        : bigint UNSIGNED AUTO_INCREMENT PRIMARY KEY
+import_id : bigint UNSIGNED
+type      : enum('manual','processing','trigger','continue','cli','')
+time_run  : text
+date      : datetime
+summary   : text
+
+
+
+
+
+
+
+Table Name : wpuz_pmxi_images
+
+Columns :
+
+id             : bigint UNSIGNED AUTO_INCREMENT PRIMARY KEY
+attachment_id  : bigint UNSIGNED
+image_url      : varchar(900)
+image_filename : varchar(900)
+
+
+
+
+
+
+Table Name : wpuz_pmxi_imports
+
+Columns :
+
+id                 : bigint UNSIGNED AUTO_INCREMENT PRIMARY KEY
+parent_import_id   : bigint
+name               : text
+friendly_name      : varchar(255)
+type               : varchar(32)
+feed_type          : enum('xml','csv','zip','gz','')
+path               : text
+xpath              : text
+options            : longtext
+registered_on      : datetime
+root_element       : varchar(255)
+processing         : tinyint(1)
+executing          : tinyint(1)
+triggered          : tinyint(1)
+queue_chunk_number : bigint
+first_import       : timestamp
+count              : bigint
+imported           : bigint
+created            : bigint
+updated            : bigint
+skipped            : bigint
+deleted            : bigint
+canceled           : tinyint(1)
+canceled_on        : datetime
+failed             : tinyint(1)
+failed_on          : datetime
+settings_update_on : datetime
+last_activity      : datetime
+iteration          : bigint
+
+
+
+
+
+
+
+
+Table Name : wpuz_pmxi_posts
+
+Columns :
+
+id          : bigint UNSIGNED AUTO_INCREMENT PRIMARY KEY
+post_id     : bigint UNSIGNED
+import_id   : bigint UNSIGNED
+unique_key  : text
+product_key : text
+iteration   : bigint
+specified   : tinyint(1)
+
+
+
+
+
+
+Table Name : wpuz_pmxi_templates
+
+Columns :
+
+id                 : bigint UNSIGNED AUTO_INCREMENT PRIMARY KEY
+options            : longtext
+scheduled          : varchar(64)
+name               : varchar(200)
+title              : text
+content            : longtext
+is_keep_linebreaks : tinyint(1)
+is_leave_html      : tinyint(1)
+fix_characters     : tinyint(1)
+meta               : longtext
+
+
+
+
+
+
+
+
+Table Name : wpuz_postmeta
+
+Columns :
+
+meta_id    : bigint UNSIGNED AUTO_INCREMENT PRIMARY KEY
+post_id    : bigint UNSIGNED
+meta_key   : varchar(255)
+meta_value : longtext
+
+
+
+
+
+
+
+Table Name : wpuz_posts
+
+Columns :
+
+ID                    : bigint UNSIGNED AUTO_INCREMENT PRIMARY KEY
+post_author           : bigint UNSIGNED
+post_date             : datetime
+post_date_gmt         : datetime
+post_content          : longtext
+post_title            : text
+post_excerpt          : text
+post_status           : varchar(20)
+comment_status        : varchar(20)
+ping_status           : varchar(20)
+post_password         : varchar(255)
+post_name             : varchar(200)
+to_ping               : text
+pinged                : text
+post_modified         : datetime
+post_modified_gmt     : datetime
+post_content_filtered : longtext
+post_parent           : bigint UNSIGNED
+guid                  : varchar(255)
+menu_order            : int
+post_type             : varchar(20)
+post_mime_type        : varchar(100)
+comment_count         : bigint
+
+
+
+
+
+
+
+Table Name : wpuz_revslider_css
+
+Columns :
+
+id       : int AUTO_INCREMENT PRIMARY KEY
+handle   : text
+settings : longtext
+hover    : longtext
+advanced : longtext
+params   : longtext
+
+
+
+
+
+
+
+Table Name : wpuz_revslider_css_bkp
+
+Columns :
+
+id       : int AUTO_INCREMENT PRIMARY KEY
+handle   : text
+settings : longtext
+hover    : longtext
+advanced : longtext
+params   : longtext
+
+
+
+
+
+
+
+Table Name : wpuz_revslider_layer_animations
+
+Columns :
+
+id       : int AUTO_INCREMENT PRIMARY KEY
+handle   : text
+params   : text
+settings : text
+
+
+
+
+
+
+
+
+Table Name : wpuz_revslider_layer_animations_bkp
+
+Columns :
+
+id       : int AUTO_INCREMENT PRIMARY KEY
+handle   : text
+params   : text
+settings : text
+
+
+
+
+
+
+Table Name : wpuz_revslider_navigations
+
+Columns :
+
+id       : int AUTO_INCREMENT PRIMARY KEY
+name     : varchar(191)
+handle   : varchar(191)
+type     : varchar(191)
+css      : longtext
+markup   : longtext
+settings : longtext
+
+
+
+
+
+
+
+Table Name : wpuz_revslider_navigations_bkp
+
+Columns :
+
+id       : int AUTO_INCREMENT PRIMARY KEY
+name     : varchar(191)
+handle   : varchar(191)
+type     : varchar(191)
+css      : longtext
+markup   : longtext
+settings : longtext
+
+
+
+
+
+
+
+
+
+Table Name : wpuz_revslider_sliders
+
+Columns :
+
+id       : int AUTO_INCREMENT PRIMARY KEY
+title    : tinytext
+alias    : tinytext
+params   : longtext
+settings : text
+type     : varchar(191)
+
+
+
+
+
+
+
+
+Table Name : wpuz_revslider_sliders_bkp
+
+Columns :
+
+id       : int AUTO_INCREMENT PRIMARY KEY
+title    : tinytext
+alias    : tinytext
+params   : longtext
+settings : text
+type     : varchar(191)
+
+
+
+
+
+
+
+
+Table Name : wpuz_revslider_slides
+
+Columns :
+
+id          : int AUTO_INCREMENT PRIMARY KEY
+slider_id   : int
+slide_order : int
+params      : longtext
+layers      : longtext
+settings    : text
+
+
+
+
+
+
+
+Table Name : wpuz_revslider_slides_bkp
+
+Columns :
+
+id          : int AUTO_INCREMENT PRIMARY KEY
+slider_id   : int
+slide_order : int
+params      : longtext
+layers      : longtext
+settings    : text
+
+
+
+
+
+
+
+
+Table Name : wpuz_revslider_static_slides
+
+Columns :
+
+id        : int AUTO_INCREMENT PRIMARY KEY
+slider_id : int
+params    : longtext
+layers    : longtext
+settings  : text
+
+
+
+
+
+
+
+
+Table Name : wpuz_revslider_static_slides_bkp
+
+Columns :
+
+id        : int AUTO_INCREMENT PRIMARY KEY
+slider_id : int
+params    : longtext
+layers    : longtext
+settings  : text
+
+
+
+
+
+
+
+Table Name : wpuz_socialsnap_stats
+
+Columns :
+
+id         : bigint AUTO_INCREMENT PRIMARY KEY
+post_id    : bigint
+count      : bigint
+date       : datetime
+network    : varchar(20)
+post_type  : varchar(20)
+type       : varchar(10)
+location   : varchar(20)
+ip_address : varchar(45)
+url        : varchar(2083)
+
+
+
+
+
+
+Table Name : wpuz_term_relationships
+
+Columns :
+
+object_id        : bigint UNSIGNED PRIMARY KEY
+term_taxonomy_id : bigint UNSIGNED PRIMARY KEY
+term_order       : int
+
+
+
+
+
+
+Table Name : wpuz_term_taxonomy
+
+Columns :
+
+term_taxonomy_id : bigint UNSIGNED AUTO_INCREMENT PRIMARY KEY
+term_id          : bigint UNSIGNED
+taxonomy         : varchar(32)
+description      : longtext
+parent           : bigint UNSIGNED
+count            : bigint
+
+
+
+
+
+
+Table Name : wpuz_termmeta
+
+Columns :
+
+meta_id    : bigint UNSIGNED AUTO_INCREMENT PRIMARY KEY
+term_id    : bigint UNSIGNED
+meta_key   : varchar(255)
+meta_value : longtext
+
+
+
+
+
+
+Table Name : wpuz_terms
+
+Columns :
+
+term_id    : bigint UNSIGNED AUTO_INCREMENT PRIMARY KEY
+name        : varchar(200)
+slug        : varchar(200)
+term_group  : bigint
+
+
+
+
+
+
+
+
+Table Name : wpuz_tm_taskmeta
+
+Columns :
+
+meta_id    : bigint AUTO_INCREMENT PRIMARY KEY
+task_id    : bigint
+meta_key   : varchar(255)
+meta_value : longtext
+
+
+
+
+
+
+
+
+Table Name : wpuz_tm_tasks
+
+Columns :
+
+id               : int AUTO_INCREMENT PRIMARY KEY
+user_id          : bigint
+type             : varchar(300)
+class_identifier : varchar(300)
+attempts         : int
+description      : varchar(300)
+time_created     : timestamp
+last_locked_at   : bigint
+status           : varchar(300)
+
+
+
+
+
+
+Table Name : wpuz_to_buffer_log
+
+Columns :
+
+id                : int UNSIGNED AUTO_INCREMENT PRIMARY KEY
+post_id           : int
+action            : enum('publish','update','repost','bulk_publish')
+request_sent      : datetime
+profile_id        : varchar(191)
+profile_name      : varchar(191)
+result            : enum('success','test','pending','warning','error')
+result_message    : text
+status_text       : text
+status_created_at : datetime
+status_due_at     : datetime
+
+
+
+
+
+
+Table Name : wpuz_userfeedback_survey_responses
+
+Columns :
+
+id            : bigint AUTO_INCREMENT PRIMARY KEY
+survey_id     : bigint
+answers       : longtext
+page_submitted: text
+user_ip       : varchar(256)
+user_browser  : varchar(128)
+user_os       : varchar(128)
+user_device   : varchar(64)
+status        : enum('publish','draft','trash')
+submitted_at  : timestamp
+
+
+
+
+
+
+
+
+
+
+Table Name : wpuz_userfeedback_surveys
+
+Columns :
+
+id            : bigint AUTO_INCREMENT PRIMARY KEY
+title         : varchar(128)
+status        : enum('publish','draft','trash')
+questions     : longtext
+impressions   : bigint
+settings      : text
+notifications : text
+publish_at    : timestamp
+created_at    : timestamp
+
+
+
+
+
+
+Table Name : wpuz_usermeta
+
+Columns :
+
+umeta_id   : bigint UNSIGNED AUTO_INCREMENT PRIMARY KEY
+user_id    : bigint UNSIGNED
+meta_key   : varchar(255)
+meta_value : longtext
+
+
+
+
+
+
+
+Table Name : wpuz_users
+
+Columns :
+
+ID                  : bigint UNSIGNED AUTO_INCREMENT PRIMARY KEY
+user_login          : varchar(60)
+user_pass           : varchar(255)
+user_nicename       : varchar(50)
+user_email          : varchar(100)
+user_url            : varchar(100)
+user_registered     : datetime
+user_activation_key : varchar(255)
+user_status         : int
+display_name        : varchar(250)
+
+
+
+
+
+
+
+
+Table Name : wpuz_wc_admin_note_actions
+
+Columns :
+
+action_id     : bigint UNSIGNED AUTO_INCREMENT PRIMARY KEY
+note_id       : bigint UNSIGNED
+name          : varchar(255)
+label         : varchar(255)
+query         : longtext
+status        : varchar(255)
+actioned_text : varchar(255)
+nonce_action  : varchar(255)
+nonce_name    : varchar(255)
+
+
+
+
+
+
+
+Table Name : wpuz_wc_admin_notes
+
+Columns :
+
+note_id        : bigint UNSIGNED AUTO_INCREMENT PRIMARY KEY
+name           : varchar(255)
+type           : varchar(20)
+locale         : varchar(20)
+title          : longtext
+content        : longtext
+content_data   : longtext
+status         : varchar(200)
+source         : varchar(200)
+date_created   : datetime
+date_reminder  : datetime
+is_snoozable   : tinyint(1)
+layout         : varchar(20)
+image          : varchar(200)
+is_deleted     : tinyint(1)
+icon           : varchar(200)
+is_read        : tinyint(1)
+
+
+
+
+
+
+
+
+Table Name : wpuz_wc_category_lookup
+
+Columns :
+
+category_tree_id : bigint UNSIGNED PRIMARY KEY
+category_id      : bigint UNSIGNED PRIMARY KEY
+
+
+
+
+
+
+
+
+
+Table Name : wpuz_wc_customer_lookup
+
+Columns :
+
+customer_id      : bigint UNSIGNED AUTO_INCREMENT PRIMARY KEY
+user_id          : bigint UNSIGNED
+username         : varchar(60)
+first_name       : varchar(255)
+last_name        : varchar(255)
+email            : varchar(100)
+date_last_active : timestamp
+date_registered  : timestamp
+country          : char(2)
+postcode         : varchar(20)
+city             : varchar(100)
+state            : varchar(100)
+
+
+
+
+
+
+
+
+Table Name : wpuz_wc_download_log
+
+Columns :
+
+download_log_id : bigint UNSIGNED AUTO_INCREMENT PRIMARY KEY
+timestamp       : datetime
+permission_id   : bigint UNSIGNED
+user_id         : bigint UNSIGNED
+user_ip_address : varchar(100)
+
+
+
+
+
+
+
+Table Name : wpuz_wc_order_addresses
+
+Columns :
+
+id           : bigint UNSIGNED AUTO_INCREMENT PRIMARY KEY
+order_id     : bigint UNSIGNED
+address_type : varchar(20)
+first_name   : text
+last_name    : text
+company      : text
+address_1    : text
+address_2    : text
+city         : text
+state        : text
+postcode     : text
+country      : text
+email        : varchar(320)
+phone        : varchar(100)
+
+
+
+
+
+
+
+Table Name : wpuz_wc_order_coupon_lookup
+
+Columns :
+
+order_id        : bigint UNSIGNED PRIMARY KEY
+coupon_id       : bigint PRIMARY KEY
+date_created    : datetime
+discount_amount : double
+
+
+
+
+
+
+
+Table Name : wpuz_wc_order_operational_data
+
+Columns :
+
+id                          : bigint UNSIGNED AUTO_INCREMENT PRIMARY KEY
+order_id                    : bigint UNSIGNED
+created_via                 : varchar(100)
+woocommerce_version         : varchar(20)
+prices_include_tax          : tinyint(1)
+coupon_usages_are_counted   : tinyint(1)
+download_permission_granted : tinyint(1)
+cart_hash                   : varchar(100)
+new_order_email_sent        : tinyint(1)
+order_key                   : varchar(100)
+order_stock_reduced         : tinyint(1)
+date_paid_gmt               : datetime
+date_completed_gmt          : datetime
+shipping_tax_amount         : decimal(26,8)
+shipping_total_amount       : decimal(26,8)
+discount_tax_amount         : decimal(26,8)
+discount_total_amount       : decimal(26,8)
+recorded_sales              : tinyint(1)
+
+
+
+
+
+
+
+
+
+
+Table Name : wpuz_wc_order_product_lookup
+
+Columns :
+
+order_item_id         : bigint UNSIGNED PRIMARY KEY
+order_id              : bigint UNSIGNED PRIMARY KEY
+product_id            : bigint UNSIGNED
+variation_id          : bigint UNSIGNED
+customer_id           : bigint UNSIGNED
+date_created          : datetime
+product_qty           : int
+product_net_revenue   : double
+product_gross_revenue : double
+coupon_amount         : double
+tax_amount            : double
+shipping_amount       : double
+shipping_tax_amount   : double
+
+
+
+
+
+
+Table Name : wpuz_wc_order_stats
+
+Columns :
+
+order_id           : bigint UNSIGNED PRIMARY KEY
+parent_id          : bigint UNSIGNED
+date_created       : datetime
+date_created_gmt   : datetime
+num_items_sold     : int
+total_sales        : double
+tax_total          : double
+shipping_total     : double
+net_total          : double
+returning_customer : tinyint(1)
+status             : varchar(20)
+customer_id        : bigint UNSIGNED
+date_paid          : datetime
+date_completed     : datetime
+
+
+
+
+
+
+
+
+Table Name : wpuz_wc_order_tax_lookup
+
+Columns :
+
+order_id      : bigint UNSIGNED PRIMARY KEY
+tax_rate_id   : bigint UNSIGNED PRIMARY KEY
+date_created  : datetime
+shipping_tax  : double
+order_tax     : double
+total_tax     : double
+
+
+
+
+
+
+Table Name : wpuz_wc_orders
+
+Columns :
+
+id                   : bigint UNSIGNED PRIMARY KEY
+status               : varchar(20)
+currency             : varchar(10)
+type                 : varchar(20)
+tax_amount           : decimal(26,8)
+total_amount         : decimal(26,8)
+customer_id          : bigint UNSIGNED
+billing_email        : varchar(320)
+date_created_gmt     : datetime
+date_updated_gmt     : datetime
+parent_order_id      : bigint UNSIGNED
+payment_method       : varchar(100)
+payment_method_title : text
+transaction_id       : varchar(100)
+ip_address           : varchar(100)
+user_agent           : text
+customer_note        : text
+
+
+
+
+
+
+
+
+Table Name : wpuz_wc_orders_meta
+
+Columns :
+
+id         : bigint UNSIGNED AUTO_INCREMENT PRIMARY KEY
+order_id   : bigint UNSIGNED
+meta_key   : varchar(255)
+meta_value : text
+
+
+
+
+
+
+
+
+Table Name : wpuz_wc_product_attributes_lookup
+
+Columns :
+
+product_id             : bigint PRIMARY KEY
+product_or_parent_id   : bigint PRIMARY KEY
+taxonomy               : varchar(32) PRIMARY KEY
+term_id                : bigint PRIMARY KEY
+is_variation_attribute : tinyint(1)
+in_stock               : tinyint(1)
+
+
+
+
+
+
+Table Name : wpuz_wc_product_download_directories
+
+Columns :
+
+url_id  : bigint UNSIGNED AUTO_INCREMENT PRIMARY KEY
+url     : varchar(256)
+enabled : tinyint(1)
+
+
+
+
+
+
+
+
+Table Name : wpuz_wc_product_meta_lookup
+
+Columns :
+
+product_id       : bigint PRIMARY KEY
+sku              : varchar(100)
+virtual          : tinyint(1)
+downloadable     : tinyint(1)
+min_price        : decimal(19,4)
+max_price        : decimal(19,4)
+onsale           : tinyint(1)
+stock_quantity   : double
+stock_status     : varchar(100)
+rating_count     : bigint
+average_rating   : decimal(3,2)
+total_sales      : bigint
+tax_status       : varchar(100)
+tax_class        : varchar(100)
+global_unique_id : varchar(100)
+
+
+
+
+
+
+
+Table Name : wpuz_wc_rate_limits
+
+Columns :
+
+rate_limit_id        : bigint UNSIGNED AUTO_INCREMENT PRIMARY KEY
+rate_limit_key       : varchar(200)
+rate_limit_expiry    : bigint UNSIGNED
+rate_limit_remaining : smallint
+
+
+
+
+
+
+
+Table Name : wpuz_wc_reserved_stock
+
+Columns :
+
+order_id       : bigint PRIMARY KEY
+product_id     : bigint PRIMARY KEY
+stock_quantity : double
+timestamp      : datetime
+expires        : datetime
+
+
+
+
+
+
+Table Name : wpuz_wc_tax_rate_classes
+
+Columns :
+
+tax_rate_class_id : bigint UNSIGNED AUTO_INCREMENT PRIMARY KEY
+name              : varchar(200)
+slug              : varchar(200)
+
+
+
+
+
+
+Table Name : wpuz_wc_webhooks
+
+Columns :
+
+webhook_id        : bigint UNSIGNED AUTO_INCREMENT PRIMARY KEY
+status            : varchar(200)
+name              : text
+user_id           : bigint UNSIGNED
+delivery_url      : text
+secret            : text
+topic             : varchar(200)
+date_created      : datetime
+date_created_gmt  : datetime
+date_modified     : datetime
+date_modified_gmt : datetime
+api_version       : smallint
+failure_count     : smallint
+pending_delivery  : tinyint(1)
+
+
+
+
+
+
+Table Name : wpuz_wfauditevents
+
+Columns :
+
+id              : bigint UNSIGNED AUTO_INCREMENT PRIMARY KEY
+type            : varchar(255)
+data            : text
+event_time      : double(14,4)
+request_id      : bigint UNSIGNED
+state           : enum('new','sending','sent')
+state_timestamp : timestamp
+
+
+
+
+
+Table Name : wpuz_wfblockediplog
+
+Columns :
+
+IP          : binary(16) PRIMARY KEY
+countryCode : varchar(2)
+blockCount  : int UNSIGNED
+unixday     : int UNSIGNED PRIMARY KEY
+blockType   : varchar(50) PRIMARY KEY
+
+
+
+
+
+
+
+Table Name : wpuz_wfblocks7
+
+Columns :
+
+id           : bigint UNSIGNED AUTO_INCREMENT PRIMARY KEY
+type         : int UNSIGNED
+IP           : binary(16)
+blockedTime  : bigint
+reason       : varchar(255)
+lastAttempt  : int UNSIGNED
+blockedHits  : int UNSIGNED
+expiration   : bigint UNSIGNED
+parameters   : text
+
+
+
+
+
+
+
+
+Table Name : wpuz_wfconfig
+
+Columns :
+
+name     : varchar(100) PRIMARY KEY
+val      : longblob
+autoload : enum('no','yes')
+
+
+
+
+
+
+
+Table Name : wpuz_wfcrawlers
+
+Columns :
+
+IP         : binary(16) PRIMARY KEY
+patternSig : binary(16) PRIMARY KEY
+status     : char(8)
+lastUpdate : int UNSIGNED
+PTR        : varchar(255)
+
+
+
+
+
+
+
+Table Name : wpuz_wffilechanges
+
+Columns :
+
+filenameHash : char(64) PRIMARY KEY
+file         : varchar(1000)
+md5          : char(32)
+
+
+
+
+
+
+
+
+Table Name : wpuz_wffilemods
+
+Columns :
+
+filenameMD5        : binary(16) PRIMARY KEY
+filename           : varchar(1000)
+real_path          : text
+knownFile          : tinyint UNSIGNED
+oldMD5             : binary(16)
+newMD5             : binary(16)
+SHAC               : binary(32)
+stoppedOnSignature : varchar(255)
+stoppedOnPosition  : int UNSIGNED
+isSafeFile         : varchar(1)
+
+
+
+
+
+
+Table Name : wpuz_wfhits
+
+Columns :
+
+id                : int UNSIGNED AUTO_INCREMENT PRIMARY KEY
+attackLogTime     : double(17,6) UNSIGNED
+ctime             : double(17,6) UNSIGNED
+IP                : binary(16)
+jsRun             : tinyint
+statusCode        : int
+isGoogle          : tinyint
+userID            : int UNSIGNED
+newVisit          : tinyint UNSIGNED
+URL               : text
+referer           : text
+UA                : text
+action            : varchar(64)
+actionDescription : text
+actionData        : text
+
+
+
+
+
+
+
+
+Table Name : wpuz_wfhoover
+
+Columns :
+
+id      : int UNSIGNED AUTO_INCREMENT PRIMARY KEY
+owner   : text
+host    : text
+path    : text
+hostKey : varbinary(124)
+
+
+
+
+
+
+
+Table Name : wpuz_wfissues
+
+Columns :
+
+id          : int UNSIGNED AUTO_INCREMENT PRIMARY KEY
+time        : int UNSIGNED
+lastUpdated : int UNSIGNED
+status      : varchar(10)
+type        : varchar(20)
+severity    : tinyint UNSIGNED
+ignoreP     : char(32)
+ignoreC     : char(32)
+shortMsg    : varchar(255)
+longMsg     : text
+data        : text
+
+
+
+
+
+
+
+Table Name : wpuz_wfknownfilelist
+
+Columns :
+
+id             : int UNSIGNED AUTO_INCREMENT PRIMARY KEY
+path           : text
+wordpress_path : text
+
+
+
+
+
+
+
+
+Table Name : wpuz_wflivetraffichuman
+
+Columns :
+
+IP         : binary(16) PRIMARY KEY
+identifier : binary(32) PRIMARY KEY
+expiration : int UNSIGNED
+
+
+
+
+
+
+
+
+
+Table Name : wpuz_wflocs
+
+Columns :
+
+IP          : binary(16) PRIMARY KEY
+ctime       : int UNSIGNED
+failed      : tinyint UNSIGNED
+city        : varchar(255)
+region      : varchar(255)
+countryName : varchar(255)
+countryCode : char(2)
+lat         : float(10,7)
+lon         : float(10,7)
+
+
+
+
+
+
+
+Table Name : wpuz_wflogins
+
+Columns :
+
+id       : int UNSIGNED AUTO_INCREMENT PRIMARY KEY
+hitID    : int
+ctime    : double(17,6) UNSIGNED
+fail     : tinyint UNSIGNED
+action   : varchar(40)
+username : varchar(255)
+userID   : int UNSIGNED
+IP       : binary(16)
+UA       : text
+
+
+
+
+
+
+
+Table Name : wpuz_wfls_2fa_secrets
+
+Columns :
+
+id       : int UNSIGNED AUTO_INCREMENT PRIMARY KEY
+user_id  : bigint UNSIGNED
+secret   : tinyblob
+recovery : blob
+ctime    : int UNSIGNED
+vtime    : int UNSIGNED
+mode     : enum('authenticator')
+
+
+
+
+
+
+
+
+
+Table Name : wpuz_wfls_role_counts
+
+Columns :
+
+serialized_roles   : varbinary(255) PRIMARY KEY
+two_factor_inactive: tinyint(1) PRIMARY KEY
+user_count         : bigint UNSIGNED
+
+
+
+
+
+
+Table Name : wpuz_wfls_settings
+
+Columns :
+
+name     : varchar(191) PRIMARY KEY
+value    : longblob
+autoload : enum('no','yes')
+
+
+
+
+
+
+
+Table Name : wpuz_wfnotifications
+
+Columns :
+
+id       : varchar(32) PRIMARY KEY
+new      : tinyint UNSIGNED
+category : varchar(255)
+priority : int
+ctime    : int UNSIGNED
+html     : text
+links    : text
+
+
+
+
+
+
+
+
+Table Name : wpuz_wfpendingissues
+
+Columns :
+
+id          : int UNSIGNED AUTO_INCREMENT PRIMARY KEY
+time        : int UNSIGNED
+lastUpdated : int UNSIGNED
+status      : varchar(10)
+type        : varchar(20)
+severity    : tinyint UNSIGNED
+ignoreP     : char(32)
+ignoreC     : char(32)
+shortMsg    : varchar(255)
+longMsg     : text
+data        : text
+
+
+
+
+
+
+
+Table Name : wpuz_wfreversecache
+
+Columns :
+
+IP         : binary(16) PRIMARY KEY
+host       : varchar(255)
+lastUpdate : int UNSIGNED
+
+
+
+
+
+
+
+Table Name : wpuz_wfsecurityevents
+
+Columns :
+
+id              : bigint UNSIGNED AUTO_INCREMENT PRIMARY KEY
+type            : varchar(255)
+data            : text
+event_time      : double(14,4)
+state           : enum('new','sending','sent')
+state_timestamp : timestamp
+
+
+
+
+
+
+Table Name : wpuz_wfsnipcache
+
+Columns :
+
+id         : int UNSIGNED AUTO_INCREMENT PRIMARY KEY
+IP         : varchar(45)
+expiration : timestamp
+body       : varchar(255)
+count      : int UNSIGNED
+type       : int UNSIGNED
+
+
+
+
+
+
+
+
+
+Table Name : wpuz_wfstatus
+
+Columns :
+
+id    : bigint UNSIGNED AUTO_INCREMENT PRIMARY KEY
+ctime : double(17,6) UNSIGNED
+level : tinyint UNSIGNED
+type  : char(5)
+msg   : varchar(1000)
+
+
+
+
+
+
+
+
+
+
+Table Name : wpuz_wftrafficrates
+
+Columns :
+
+eMin    : int UNSIGNED PRIMARY KEY
+IP      : binary(16) PRIMARY KEY
+hitType : enum('hit','404') PRIMARY KEY
+hits    : int UNSIGNED
+
+
+
+
+
+
+
+
+
+Table Name : wpuz_wfwaffailures
+
+Columns :
+
+id        : int UNSIGNED AUTO_INCREMENT PRIMARY KEY
+throwable : text
+rule_id   : int UNSIGNED
+timestamp : timestamp
+
+
+
+
+
+
+
+
+
+Table Name : wpuz_woocommerce_api_keys
+
+Columns :
+
+key_id          : bigint UNSIGNED AUTO_INCREMENT PRIMARY KEY
+user_id         : bigint UNSIGNED
+description     : varchar(200)
+permissions     : varchar(10)
+consumer_key    : char(64)
+consumer_secret : char(43)
+nonces          : longtext
+truncated_key   : char(7)
+last_access     : datetime
+
+
+
+
+
+
+
+Table Name : wpuz_woocommerce_attribute_taxonomies
+
+Columns :
+
+attribute_id       : bigint UNSIGNED AUTO_INCREMENT PRIMARY KEY
+attribute_name     : varchar(200)
+attribute_label    : varchar(200)
+attribute_type     : varchar(20)
+attribute_orderby  : varchar(20)
+attribute_public   : int
+
+
+
+
+
+
+
+
+
+Table Name : wpuz_woocommerce_downloadable_product_permissions
+
+Columns :
+
+permission_id       : bigint UNSIGNED AUTO_INCREMENT PRIMARY KEY
+download_id         : varchar(36)
+product_id          : bigint UNSIGNED
+order_id            : bigint UNSIGNED
+order_key           : varchar(200)
+user_email          : varchar(200)
+user_id             : bigint UNSIGNED
+downloads_remaining : varchar(9)
+access_granted      : datetime
+access_expires      : datetime
+download_count      : bigint UNSIGNED
+
+
+
+
+
+
+
+
+
+Table Name : wpuz_woocommerce_log
+
+Columns :
+
+log_id    : bigint UNSIGNED AUTO_INCREMENT PRIMARY KEY
+timestamp : datetime
+level     : smallint
+source    : varchar(200)
+message   : longtext
+context   : longtext
+
+
+
+
+
+
+
+Table Name : wpuz_woocommerce_order_itemmeta
+
+Columns :
+
+meta_id       : bigint UNSIGNED AUTO_INCREMENT PRIMARY KEY
+order_item_id : bigint UNSIGNED
+meta_key      : varchar(255)
+meta_value    : longtext
+
+
+
+
+
+
+
+
+
+Table Name : wpuz_woocommerce_order_items
+
+Columns :
+
+order_item_id   : bigint UNSIGNED AUTO_INCREMENT PRIMARY KEY
+order_item_name : text
+order_item_type : varchar(200)
+order_id        : bigint UNSIGNED
+
+
+
+
+
+
+
+
+
+
+Table Name : wpuz_woocommerce_payment_tokenmeta
+
+Columns :
+
+meta_id          : bigint UNSIGNED AUTO_INCREMENT PRIMARY KEY
+payment_token_id : bigint UNSIGNED
+meta_key         : varchar(255)
+meta_value       : longtext
+
+
+
+
+
+
+
+
+
+
+Table Name : wpuz_woocommerce_payment_tokens
+
+Columns :
+
+token_id   : bigint UNSIGNED AUTO_INCREMENT PRIMARY KEY
+gateway_id : varchar(200)
+token      : text
+user_id    : bigint UNSIGNED
+type       : varchar(200)
+is_default : tinyint(1)
+
+
+
+
+
+
+
+
+Table Name : wpuz_woocommerce_sessions
+
+Columns :
+
+session_id     : bigint UNSIGNED AUTO_INCREMENT PRIMARY KEY
+session_key    : char(32)
+session_value  : longtext
+session_expiry : bigint UNSIGNED
+
+
+
+
+
+
+
+
+Table Name : wpuz_woocommerce_shipping_zone_locations
+
+Columns :
+
+location_id   : bigint UNSIGNED AUTO_INCREMENT PRIMARY KEY
+zone_id       : bigint UNSIGNED
+location_code : varchar(200)
+location_type : varchar(40)
+
+
+
+
+
+
+
+
+Table Name : wpuz_woocommerce_shipping_zone_methods
+
+Columns :
+
+zone_id      : bigint UNSIGNED
+instance_id  : bigint UNSIGNED AUTO_INCREMENT PRIMARY KEY
+method_id    : varchar(200)
+method_order : bigint UNSIGNED
+is_enabled   : tinyint(1)
+
+
+
+
+
+
+
+
+Table Name : wpuz_woocommerce_shipping_zones
+
+Columns :
+
+zone_id    : bigint UNSIGNED AUTO_INCREMENT PRIMARY KEY
+zone_name  : varchar(200)
+zone_order : bigint UNSIGNED
+
+
+
+
+
+
+
+
+
+Table Name : wpuz_woocommerce_tax_rate_locations
+
+Columns :
+
+location_id   : bigint UNSIGNED AUTO_INCREMENT PRIMARY KEY
+location_code : varchar(200)
+tax_rate_id   : bigint UNSIGNED
+location_type : varchar(40)
+
+
+
+
+
+
+
+
+
+
+Table Name : wpuz_woocommerce_tax_rates
+
+Columns :
+
+tax_rate_id        : bigint UNSIGNED AUTO_INCREMENT PRIMARY KEY
+tax_rate_country   : varchar(2)
+tax_rate_state     : varchar(200)
+tax_rate           : varchar(8)
+tax_rate_name      : varchar(200)
+tax_rate_priority  : bigint UNSIGNED
+tax_rate_compound  : int
+tax_rate_shipping  : int
+tax_rate_order     : bigint UNSIGNED
+tax_rate_class     : varchar(200)
+
+
+
+
+
+
+
+
+
+Table Name : wpuz_wpfm_backup
+
+Columns :
+
+id          : int AUTO_INCREMENT PRIMARY KEY
+backup_name : text
+backup_date : text
+
+
+
+
+
+
+
+
+Table Name : wpuz_wpforms_logs
+
+Columns :
+
+id        : bigint AUTO_INCREMENT PRIMARY KEY
+title     : varchar(255)
+message   : longtext
+types     : varchar(255)
+create_at : datetime
+form_id   : bigint
+entry_id  : bigint
+user_id   : bigint
+
+
+
+
+
+
+
+
+
+
+Table Name : wpuz_wpforms_payment_meta
+
+Columns :
+
+id         : bigint AUTO_INCREMENT PRIMARY KEY
+payment_id : bigint
+meta_key   : varchar(255)
+meta_value : longtext
+
+
+
+
+
+
+
+Table Name : wpuz_wpforms_payments
+
+Columns :
+
+id                  : bigint AUTO_INCREMENT PRIMARY KEY
+form_id             : bigint
+status              : varchar(10)
+subtotal_amount     : decimal(26,8)
+discount_amount     : decimal(26,8)
+total_amount        : decimal(26,8)
+currency            : varchar(3)
+entry_id            : bigint
+gateway             : varchar(20)
+type                : varchar(12)
+mode                : varchar(4)
+transaction_id      : varchar(40)
+customer_id         : varchar(40)
+subscription_id     : varchar(40)
+subscription_status : varchar(10)
+title               : varchar(255)
+date_created_gmt    : datetime
+date_updated_gmt    : datetime
+is_published        : tinyint(1)
+
+
+
+
+
+
+
+
+
+Table Name : wpuz_wpforms_tasks_meta
+
+Columns :
+
+id     : bigint AUTO_INCREMENT PRIMARY KEY
+action : varchar(255)
+data   : longtext
+date   : datetime
+
+
+
+
+
+
+
+Table Name : wpuz_wpie_template
+
+Columns :
+
+id               : int AUTO_INCREMENT PRIMARY KEY
+status           : varchar(25)
+opration         : varchar(100)
+username         : varchar(60)
+unique_id        : varchar(100)
+opration_type    : varchar(100)
+options          : longtext
+process_log      : varchar(255)
+process_lock     : int
+create_date      : datetime
+last_update_date : datetime
+
+
+
+
+
+
+
+
+
+Table Name : wpuz_yoast_expiring_store
+
+Columns :
+
+key_name : varchar(255) PRIMARY KEY
+value    : text
+exp      : datetime
+
+
+
+
+
+
+
+
+Table Name : wpuz_yoast_indexable
+
+Columns :
+
+id                               : int UNSIGNED AUTO_INCREMENT PRIMARY KEY
+permalink                        : longtext
+permalink_hash                   : varchar(40)
+object_id                        : bigint
+object_type                      : varchar(32)
+object_sub_type                  : varchar(32)
+author_id                        : bigint
+post_parent                      : bigint
+title                            : text
+description                      : mediumtext
+breadcrumb_title                 : text
+post_status                      : varchar(20)
+is_public                        : tinyint(1)
+is_protected                     : tinyint(1)
+has_public_posts                 : tinyint(1)
+number_of_pages                  : int UNSIGNED
+canonical                        : longtext
+primary_focus_keyword            : varchar(191)
+primary_focus_keyword_score      : int
+readability_score                : int
+is_cornerstone                   : tinyint(1)
+is_robots_noindex                : tinyint(1)
+is_robots_nofollow               : tinyint(1)
+is_robots_noarchive              : tinyint(1)
+is_robots_noimageindex           : tinyint(1)
+is_robots_nosnippet              : tinyint(1)
+twitter_title                    : text
+twitter_image                    : longtext
+twitter_description              : longtext
+twitter_image_id                 : varchar(191)
+twitter_image_source             : text
+open_graph_title                 : text
+open_graph_description           : longtext
+open_graph_image                 : longtext
+open_graph_image_id              : varchar(191)
+open_graph_image_source          : text
+open_graph_image_meta            : mediumtext
+link_count                       : int
+incoming_link_count              : int
+prominent_words_version          : int UNSIGNED
+created_at                       : datetime
+updated_at                       : timestamp
+blog_id                          : bigint
+language                         : varchar(32)
+region                           : varchar(32)
+schema_page_type                 : varchar(64)
+schema_article_type              : varchar(64)
+has_ancestors                    : tinyint(1)
+estimated_reading_time_minutes   : int
+version                          : int
+object_last_modified             : datetime
+object_published_at              : datetime
+inclusive_language_score         : int
+
+
+
+
+
+
+
+Table Name : wpuz_yoast_indexable_hierarchy
+
+Columns :
+
+indexable_id : int UNSIGNED PRIMARY KEY
+ancestor_id  : int UNSIGNED PRIMARY KEY
+depth        : int UNSIGNED
+blog_id      : bigint
+
+
+
+
+
+
+
+
+Table Name : wpuz_yoast_migrations
+
+Columns :
+
+id      : int UNSIGNED AUTO_INCREMENT PRIMARY KEY
+version : varchar(191)
+
+
+
+
+
+
+
+
+
+Table Name : wpuz_yoast_primary_term
+
+Columns :
+
+id         : int UNSIGNED AUTO_INCREMENT PRIMARY KEY
+post_id    : bigint
+term_id    : bigint
+taxonomy   : varchar(32)
+created_at : datetime
+updated_at : timestamp
+blog_id    : bigint
+
+
+
+
+
+
+
+
+
+
+Table Name : wpuz_yoast_prominent_words
+
+Columns :
+
+id           : int UNSIGNED AUTO_INCREMENT PRIMARY KEY
+stem         : varchar(191)
+indexable_id : int UNSIGNED
+weight       : float
+
+
+
+
+
+
+
+Table Name : wpuz_yoast_seo_links
+
+Columns :
+
+id                  : bigint UNSIGNED AUTO_INCREMENT PRIMARY KEY
+url                 : varchar(255)
+post_id             : bigint UNSIGNED
+target_post_id      : bigint UNSIGNED
+type                : varchar(8)
+indexable_id        : int UNSIGNED
+target_indexable_id : int UNSIGNED
+height              : int UNSIGNED
+width               : int UNSIGNED
+size                : int UNSIGNED
+language            : varchar(32)
+region              : varchar(32)
+
+
+
+
+
+
+
+
+Table Name : wpuz_yoast_seo_meta
+
+Columns :
+
+object_id           : bigint UNSIGNED PRIMARY KEY
+internal_link_count : int UNSIGNED
+incoming_link_count : int UNSIGNED
+
+
+
+
+
+
+
+
+
+

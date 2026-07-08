@@ -98,26 +98,26 @@ const productCategories = [
 
 function Products() {
   return (
-    <section className="relative overflow-hidden bg-gradient-to-b from-slate-50 via-white to-slate-100 py-14 sm:py-16 lg:py-20">
+    <section className="relative overflow-hidden bg-gradient-to-b from-slate-50 via-white to-slate-100 py-10 sm:py-12 md:py-14 lg:py-16 xl:py-20">
       {/* Background Shapes */}
       <div className="absolute -left-32 top-10 h-80 w-80 rounded-full bg-[#f5b400]/10 blur-3xl" />
       <div className="absolute -right-28 bottom-10 h-96 w-96 rounded-full bg-sky-200/30 blur-3xl" />
       <div className="absolute left-1/2 top-1/2 h-64 w-64 -translate-x-1/2 rounded-full bg-blue-100/20 blur-3xl" />
 
-      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div className="relative mx-auto max-w-7xl px-3 sm:px-4 md:px-6 lg:px-8">
         {/* Heading */}
         <div className="mx-auto max-w-3xl text-center">
-          <div className="inline-flex items-center gap-2 rounded-full border border-[#f5b400]/30 bg-[#fff9e8] px-5 py-2 text-xs font-extrabold uppercase tracking-[0.14em] text-[#a66e00] shadow-sm">
+          <div className="inline-flex items-center gap-2 rounded-full border border-[#f5b400]/30 bg-[#fff9e8] px-3 py-1.5 text-[10px] font-extrabold uppercase tracking-[0.14em] text-[#a66e00] shadow-sm sm:px-5 sm:py-2 sm:text-xs">
             <FaCogs className="text-[#e5a600]" />
             A2Z Industrial Sealing Solutions
           </div>
 
-          <h2 className="mt-5 text-3xl font-extrabold tracking-tight text-[#061a38] sm:text-4xl lg:text-5xl">
+          <h2 className="mt-4 text-2xl font-extrabold tracking-tight text-[#061a38] sm:mt-5 sm:text-3xl md:text-4xl lg:text-5xl">
             Explore Our{" "}
             <span className="text-[#f5b400]">Product Categories</span>
           </h2>
 
-          <p className="mx-auto mt-4 max-w-2xl text-sm leading-7 text-slate-600 sm:text-base">
+          <p className="mx-auto mt-3 max-w-2xl text-xs leading-6 text-slate-600 sm:mt-4 sm:text-sm sm:leading-7 md:text-base">
             Premium hydraulic seals, oil seals, O-rings and seal kits designed
             for construction equipment, industrial machines and heavy-duty
             applications.
@@ -125,14 +125,14 @@ function Products() {
         </div>
 
         {/* Product Cards */}
-        <div className="mt-11 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-8 grid gap-4 sm:mt-10 sm:gap-5 sm:grid-cols-2 lg:grid-cols-3 lg:gap-6">
           {productCategories.map((product) => (
             <article
               key={product.id}
               className="group overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-[0_12px_32px_rgba(15,23,42,0.08)] transition-all duration-300 hover:-translate-y-2 hover:border-[#f5b400]/70 hover:shadow-[0_24px_50px_rgba(6,26,56,0.16)]"
             >
               {/* Image Section */}
-              <div className="relative h-60 overflow-hidden bg-slate-100">
+              <div className="relative h-48 overflow-hidden bg-slate-100 sm:h-56 lg:h-60">
                 <img
                   src={product.image}
                   alt={product.name}
@@ -142,47 +142,47 @@ function Products() {
                 <div className="absolute inset-0 bg-gradient-to-t from-[#061a38]/80 via-[#061a38]/15 to-transparent" />
 
                 {/* Top badge */}
-                <span className="absolute right-4 top-4 rounded-full bg-[#f5b400] px-3 py-1.5 text-[10px] font-extrabold uppercase tracking-wide text-[#061a38] shadow-md">
+                <span className="absolute right-3 top-3 rounded-full bg-[#f5b400] px-2.5 py-1 text-[9px] font-extrabold uppercase tracking-wide text-[#061a38] shadow-md sm:right-4 sm:top-4 sm:px-3 sm:py-1.5 sm:text-[10px]">
                   {product.badge}
                 </span>
 
                 {/* Icon */}
-                <div className="absolute bottom-4 left-5 flex h-12 w-12 items-center justify-center rounded-xl border border-white/30 bg-white/95 text-xl text-[#e5a600] shadow-lg backdrop-blur-sm">
+                <div className="absolute bottom-3 left-4 flex h-10 w-10 items-center justify-center rounded-xl border border-white/30 bg-white/95 text-lg text-[#e5a600] shadow-lg backdrop-blur-sm sm:bottom-4 sm:left-5 sm:h-12 sm:w-12 sm:text-xl">
                   {product.icon}
                 </div>
               </div>
 
               {/* Card Content */}
-              <div className="p-6">
-                <div className="flex items-start justify-between gap-3">
+              <div className="p-4 sm:p-5 lg:p-6">
+                <div className="flex items-start justify-between gap-2.5 sm:gap-3">
                   <div>
-                    <p className="text-[11px] font-extrabold uppercase tracking-[0.14em] text-[#e5a600]">
+                    <p className="text-[10px] font-extrabold uppercase tracking-[0.14em] text-[#e5a600] sm:text-[11px]">
                       {product.shortName}
                     </p>
 
-                    <h3 className="mt-1 text-xl font-extrabold text-[#061a38] transition-colors group-hover:text-[#b57b00]">
+                    <h3 className="mt-1 text-lg font-extrabold text-[#061a38] transition-colors group-hover:text-[#b57b00] sm:text-xl">
                       {product.name}
                     </h3>
                   </div>
 
-                  <FaBoxes className="mt-1 text-lg text-slate-300 transition group-hover:text-[#f5b400]" />
+                  <FaBoxes className="mt-1 text-base text-slate-300 transition group-hover:text-[#f5b400] sm:text-lg" />
                 </div>
 
-                <p className="mt-3 min-h-[72px] text-sm leading-6 text-slate-600">
+                <p className="mt-2.5 min-h-[60px] text-xs leading-5 text-slate-600 sm:mt-3 sm:min-h-[72px] sm:text-sm sm:leading-6">
                   {product.description}
                 </p>
 
                 {/* Applications */}
-                <div className="mt-5">
-                  <p className="mb-2 text-[11px] font-extrabold uppercase tracking-wider text-slate-500">
+                <div className="mt-4 sm:mt-5">
+                  <p className="mb-1.5 text-[10px] font-extrabold uppercase tracking-wider text-slate-500 sm:mb-2 sm:text-[11px]">
                     Suitable For
                   </p>
 
-                  <div className="flex flex-wrap gap-2">
+                  <div className="flex flex-wrap gap-1.5 sm:gap-2">
                     {product.applications.map((application) => (
                       <span
                         key={application}
-                        className="rounded-full border border-slate-200 bg-slate-50 px-3 py-1 text-[11px] font-bold text-slate-600"
+                        className="rounded-full border border-slate-200 bg-slate-50 px-2 py-0.5 text-[10px] font-bold text-slate-600 sm:px-3 sm:py-1 sm:text-[11px]"
                       >
                         {application}
                       </span>
@@ -191,15 +191,15 @@ function Products() {
                 </div>
 
                 {/* Bottom */}
-                <div className="mt-6 flex items-center justify-between border-t border-slate-100 pt-4">
-                  <span className="inline-flex items-center gap-2 text-xs font-bold text-slate-500">
+                <div className="mt-5 flex items-center justify-between border-t border-slate-100 pt-3 sm:mt-6 sm:pt-4">
+                  <span className="inline-flex items-center gap-2 text-[10px] font-bold text-slate-500 sm:text-xs">
                     <FaCheckCircle className="text-[#e5a600]" />
                     Quality Assured
                   </span>
 
                   <Link
                     to={product.to}
-                    className="inline-flex items-center gap-2 rounded-lg bg-[#061a38] px-4 py-2.5 text-xs font-extrabold uppercase tracking-wide text-white transition-all duration-300 hover:bg-[#f5b400] hover:text-[#061a38]"
+                    className="inline-flex items-center gap-2 rounded-lg bg-[#061a38] px-3 py-2 text-[10px] font-extrabold uppercase tracking-wide text-white transition-all duration-300 hover:bg-[#f5b400] hover:text-[#061a38] sm:px-4 sm:py-2.5 sm:text-xs"
                   >
                     View Products
                     <FaArrowRight className="transition-transform duration-300 group-hover:translate-x-1" />
@@ -211,18 +211,18 @@ function Products() {
         </div>
 
         {/* Product Help / CTA */}
-        <div className="mt-12 overflow-hidden rounded-2xl border border-[#f5b400]/30 bg-gradient-to-r from-[#061a38] via-[#0b3265] to-[#061a38] px-6 py-8 shadow-xl sm:px-8 lg:px-10">
-          <div className="flex flex-col items-center justify-between gap-6 text-center sm:flex-row sm:text-left">
-            <div className="flex items-center gap-4">
-              <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-[#f5b400] text-2xl text-[#061a38] shadow-lg">
+        <div className="mt-8 overflow-hidden rounded-2xl border border-[#f5b400]/30 bg-gradient-to-r from-[#061a38] via-[#0b3265] to-[#061a38] px-4 py-6 shadow-xl sm:mt-10 sm:px-6 sm:py-8 md:px-8 lg:px-10">
+          <div className="flex flex-col items-center justify-between gap-4 text-center sm:gap-6 sm:flex-row sm:text-left">
+            <div className="flex items-center gap-3 sm:gap-4">
+              <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-[#f5b400] text-xl text-[#061a38] shadow-lg sm:h-14 sm:w-14 sm:text-2xl">
                 <FaWrench />
               </div>
 
               <div>
-                <h3 className="text-xl font-extrabold text-white">
+                <h3 className="text-lg font-extrabold text-white sm:text-xl">
                   Need Help Finding the Right Seal?
                 </h3>
-                <p className="mt-1 max-w-xl text-sm leading-6 text-slate-200">
+                <p className="mt-1 max-w-xl text-xs leading-5 text-slate-200 sm:text-sm sm:leading-6">
                   Send your machine model, part number or seal size. Our experts
                   will help you find the correct sealing solution.
                 </p>
@@ -231,7 +231,7 @@ function Products() {
 
             <Link
               to="/quote"
-              className="inline-flex shrink-0 items-center gap-2 rounded-lg bg-[#f5b400] px-6 py-3 text-sm font-extrabold text-[#061a38] shadow-lg transition-all hover:-translate-y-0.5 hover:bg-[#ffc928]"
+              className="inline-flex shrink-0 items-center gap-2 rounded-lg bg-[#f5b400] px-5 py-2.5 text-[11px] font-extrabold text-[#061a38] shadow-lg transition-all hover:-translate-y-0.5 hover:bg-[#ffc928] sm:px-6 sm:py-3 sm:text-sm"
             >
               <FaSearch />
               Get Free Quote
@@ -241,44 +241,44 @@ function Products() {
         </div>
 
         {/* Extra Trust Points */}
-        <div className="mt-8 grid gap-4 sm:grid-cols-3">
-          <div className="flex items-center gap-3 rounded-xl border border-slate-200 bg-white p-4 shadow-sm">
-            <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-[#fff4cc] text-[#e5a600]">
+        <div className="mt-6 grid gap-3 sm:mt-8 sm:gap-4 sm:grid-cols-3">
+          <div className="flex items-center gap-2.5 rounded-xl border border-slate-200 bg-white p-3 shadow-sm sm:gap-3 sm:p-4">
+            <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-[#fff4cc] text-[#e5a600] sm:h-10 sm:w-10">
               <FaShieldAlt />
             </div>
             <div>
-              <p className="text-sm font-extrabold text-[#061a38]">
+              <p className="text-xs font-extrabold text-[#061a38] sm:text-sm">
                 Genuine Quality
               </p>
-              <p className="text-xs text-slate-500">
+              <p className="text-[10px] text-slate-500 sm:text-xs">
                 Reliable industrial sealing products.
               </p>
             </div>
           </div>
 
-          <div className="flex items-center gap-3 rounded-xl border border-slate-200 bg-white p-4 shadow-sm">
-            <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-[#fff4cc] text-[#e5a600]">
+          <div className="flex items-center gap-2.5 rounded-xl border border-slate-200 bg-white p-3 shadow-sm sm:gap-3 sm:p-4">
+            <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-[#fff4cc] text-[#e5a600] sm:h-10 sm:w-10">
               <FaTruckMoving />
             </div>
             <div>
-              <p className="text-sm font-extrabold text-[#061a38]">
+              <p className="text-xs font-extrabold text-[#061a38] sm:text-sm">
                 Fast Dispatch
               </p>
-              <p className="text-xs text-slate-500">
+              <p className="text-[10px] text-slate-500 sm:text-xs">
                 Quick support for urgent requirements.
               </p>
             </div>
           </div>
 
-          <div className="flex items-center gap-3 rounded-xl border border-slate-200 bg-white p-4 shadow-sm">
-            <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-[#fff4cc] text-[#e5a600]">
+          <div className="flex items-center gap-2.5 rounded-xl border border-slate-200 bg-white p-3 shadow-sm sm:gap-3 sm:p-4">
+            <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-[#fff4cc] text-[#e5a600] sm:h-10 sm:w-10">
               <FaCheckCircle />
             </div>
             <div>
-              <p className="text-sm font-extrabold text-[#061a38]">
+              <p className="text-xs font-extrabold text-[#061a38] sm:text-sm">
                 Expert Assistance
               </p>
-              <p className="text-xs text-slate-500">
+              <p className="text-[10px] text-slate-500 sm:text-xs">
                 Help selecting the right seal.
               </p>
             </div>

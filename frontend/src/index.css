@@ -1,6 +1,6 @@
 @import "tailwindcss";
 
-@theme {
+:root {
   --color-brand-50: #f0f4f8;
   --color-brand-100: #d9e2ec;
   --color-brand-200: #bcccdc;
@@ -24,6 +24,27 @@ body {
   background-color: #ffffff;
   color: #1f2937;
   font-family: var(--font-sans);
+  overflow-x: hidden;
+}
+
+/* Hide scrollbars */
+body::-webkit-scrollbar {
+  display: none;
+}
+
+body {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Hide scrollbars in all elements */
+*::-webkit-scrollbar {
+  display: none;
+}
+
+* {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 
 @keyframes marquee {
@@ -37,4 +58,95 @@ body {
 
 .animate-marquee {
   animation: marquee 30s linear infinite;
+}
+
+/* Responsive utilities for better mobile experience */
+@media (max-width: 640px) {
+  .text-responsive-xs {
+    font-size: 0.75rem;
+  }
+  .text-responsive-sm {
+    font-size: 0.875rem;
+  }
+  .text-responsive-base {
+    font-size: 1rem;
+  }
+  .text-responsive-lg {
+    font-size: 1.125rem;
+  }
+  .text-responsive-xl {
+    font-size: 1.25rem;
+  }
+  .text-responsive-2xl {
+    font-size: 1.5rem;
+  }
+}
+
+@media (min-width: 641px) and (max-width: 1024px) {
+  .text-responsive-xs {
+    font-size: 0.875rem;
+  }
+  .text-responsive-sm {
+    font-size: 1rem;
+  }
+  .text-responsive-base {
+    font-size: 1.125rem;
+  }
+  .text-responsive-lg {
+    font-size: 1.25rem;
+  }
+  .text-responsive-xl {
+    font-size: 1.5rem;
+  }
+  .text-responsive-2xl {
+    font-size: 1.875rem;
+  }
+}
+
+@media (min-width: 1025px) {
+  .text-responsive-xs {
+    font-size: 0.875rem;
+  }
+  .text-responsive-sm {
+    font-size: 1rem;
+  }
+  .text-responsive-base {
+    font-size: 1.125rem;
+  }
+  .text-responsive-lg {
+    font-size: 1.25rem;
+  }
+  .text-responsive-xl {
+    font-size: 1.5rem;
+  }
+  .text-responsive-2xl {
+    font-size: 2rem;
+  }
+}
+
+/* Mobile dropdown menu improvements */
+@media (max-width: 1279px) {
+  .desktop-only {
+    display: none !important;
+  }
+}
+
+@media (min-width: 1280px) {
+  .mobile-only {
+    display: none !important;
+  }
+}
+
+/* Touch-friendly tap targets */
+@media (max-width: 768px) {
+  button, a, input, select, textarea {
+    min-height: 44px;
+  }
+}
+
+/* Prevent horizontal overflow on mobile */
+@media (max-width: 640px) {
+  * {
+    max-width: 100%;
+  }
 }
