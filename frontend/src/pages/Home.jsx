@@ -1,9 +1,9 @@
+import { useRef } from "react";
 import { Link } from "react-router-dom";
 import {
   FaArrowRight,
   FaAward,
   FaBoxes,
-  FaCheckCircle,
   FaChevronLeft,
   FaChevronRight,
   FaCogs,
@@ -17,6 +17,9 @@ import {
 
 import Hero from "../components/Hero";
 
+// CTA banner image
+import customSealKitBanner from "../assets/images/ChatGPT Image Jul 1, 2026, 03_03_25 PM.png";
+
 // Product images
 import hydraulicSealKit from "../assets/images/a.jpg";
 import oilSeal from "../assets/images/a.jpg";
@@ -25,23 +28,39 @@ import floatingSeal from "../assets/images/a.jpg";
 import rockBreakerSeal from "../assets/images/a.jpg";
 import constructionSeal from "../assets/images/a.jpg";
 
-// Industry images
-import constructionImage from "../assets/images/construction.jpg";
-import miningImage from "../assets/images/mining.jpg";
-import cementImage from "../assets/images/cement.jpg";
-import steelImage from "../assets/images/steel.png";
-import manufacturingImage from "../assets/images/manufacturing.png";
-import infrastructureImage from "../assets/images/infrastructure.png";
 
-// Brand images
-import jcbBrand from "../assets/images/a.jpg";
-import caterpillarBrand from "../assets/images/a.jpg";
-import komatsuBrand from "../assets/images/a.jpg";
-import volvoBrand from "../assets/images/a.jpg";
-import hitachiBrand from "../assets/images/a.jpg";
-import hyundaiBrand from "../assets/images/a.jpg";
+
+const brandLinks = {
+  CFW: "/list/cfw-oil-seal",
+  NOK: "/list/nok-oil-seal",
+  SOG: "/list/sog-oil-seal",
+  PARKER: "/list/parker-oil-seal",
+  FREUDENBERG: "/list/freudenberg-oil-seal",
+  SIMRIT: "/list/simrit-oil-seal",
+  CORTECO: "/list/corteco-oil-seal",
+  TTO: "/list/tto-oil-seal",
+  TCK: "/list/tck-oil-seal",
+  CR: "/list/cr-oil-seal",
+  NAK: "/list/nak-oil-seal",
+  NDK: "/list/ndk-oil-seal",
+  MERKEL: "/list/merkel-oil-seal",
+  NATIONAL: "/list/national-oil-seal",
+  CHR: "/list/chr-oil-seal",
+};
 
 function Home() {
+  const brandsScrollRef = useRef(null);
+
+  const scrollBrands = (direction) => {
+    const container = brandsScrollRef.current;
+    if (!container) return;
+    const amount = container.clientWidth * 0.7;
+    container.scrollBy({
+      left: direction === "left" ? -amount : amount,
+      behavior: "smooth",
+    });
+  };
+
   const categories = [
     {
       title: "Hydraulic Seal Kits",
@@ -76,34 +95,47 @@ function Home() {
   ];
 
   const brands = [
-    { name: "JCB", image: jcbBrand },
-    { name: "Caterpillar", image: caterpillarBrand },
-    { name: "Komatsu", image: komatsuBrand },
-    { name: "Volvo", image: volvoBrand },
-    { name: "Hitachi", image: hitachiBrand },
-    { name: "Hyundai", image: hyundaiBrand },
+    { name: "NOK", color: "#061a38" },
+    { name: "HALLITE", color: "#061a38" },
+    { name: "CORTECO", color: "#061a38" },
+    { name: "SIMRIT", color: "#061a38" },
+    { name: "MERKEL", color: "#061a38" },
+    { name: "PARKER", color: "#061a38" },
+    { name: "CFW", color: "#061a38" },
+    { name: "SAKAGAMI", color: "#061a38" },
+    { name: "SKF", color: "#061a38" },
+    { name: "FREUDENBERG", color: "#061a38" },
+    { name: "SOG", color: "#061a38" },
+    { name: "KASTAS", color: "#061a38" },
+    { name: "TTO", color: "#061a38" },
+    { name: "TCK", color: "#061a38" },
+    { name: "CR", color: "#061a38" },
+    { name: "NAK", color: "#061a38" },
+    { name: "NDK", color: "#061a38" },
+    { name: "NATIONAL", color: "#061a38" },
+    { name: "CHR", color: "#061a38" },
   ];
 
   const whyChooseUs = [
     {
       icon: <FaAward />,
       title: "ISO Certified",
-      text: "Quality-focused sealing solutions for industrial applications.",
+      text: "We are ISO 9001:2015 certified company ensuring quality.",
     },
     {
       icon: <FaShieldAlt />,
       title: "Genuine Products",
-      text: "Reliable products for dependable machine performance.",
+      text: "100% genuine & high quality sealing products.",
     },
     {
       icon: <FaShippingFast />,
       title: "Fast Delivery",
-      text: "Quick dispatch support for urgent industrial requirements.",
+      text: "Pan India delivery with express shipping.",
     },
     {
       icon: <FaHeadset />,
       title: "Expert Support",
-      text: "Professional help for product selection and enquiries.",
+      text: "Our experts are always ready to support you 24/7.",
     },
   ];
 
@@ -141,58 +173,31 @@ function Home() {
   ];
 
   const industries = [
-    {
-      title: "Construction",
-      icon: <FaTools />,
-      image: constructionImage,
-      to: "/industries/construction",
-    },
-    {
-      title: "Mining",
-      icon: <FaTruck />,
-      image: miningImage,
-      to: "/industries/mining",
-    },
-    {
-      title: "Cement",
-      icon: <FaIndustry />,
-      image: cementImage,
-      to: "/industries/cement",
-    },
-    {
-      title: "Steel",
-      icon: <FaCogs />,
-      image: steelImage,
-      to: "/industries/steel",
-    },
-    {
-      title: "Manufacturing",
-      icon: <FaBoxes />,
-      image: manufacturingImage,
-      to: "/industries/manufacturing",
-    },
-    {
-      title: "Infrastructure",
-      icon: <FaIndustry />,
-      image: infrastructureImage,
-      to: "/industries/infrastructure",
-    },
+    { title: "Construction", icon: <FaTools />, to: "/industries/construction" },
+    { title: "Mining", icon: <FaTruck />, to: "/industries/mining" },
+    { title: "Cement", icon: <FaIndustry />, to: "/industries/cement" },
+    { title: "Steel", icon: <FaCogs />, to: "/industries/steel" },
+    { title: "Manufacturing", icon: <FaBoxes />, to: "/industries/manufacturing" },
+    { title: "Infrastructure", icon: <FaIndustry />, to: "/industries/infrastructure" },
   ];
 
   const testimonials = [
     {
       name: "Rajesh Kumar",
       role: "Purchase Manager",
-      text: "A2Z Seals has provided us excellent quality seal kits consistently. Their products are reliable and long lasting.",
+      company: "JCB India",
+      text: "A2Z Seals has provided us excellent quality seal kits with on-time delivery. Their products are reliable and long lasting.",
     },
     {
       name: "Sandeep Patil",
-      role: "Maintenance Engineer",
+      role: "Maintenance Head",
+      company: "L&T Construction",
       text: "We have been using A2Z Seals products for our hydraulic equipment. Best quality and knowledgeable team.",
     },
     {
       name: "Vikram Singh",
-      role: "Procurement Officer",
+      role: "Procurement Manager",
+      company: "Tata Hitachi",
       text: "Great product range and quick response. Highly recommended for all industrial sealing needs.",
     },
   ];
@@ -202,94 +207,36 @@ function Home() {
       {/* Hero comes first after Navbar */}
       <Hero />
 
-      {/* Trust Strip */}
-      <section className="bg-[#061a38]">
-        <div className="mx-auto grid max-w-7xl grid-cols-2 gap-y-5 px-4 py-5 sm:grid-cols-4 sm:px-6 lg:px-8">
-          {[
-            {
-              icon: <FaAward />,
-              title: "ISO Certified",
-              text: "Quality Standards",
-            },
-            {
-              icon: <FaShieldAlt />,
-              title: "Premium Quality",
-              text: "Genuine Products",
-            },
-            {
-              icon: <FaShippingFast />,
-              title: "Fast Delivery",
-              text: "Pan India",
-            },
-            {
-              icon: <FaHeadset />,
-              title: "Expert Support",
-              text: "24/7 Assistance",
-            },
-          ].map((item) => (
-            <div
-              key={item.title}
-              className="flex items-center justify-center gap-3 border-white/10 px-2 text-white sm:border-r last:border-r-0"
-            >
-              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-[#f5b400]/60 text-lg text-[#f5b400]">
-                {item.icon}
-              </div>
-
-              <div>
-                <p className="text-xs font-bold sm:text-sm">{item.title}</p>
-                <p className="text-[10px] text-slate-300 sm:text-xs">
-                  {item.text}
-                </p>
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
-
       {/* Product Categories */}
-      <section className="py-12 sm:py-14 lg:py-16">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="mb-8 flex flex-col items-center justify-between gap-4 sm:flex-row">
-            <div className="text-center sm:text-left">
-              <p className="text-xs font-extrabold uppercase tracking-[0.18em] text-[#e5a600]">
-                Explore Our Range
-              </p>
-
-              <h2 className="mt-2 text-2xl font-extrabold text-[#061a38] sm:text-3xl">
-                Our <span className="text-[#f5b400]">Product Categories</span>
-              </h2>
-            </div>
-
-            <Link
-              to="/shop/categories"
-              className="inline-flex items-center gap-2 text-sm font-bold text-[#061a38] transition hover:text-[#e5a600]"
-            >
-              View All Categories
-              <FaArrowRight />
-            </Link>
+      <section className="py-6 sm:py-8 lg:py-10">
+        <div className="mx-auto max-w-7xl px-3 sm:px-4 md:px-6 lg:px-8">
+          <div className="mb-4 text-center sm:mb-6">
+            <h2 className="text-xl font-extrabold text-[#061a38] sm:text-2xl lg:text-3xl">
+              Our <span className="text-[#f5b400]">Product Categories</span>
+            </h2>
           </div>
 
-          <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-6">
+          <div className="grid grid-cols-2 gap-3 sm:gap-4 sm:grid-cols-3 lg:grid-cols-6">
             {categories.map((category) => (
               <Link
                 key={category.title}
                 to={category.to}
-                className="group rounded-xl border border-slate-200 bg-white p-3 text-center shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-[#f5b400] hover:shadow-lg"
+                className="group rounded-xl border border-slate-200 bg-white p-2.5 text-center shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-[#f5b400] hover:shadow-lg sm:p-3"
               >
-                <div className="flex h-28 items-center justify-center overflow-hidden rounded-lg bg-slate-50">
+                <div className="flex h-20 items-center justify-center overflow-hidden rounded-lg bg-slate-50 sm:h-24 lg:h-28">
                   <img
                     src={category.image}
                     alt={category.title}
-                    className="h-full w-full object-contain p-2 transition duration-500 group-hover:scale-110"
+                    className="h-full w-full object-contain p-1.5 transition duration-500 group-hover:scale-110 sm:p-2"
                   />
                 </div>
 
-                <h3 className="mt-3 min-h-[38px] text-xs font-extrabold leading-5 text-[#061a38]">
+                <h3 className="mt-2 min-h-[32px] text-[10px] font-extrabold leading-4 text-[#061a38] sm:mt-3 sm:min-h-[38px] sm:text-xs sm:leading-5">
                   {category.title}
                 </h3>
 
-                <span className="mt-2 inline-flex items-center gap-1 text-[11px] font-bold text-[#e5a600]">
-                  View Products <FaArrowRight className="text-[9px]" />
+                <span className="mt-1.5 inline-flex items-center gap-1 text-[10px] font-bold text-[#e5a600] sm:mt-2 sm:text-[11px]">
+                  View Products <FaArrowRight className="text-[8px] sm:text-[9px]" />
                 </span>
               </Link>
             ))}
@@ -298,44 +245,51 @@ function Home() {
       </section>
 
       {/* Supported Brands */}
-      <section className="border-y border-slate-100 bg-slate-50 py-8">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="mb-5 text-center">
-            <p className="text-xs font-extrabold uppercase tracking-[0.18em] text-[#061a38]">
-              Brands We Support
-            </p>
-
-            <h2 className="mt-1 text-xl font-extrabold text-[#061a38] sm:text-2xl">
-              Aftermarket Seal Kits for Leading Brands
+      <section className="border-y border-slate-100 bg-slate-50 py-5 sm:py-6">
+        <div className="mx-auto max-w-7xl px-3 sm:px-4 md:px-6 lg:px-8">
+          <div className="mb-4 text-center sm:mb-6">
+            <h2 className="text-xl font-extrabold text-[#061a38] sm:text-2xl lg:text-3xl">
+              Dealing in <span className="text-[#f5b400]">Premium Brands</span>
             </h2>
+            <p className="mx-auto mt-1.5 max-w-2xl text-xs text-slate-600 sm:mt-2 sm:text-sm md:text-base">
+              We supply after market replacement seals for OEM machines from
+              world's leading manufacturers
+            </p>
           </div>
 
-          <div className="relative flex items-center gap-3">
+          <div className="relative flex items-center gap-2 sm:gap-3">
             <button
               type="button"
-              className="hidden h-9 w-9 shrink-0 items-center justify-center rounded-full border border-slate-200 bg-white text-[#061a38] shadow-sm lg:flex"
+              onClick={() => scrollBrands("left")}
+              className="hidden h-8 w-8 shrink-0 items-center justify-center rounded-full border border-slate-200 bg-white text-[#061a38] shadow-sm md:h-9 md:w-9 lg:flex"
             >
               <FaChevronLeft />
             </button>
 
-            <div className="grid flex-1 grid-cols-3 gap-3 sm:grid-cols-6">
+            <div
+              ref={brandsScrollRef}
+              className="flex flex-1 gap-2 overflow-x-auto scroll-smooth whitespace-nowrap [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden sm:gap-3"
+            >
               {brands.map((brand) => (
-                <div
+                <Link
                   key={brand.name}
-                  className="flex h-16 items-center justify-center rounded-lg border border-slate-200 bg-white p-2 shadow-sm"
+                  to={brandLinks[brand.name] || `/brands/${brand.name.toLowerCase()}`}
+                  className="flex h-12 shrink-0 items-center justify-center rounded-lg border border-slate-200 bg-white px-3 shadow-sm transition hover:border-[#f5b400] hover:shadow-md sm:h-14 sm:px-5"
                 >
-                  <img
-                    src={brand.image}
-                    alt={brand.name}
-                    className="max-h-10 max-w-full object-contain"
-                  />
-                </div>
+                  <span
+                    className="text-center text-[10px] font-black uppercase leading-tight tracking-wide sm:text-[11px] md:text-[13px]"
+                    style={{ color: brand.color }}
+                  >
+                    {brand.name}
+                  </span>
+                </Link>
               ))}
             </div>
 
             <button
               type="button"
-              className="hidden h-9 w-9 shrink-0 items-center justify-center rounded-full border border-slate-200 bg-white text-[#061a38] shadow-sm lg:flex"
+              onClick={() => scrollBrands("right")}
+              className="hidden h-8 w-8 shrink-0 items-center justify-center rounded-full border border-slate-200 bg-white text-[#061a38] shadow-sm md:h-9 md:w-9 lg:flex"
             >
               <FaChevronRight />
             </button>
@@ -343,69 +297,30 @@ function Home() {
         </div>
       </section>
 
-      {/* Premium Brands */}
-      <section className="bg-white py-14 sm:py-16 lg:py-20">
-        <div className="mx-auto max-w-5xl px-4 text-center sm:px-6 lg:px-8">
-          <p className="text-xs font-extrabold uppercase tracking-[0.18em] text-[#e5a600]">
-            Premium Industrial Seals
-          </p>
-
-          <h2 className="mt-3 text-3xl font-extrabold leading-tight text-[#061a38] sm:text-4xl lg:text-5xl">
-            Branded Oil Seals, Seal Kits
-            <span className="block text-[#f5b400]">
-              & Industrial Sealing Solutions
-            </span>
-          </h2>
-
-          <p className="mx-auto mt-5 max-w-3xl text-base leading-7 text-slate-600 sm:text-lg">
-            A2Z Seals provides dependable hydraulic seal kits, oil seals,
-            O-rings, floating seals and custom sealing solutions for industrial
-            machines, heavy equipment and hydraulic systems.
-          </p>
-
-          <div className="mt-8 flex flex-wrap justify-center gap-3">
-            {["CFW", "Hallite", "NOK", "SKF", "Parker", "Trelleborg"].map(
-              (brand) => (
-                <span
-                  key={brand}
-                  className="rounded-full border border-[#f5b400]/40 bg-[#fff9e8] px-5 py-2 text-sm font-extrabold text-[#061a38]"
-                >
-                  {brand}
-                </span>
-              )
-            )}
-          </div>
-        </div>
-      </section>
-
       {/* Why Choose Us */}
-      <section className="bg-slate-50 py-12 sm:py-14 lg:py-16">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="mb-8 text-center">
-            <p className="text-xs font-extrabold uppercase tracking-[0.18em] text-[#e5a600]">
-              Why Choose A2Z Seals?
-            </p>
-
-            <h2 className="mt-2 text-2xl font-extrabold text-[#061a38] sm:text-3xl">
-              Trusted Sealing Solutions for Every Industry
+      <section className="bg-slate-50 py-6 sm:py-8 lg:py-10">
+        <div className="mx-auto max-w-7xl px-3 sm:px-4 md:px-6 lg:px-8">
+          <div className="mb-4 text-center sm:mb-6">
+            <h2 className="text-xl font-extrabold text-[#061a38] sm:text-2xl lg:text-3xl">
+              Why Choose <span className="text-[#f5b400]">A2Z Seals?</span>
             </h2>
           </div>
 
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="grid gap-3 sm:gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {whyChooseUs.map((feature) => (
               <div
                 key={feature.title}
-                className="rounded-xl border border-slate-200 bg-white p-5 shadow-sm transition hover:-translate-y-1 hover:border-[#f5b400] hover:shadow-md"
+                className="rounded-xl border border-slate-200 bg-white p-4 shadow-sm transition hover:-translate-y-1 hover:border-[#f5b400] hover:shadow-md sm:p-5"
               >
-                <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-[#fff4cc] text-xl text-[#e5a600]">
+                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#fff4cc] text-lg text-[#e5a600] sm:h-12 sm:w-12 sm:text-xl">
                   {feature.icon}
                 </div>
 
-                <h3 className="mt-4 text-base font-extrabold text-[#061a38]">
+                <h3 className="mt-3 text-sm font-extrabold text-[#061a38] sm:mt-4 sm:text-base">
                   {feature.title}
                 </h3>
 
-                <p className="mt-2 text-sm leading-6 text-slate-600">
+                <p className="mt-1.5 text-xs leading-5 text-slate-600 sm:mt-2 sm:text-sm sm:leading-6">
                   {feature.text}
                 </p>
               </div>
@@ -415,48 +330,35 @@ function Home() {
       </section>
 
       {/* Featured Products */}
-      <section className="py-12 sm:py-14 lg:py-16">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="mb-8 flex items-center justify-between">
-            <div>
-              <p className="text-xs font-extrabold uppercase tracking-[0.18em] text-[#e5a600]">
-                Best Selling Products
-              </p>
-
-              <h2 className="mt-2 text-2xl font-extrabold text-[#061a38] sm:text-3xl">
-                Featured <span className="text-[#f5b400]">Products</span>
-              </h2>
-            </div>
-
-            <Link
-              to="/shop/products"
-              className="hidden items-center gap-2 text-sm font-bold text-[#061a38] hover:text-[#e5a600] sm:inline-flex"
-            >
-              View All <FaArrowRight />
-            </Link>
+      <section className="py-6 sm:py-8 lg:py-10">
+        <div className="mx-auto max-w-7xl px-3 sm:px-4 md:px-6 lg:px-8">
+          <div className="mb-4 text-center sm:mb-6">
+            <h2 className="text-xl font-extrabold text-[#061a38] sm:text-2xl lg:text-3xl">
+              Featured <span className="text-[#f5b400]">Products</span>
+            </h2>
           </div>
 
-          <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-6">
+          <div className="grid grid-cols-2 gap-3 sm:gap-4 sm:grid-cols-3 lg:grid-cols-6">
             {featuredProducts.map((product) => (
               <Link
                 key={product.title}
                 to={product.to}
-                className="group rounded-xl border border-slate-200 bg-white p-3 text-center shadow-sm transition hover:-translate-y-1 hover:border-[#f5b400] hover:shadow-lg"
+                className="group rounded-xl border border-slate-200 bg-white p-2.5 text-center shadow-sm transition hover:-translate-y-1 hover:border-[#f5b400] hover:shadow-lg sm:p-3"
               >
-                <div className="h-28 overflow-hidden rounded-lg bg-slate-50">
+                <div className="h-20 overflow-hidden rounded-lg bg-slate-50 sm:h-24 lg:h-28">
                   <img
                     src={product.image}
                     alt={product.title}
-                    className="h-full w-full object-contain p-2 transition duration-500 group-hover:scale-110"
+                    className="h-full w-full object-contain p-1.5 transition duration-500 group-hover:scale-110 sm:p-2"
                   />
                 </div>
 
-                <h3 className="mt-3 min-h-[36px] text-xs font-extrabold leading-5 text-[#061a38]">
+                <h3 className="mt-2 min-h-[32px] text-[10px] font-extrabold leading-4 text-[#061a38] sm:mt-3 sm:min-h-[36px] sm:text-xs sm:leading-5">
                   {product.title}
                 </h3>
 
-                <span className="mt-2 inline-flex items-center gap-1 text-[11px] font-bold text-[#e5a600]">
-                  View Details <FaArrowRight className="text-[9px]" />
+                <span className="mt-1.5 inline-flex items-center gap-1 text-[10px] font-bold text-[#e5a600] sm:mt-2 sm:text-[11px]">
+                  View Details <FaArrowRight className="text-[8px] sm:text-[9px]" />
                 </span>
               </Link>
             ))}
@@ -465,46 +367,28 @@ function Home() {
       </section>
 
       {/* Industries */}
-      <section className="bg-slate-50 py-12 sm:py-14 lg:py-16">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="mb-8 text-center">
-            <p className="text-xs font-extrabold uppercase tracking-[0.18em] text-[#e5a600]">
-              Heavy Equipment Support
-            </p>
-
-            <h2 className="mt-2 text-2xl font-extrabold text-[#061a38] sm:text-3xl">
+      <section className="bg-slate-50 py-6 sm:py-8 lg:py-10">
+        <div className="mx-auto max-w-7xl px-3 sm:px-4 md:px-6 lg:px-8">
+          <div className="mb-4 text-center sm:mb-6">
+            <h2 className="text-xl font-extrabold text-[#061a38] sm:text-2xl lg:text-3xl">
               Industries <span className="text-[#f5b400]">We Serve</span>
             </h2>
           </div>
 
-          <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-6">
+          <div className="grid grid-cols-2 gap-3 sm:gap-4 sm:grid-cols-3 lg:grid-cols-6">
             {industries.map((industry) => (
               <Link
                 key={industry.title}
                 to={industry.to}
-                className="group relative overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm transition hover:-translate-y-1 hover:border-[#f5b400] hover:shadow-lg"
+                className="group flex flex-col items-center justify-center rounded-xl border border-slate-200 bg-white p-4 text-center shadow-sm transition hover:-translate-y-1 hover:border-[#f5b400] hover:shadow-lg sm:p-5"
               >
-                <div className="absolute inset-0">
-                  <img
-                    src={industry.image}
-                    alt={industry.title}
-                    className="h-full w-full object-cover opacity-15 transition duration-500 group-hover:scale-110 group-hover:opacity-25"
-                  />
+                <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-slate-50 text-xl text-[#061a38] transition group-hover:bg-[#fff4cc] group-hover:text-[#f5b400] sm:h-14 sm:w-14 sm:text-2xl">
+                  {industry.icon}
                 </div>
 
-                <div className="relative flex min-h-[145px] flex-col items-center justify-center p-4 text-center">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-[#061a38] text-lg text-[#f5b400]">
-                    {industry.icon}
-                  </div>
-
-                  <h3 className="mt-3 text-sm font-extrabold text-[#061a38]">
-                    {industry.title}
-                  </h3>
-
-                  <span className="mt-2 text-[11px] font-bold text-[#e5a600]">
-                    Explore →
-                  </span>
-                </div>
+                <h3 className="mt-2.5 text-xs font-extrabold text-[#061a38] sm:mt-3 sm:text-sm">
+                  {industry.title}
+                </h3>
               </Link>
             ))}
           </div>
@@ -512,33 +396,36 @@ function Home() {
       </section>
 
       {/* Custom Seal CTA */}
-      <section className="py-12 sm:py-14">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="relative overflow-hidden rounded-2xl bg-gradient-to-r from-[#061a38] via-[#0b3265] to-[#061a38] px-6 py-10 shadow-xl sm:px-10 lg:px-14">
-            <div className="absolute -right-10 -top-16 h-56 w-56 rounded-full bg-[#f5b400]/20 blur-3xl" />
+      <section className="relative overflow-hidden bg-[#061a38]">
+        {/* Background seal-kit banner image */}
+        <img
+          src={customSealKitBanner}
+          alt="Custom Seal Kits"
+          className="absolute inset-0 h-full w-full object-cover opacity-40"
+        />
 
-            <div className="relative flex flex-col items-start justify-between gap-7 lg:flex-row lg:items-center">
-              <div>
-                <p className="text-xs font-extrabold uppercase tracking-[0.18em] text-[#f5b400]">
-                  Need Custom Seal Kit?
-                </p>
+        {/* Dark overlay for better text readability */}
+        <div className="absolute inset-0 bg-gradient-to-r from-[#061a38]/95 via-[#061a38]/80 to-[#061a38]/60" />
 
-                <h2 className="mt-2 text-2xl font-extrabold text-white sm:text-3xl">
-                  Get the Right Seal for Your Machine.
-                </h2>
+        <div className="relative mx-auto max-w-7xl px-3 sm:px-4 md:px-6 lg:px-8">
+          <div className="relative z-10 py-8 sm:py-10 md:py-12 lg:py-16">
+            <div className="max-w-2xl">
+              <h2 className="text-base font-extrabold uppercase tracking-wide text-white sm:text-lg md:text-xl lg:text-2xl xl:text-[26px]">
+                Need Custom Seal Kit?
+              </h2>
 
-                <p className="mt-3 max-w-2xl text-sm leading-6 text-slate-200 sm:text-base">
-                  Share your machine model, seal size or product requirement and
-                  our team will help you find a suitable sealing solution.
-                </p>
-              </div>
+              <p className="mt-2 text-xs leading-5 text-slate-200 sm:mt-3 sm:text-sm sm:leading-6 md:text-base">
+                Get high quality customized seal kits for your machines.
+                <br className="hidden sm:block" />
+                Share your requirement with us today!
+              </p>
 
               <Link
                 to="/quote"
-                className="inline-flex shrink-0 items-center gap-2 rounded-md bg-[#f5b400] px-6 py-3 text-sm font-extrabold uppercase tracking-wide text-[#061a38] transition hover:bg-yellow-300"
+                className="mt-4 inline-flex items-center gap-2 rounded-md bg-[#f5b400] px-4 py-2.5 text-[10px] font-extrabold uppercase tracking-wide text-[#061a38] transition hover:bg-yellow-300 sm:mt-5 sm:px-5 sm:py-3 sm:text-xs md:px-6 md:py-3.5 md:text-sm lg:px-7 lg:py-4"
               >
                 Get Free Consultation
-                <FaArrowRight />
+                <FaArrowRight className="text-[10px] sm:text-xs" />
               </Link>
             </div>
           </div>
@@ -546,86 +433,64 @@ function Home() {
       </section>
 
       {/* Testimonials */}
-      <section className="bg-slate-50 py-12 sm:py-14 lg:py-16">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="mb-8 text-center">
-            <p className="text-xs font-extrabold uppercase tracking-[0.18em] text-[#e5a600]">
-              Customer Feedback
-            </p>
-
-            <h2 className="mt-2 text-2xl font-extrabold text-[#061a38] sm:text-3xl">
+      <section className="bg-white py-6 sm:py-8 lg:py-10">
+        <div className="mx-auto max-w-7xl px-3 sm:px-4 md:px-6 lg:px-8">
+          <div className="mb-4 text-center sm:mb-6">
+            <h2 className="text-xl font-extrabold text-[#061a38] sm:text-2xl lg:text-3xl">
               What Our <span className="text-[#f5b400]">Clients Say</span>
             </h2>
           </div>
 
-          <div className="grid gap-5 md:grid-cols-3">
+          <div className="grid gap-4 sm:gap-5 md:grid-cols-2 lg:grid-cols-3">
             {testimonials.map((testimonial) => (
               <article
                 key={testimonial.name}
-                className="rounded-xl border border-slate-200 bg-white p-6 shadow-sm"
+                className="rounded-xl border border-slate-200 bg-white p-4 shadow-sm sm:p-5 md:p-6"
               >
-                <p className="text-4xl font-black leading-none text-[#f5b400]">
-                  “
+                <p className="text-3xl font-black leading-none text-[#f5b400] sm:text-4xl">
+                  "
                 </p>
 
-                <p className="mt-2 text-sm leading-6 text-slate-600">
+                <p className="mt-2 text-xs leading-5 text-slate-600 sm:mt-2 sm:text-sm sm:leading-6">
                   {testimonial.text}
                 </p>
 
-                <div className="mt-5 flex items-center gap-3 border-t border-slate-100 pt-4">
-                  <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[#061a38] text-sm font-bold text-[#f5b400]">
+                <div className="mt-4 flex items-center gap-2.5 border-t border-slate-100 pt-3 sm:mt-5 sm:gap-3 sm:pt-4">
+                  <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[#061a38] text-xs font-bold text-[#f5b400] sm:h-10 sm:w-10 sm:text-sm">
                     {testimonial.name.charAt(0)}
                   </div>
 
                   <div>
-                    <h3 className="text-sm font-extrabold text-[#061a38]">
+                    <h3 className="text-xs font-extrabold text-[#061a38] sm:text-sm">
                       {testimonial.name}
                     </h3>
 
-                    <p className="text-xs text-slate-500">
+                    <p className="text-[10px] text-slate-500 sm:text-[11px]">
                       {testimonial.role}
+                    </p>
+
+                    <p className="text-[10px] font-semibold text-[#e5a600] sm:text-[11px]">
+                      {testimonial.company}
                     </p>
                   </div>
                 </div>
               </article>
             ))}
           </div>
-        </div>
-      </section>
 
-      {/* Final CTA */}
-      <section className="bg-white py-12 sm:py-14">
-        <div className="mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
-          <div className="rounded-2xl border border-[#f5b400]/30 bg-[#fff9e8] px-6 py-10 sm:px-10">
-            <FaCheckCircle className="mx-auto text-3xl text-[#e5a600]" />
-
-            <h2 className="mt-4 text-2xl font-extrabold text-[#061a38] sm:text-3xl">
-              Looking for the Right Industrial Seal?
-            </h2>
-
-            <p className="mx-auto mt-3 max-w-2xl text-sm leading-6 text-slate-600 sm:text-base">
-              Contact A2Z Seals today for hydraulic seal kits, oil seals,
-              O-rings, floating seals and industrial sealing requirements.
-            </p>
-
-            <div className="mt-6 flex flex-wrap justify-center gap-3">
-              <Link
-                to="/quote"
-                className="inline-flex items-center gap-2 rounded-md bg-[#f5b400] px-6 py-3 text-sm font-extrabold uppercase tracking-wide text-[#061a38] transition hover:bg-yellow-300"
-              >
-                Get Quote <FaArrowRight />
-              </Link>
-
-              <Link
-                to="/contact"
-                className="inline-flex items-center gap-2 rounded-md bg-[#061a38] px-6 py-3 text-sm font-extrabold uppercase tracking-wide text-white transition hover:bg-[#0b3265]"
-              >
-                Contact Us <FaHeadset />
-              </Link>
-            </div>
+          <div className="mt-6 flex justify-center gap-2 sm:mt-8">
+            {testimonials.map((t, i) => (
+              <span
+                key={i}
+                className={`h-2 rounded-full transition-all ${
+                  i === 0 ? "w-6 bg-[#f5b400]" : "w-2 bg-slate-300"
+                }`}
+              />
+            ))}
           </div>
         </div>
       </section>
+
     </main>
   );
 }

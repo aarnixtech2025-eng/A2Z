@@ -11,8 +11,9 @@ const {
 } = require("../controllers/blogController");
 
 const { protect } = require("../middleware/authMiddleware");
+const upload = require("../middleware/uploadMiddleware");
 
-router.post("/", createBlog);
+router.post("/",upload.single("featuredImage"),createBlog);
 
 router.get("/", getAllBlogs);
 router.get("/:id", getBlogById);

@@ -17,11 +17,11 @@ function FloatingWhatsApp() {
       rel="noreferrer"
       aria-label="Chat with A2Z Seals on WhatsApp"
       className="
-        group fixed right-5 top-[62%] z-[9999]
-        flex h-14 w-14 -translate-y-1/2
+        group fixed right-3 bottom-20 z-[9999]
+        flex h-12 w-12
         items-center justify-center
         rounded-full bg-[#25D366]
-        text-3xl text-white
+        text-2xl text-white
         shadow-[0_8px_22px_rgba(37,211,102,0.45)]
         transition-all duration-300
         animate-bounce
@@ -29,6 +29,7 @@ function FloatingWhatsApp() {
         hover:shadow-[0_12px_28px_rgba(37,211,102,0.60)]
         hover:[animation-play-state:paused]
         active:scale-95
+        sm:right-4 sm:bottom-24 sm:h-14 sm:w-14 sm:text-3xl
       "
     >
       <FaWhatsapp />
@@ -36,13 +37,14 @@ function FloatingWhatsApp() {
       {/* Tooltip */}
       <span
         className="
-          pointer-events-none absolute right-[68px]
+          pointer-events-none absolute right-[60px]
           whitespace-nowrap rounded-lg
-          bg-[#061a38] px-3 py-2
-          text-xs font-bold text-white
+          bg-[#061a38] px-2.5 py-1.5
+          text-[10px] font-bold text-white
           opacity-0 shadow-lg
           transition-all duration-300
           group-hover:opacity-100
+          sm:right-[68px] sm:px-3 sm:py-2 sm:text-xs
         "
       >
         Chat on WhatsApp
