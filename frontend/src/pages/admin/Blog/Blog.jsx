@@ -118,7 +118,7 @@ function Blog() {
   }, []);
 
   return (
-    <section className="min-h-screen bg-slate-100 p-6">
+    <section className="min-h-screen bg-gray-50 p-6">
 
       <div className="mx-auto max-w-7xl">
 
@@ -126,11 +126,11 @@ function Blog() {
 
         <div className="mb-6">
 
-          <h1 className="text-3xl font-bold text-slate-800">
+          <h1 className="text-3xl font-bold text-gray-900">
             Blog Management
           </h1>
 
-          <p className="mt-2 text-slate-500">
+          <p className="mt-2 text-gray-600">
             Create, update, delete and manage all blogs.
           </p>
 
