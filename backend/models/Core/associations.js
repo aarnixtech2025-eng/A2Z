@@ -7,7 +7,8 @@ const {
   CommentMeta,
   Term,
   TermMeta,
-  TermTaxonomy
+  TermTaxonomy,
+   TermRelationship
 } = require("./index");
 
 // USER ↔ USER META
@@ -113,4 +114,30 @@ TermTaxonomy.belongsTo(Term, {
   foreignKey: "term_id",
   targetKey: "term_id",
   as: "term",
+});
+
+// Post -> TermRelationship
+Post.hasMany(TermRelationship, {
+  foreignKey: "object_id",
+  sourceKey: "ID",
+  as: "relationships",
+});
+
+TermRelationship.belongsTo(Post, {
+  foreignKey: "object_id",
+  targetKey: "ID",
+  as: "post",
+});
+
+// TermTaxonomy -> TermRelationship
+TermTaxonomy.hasMany(TermRelationship, {
+  foreignKey: "term_taxonomy_id",
+  sourceKey: "term_taxonomy_id",
+  as: "relationships",
+});
+
+TermRelationship.belongsTo(TermTaxonomy, {
+  foreignKey: "term_taxonomy_id",
+  targetKey: "term_taxonomy_id",
+  as: "taxonomy",
 });

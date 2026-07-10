@@ -8,7 +8,9 @@ const postsRoutes = require("./routes/Core/posts.routes");
 const commentRoutes = require("./routes/Core/comments.routes");
 const termRoutes = require("./routes/Core/terms.routes");
 const taxonomyRoutes = require("./routes/Core/termtaxonomy.routes");
-
+const termRelationshipRoutes = require("./routes/Core/termrelationships.routes");
+const linkRoutes = require("./routes/Core/links.routes");
+const optionRoutes = require("./routes/Core/options.routes");
 
 // const postsRoutes = require("./routes/Core/posts.routes");
 // const commentsRoutes = require("./routes/Core/comments.routes");
@@ -28,6 +30,9 @@ app.use("/api/posts", postsRoutes);
 app.use("/api/comments", commentRoutes);
 app.use("/api/terms", termRoutes);
 app.use("/api/term-taxonomy", taxonomyRoutes);
+app.use("/api/term-relationships", termRelationshipRoutes);
+app.use("/api/links", linkRoutes);
+app.use("/api/options", optionRoutes);
 
 
 app.get("/", (req, res) => {

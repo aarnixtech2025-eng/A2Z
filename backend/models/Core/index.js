@@ -10,7 +10,9 @@ const CommentMeta = require("./wpuz_commentmeta");
 const Term = require("./wpuz_terms");
 const TermTaxonomy = require("./wpuz_term_taxonomy");
 const TermMeta = require("./wpuz_termmeta");
-
+const TermRelationship = require("./wpuz_term_relationships");
+const Link = require("./wpuz_links");
+const Option = require("./wpuz_options");
 
 module.exports = {
   User,
@@ -20,8 +22,11 @@ module.exports = {
   Comment,
   CommentMeta,
   Term,
-  TermTaxonomy,
   TermMeta,
+  TermTaxonomy,
+  TermRelationship,
+  Link,
+  Option,
 };
 
 require("./associations");

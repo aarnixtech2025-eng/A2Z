@@ -1,4 +1,4 @@
-const { Term } = require("../../models/Core");
+const { Term,TermMeta } = require("../../models/Core");
 
 class TermService {
   // Create Term
@@ -9,13 +9,26 @@ class TermService {
   // Get All Terms
   async getAllTerms() {
     return await Term.findAll({
+      include: [
+        {
+          model: TermMeta,
+          as: "meta",
+        },
+      ],
       order: [["term_id", "DESC"]],
     });
   }
 
   // Get Term By ID
   async getTermById(id) {
-    return await Term.findByPk(id);
+    return await Term.findByPk(id, {
+      include: [
+        {
+          model: TermMeta,
+          as: "meta",
+        },
+      ],
+    });
   }
 
   // Update Term
