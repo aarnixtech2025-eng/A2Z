@@ -9,7 +9,7 @@ const adminNav = [
   { label: "Machines", to: "/admin/machines", icon: "⚙️" },
   { label: "OEM Models", to: "/admin/oem-models", icon: "🔧" },
   { label: "SEO Pages", to: "/admin/seo-pages", icon: "🔍" },
-  { label: "Blog", to: "/admin/blog", icon: "📝" },
+  { label: "Blog", to: "/admin/blogs", icon: "📝" },
   { label: "Orders", to: "/admin/orders", icon: "🛒" },
   { label: "Customers", to: "/admin/customers", icon: "👥" },
   { label: "Merchant Feed", to: "/admin/merchant-feed", icon: "📡" },

@@ -136,17 +136,19 @@ function Blog() {
 
         </div>
 
-        {/* MAIN GRID */}
+        {/* MAIN CONTENT */}
 
-        <div className="grid gap-6 xl:grid-cols-[420px_1fr]">
+        <div className="space-y-6">
 
           {/* BLOG FORM */}
 
-          <BlogForm
-            selectedBlog={selectedBlog}
-            onSuccess={handleSuccess}
-            clearSelection={clearSelection}
-          />
+          <div className="max-w-3xl">
+            <BlogForm
+              selectedBlog={selectedBlog}
+              onSuccess={handleSuccess}
+              clearSelection={clearSelection}
+            />
+          </div>
 
           {/* BLOG TABLE */}
 
