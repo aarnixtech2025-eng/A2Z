@@ -177,10 +177,14 @@ function BlogForm({ selectedBlog, onSuccess, clearSelection }) {
 
       if (featuredImage) {
         data.append("featuredImage", featuredImage);
+      } else if (selectedBlog?.featuredImage) {
+        // Keep existing image if no new image is selected
+        data.append("existingImage", selectedBlog.featuredImage);
       }
 
       if (selectedBlog) {
-        await axios.put(`${API_URL}/${selectedBlog.id}`, data, {
+        const blogId = selectedBlog.id || selectedBlog._id;
+        await axios.put(`${API_URL}/${blogId}`, data, {
           headers: { "Content-Type": "multipart/form-data" },
         });
         toast.success("Blog Updated Successfully");

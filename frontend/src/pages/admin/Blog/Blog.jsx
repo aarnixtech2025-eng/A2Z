@@ -147,13 +147,11 @@ function Blog() {
 
           {/* BLOG FORM */}
 
-          <div className="max-w-3xl">
-            <BlogForm
-              selectedBlog={selectedBlog}
-              onSuccess={handleSuccess}
-              clearSelection={clearSelection}
-            />
-          </div>
+          <BlogForm
+            selectedBlog={selectedBlog}
+            onSuccess={handleSuccess}
+            clearSelection={clearSelection}
+          />
 
           {/* BLOG TABLE */}
 

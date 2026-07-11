@@ -102,7 +102,23 @@ exports.updateBlog = async (req, res) => {
       });
     }
 
-    await blog.update(req.body);
+    const updateData = {
+      title: req.body.title,
+      slug: req.body.slug,
+      author: req.body.author,
+      status: req.body.status,
+      shortDescription: req.body.shortDescription,
+      description: req.body.description,
+    };
+
+    // Handle image update
+    if (req.file) {
+      updateData.featuredImage = req.file.filename;
+    } else if (req.body.existingImage) {
+      updateData.featuredImage = req.body.existingImage;
+    }
+
+    await blog.update(updateData);
 
     res.status(200).json({
       success: true,
