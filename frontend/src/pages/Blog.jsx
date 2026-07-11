@@ -51,28 +51,30 @@ const fetchBlogs = async () => {
   try {
     const res = await axios.get("http://localhost:5000/api/blogs");
 
-    const blogs = res.data.data.map((blog) => ({
-      id: blog.id,
-      title: blog.title,
-      category: "Blog",
-      date: new Date(blog.createdAt).toLocaleDateString("en-GB", {
-        day: "2-digit",
-        month: "short",
-        year: "numeric",
-      }),
-      image: blog.featuredImage
-        ? `http://localhost:5000/uploads/blogs/${blog.featuredImage}`
-        : bearingOilSeal, // default image
+    const blogs = res.data.data
+      .filter((blog) => blog.status === "Active")
+      .map((blog) => ({
+        id: blog.id,
+        title: blog.title,
+        category: "Blog",
+        date: new Date(blog.createdAt).toLocaleDateString("en-GB", {
+          day: "2-digit",
+          month: "short",
+          year: "numeric",
+        }),
+        image: blog.featuredImage
+          ? `http://localhost:5000/uploads/blogs/${blog.featuredImage}`
+          : bearingOilSeal, // default image
 
-      excerpt: blog.shortDescription,
+        excerpt: blog.shortDescription,
 
-      content: [blog.description],
+        content: [blog.description],
 
-      points: [],
+        points: [],
 
-      author: blog.author,
-      slug: blog.slug,
-    }));
+        author: blog.author,
+        slug: blog.slug,
+      }));
 
     setBlogPosts(blogs);
   } catch (err) {

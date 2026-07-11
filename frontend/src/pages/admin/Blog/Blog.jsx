@@ -65,7 +65,7 @@ function Blog() {
 
       fetchBlogs();
 
-      if (selectedBlog?.id === id) {
+      if (selectedBlog?.id === id || selectedBlog?._id === id) {
         setSelectedBlog(null);
       }
     } catch (error) {
@@ -81,8 +81,13 @@ function Blog() {
 
   const handleStatusChange = async (blog) => {
     try {
-      await axios.put(`${API_URL}/${blog.id}`, {
+      const blogId = blog.id;
+      await axios.put(`${API_URL}/${blogId}`, {
         status: blog.status === "Active" ? "Inactive" : "Active",
+      }, {
+        headers: {
+          "Content-Type": "application/json",
+        },
       });
 
       toast.success("Status Updated");
@@ -118,7 +123,7 @@ function Blog() {
   }, []);
 
   return (
-    <section className="min-h-screen bg-slate-100 p-6">
+    <section className="min-h-screen bg-gray-50 p-6">
 
       <div className="mx-auto max-w-7xl">
 
@@ -126,27 +131,29 @@ function Blog() {
 
         <div className="mb-6">
 
-          <h1 className="text-3xl font-bold text-slate-800">
+          <h1 className="text-3xl font-bold text-gray-900">
             Blog Management
           </h1>
 
-          <p className="mt-2 text-slate-500">
+          <p className="mt-2 text-gray-600">
             Create, update, delete and manage all blogs.
           </p>
 
         </div>
 
-        {/* MAIN GRID */}
+        {/* MAIN CONTENT */}
 
-        <div className="grid gap-6 xl:grid-cols-[420px_1fr]">
+        <div className="space-y-6">
 
           {/* BLOG FORM */}
 
-          <BlogForm
-            selectedBlog={selectedBlog}
-            onSuccess={handleSuccess}
-            clearSelection={clearSelection}
-          />
+          <div className="max-w-3xl">
+            <BlogForm
+              selectedBlog={selectedBlog}
+              onSuccess={handleSuccess}
+              clearSelection={clearSelection}
+            />
+          </div>
 
           {/* BLOG TABLE */}
 

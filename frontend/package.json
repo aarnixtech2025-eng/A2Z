@@ -13,6 +13,7 @@
     "@lexical/react": "^0.46.0",
     "axios": "^1.18.1",
     "lexical": "^0.46.0",
+    "lucide-react": "^1.24.0",
     "react": "^19.2.6",
     "react-dom": "^19.2.6",
     "react-hot-toast": "^2.6.0",

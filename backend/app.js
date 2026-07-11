@@ -25,9 +25,13 @@ const merchantIssuesRoutes = require("./routes/Google_Merchant/merchantissues.ro
 
 const app = express();
 // console.log("argumnent problem")
+const path = require("path");
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cors()); // ✅ Enable CORS
+
+// Serve uploaded files
+app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
 // Routes
 //blogs
