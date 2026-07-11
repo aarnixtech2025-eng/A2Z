@@ -1,5 +1,5 @@
 const { DataTypes } = require("sequelize");
-const sequelize = require("../config/database");
+const sequelize = require("../../config/database");
 
 const wpuz_gla_shipping_rates = sequelize.define(
   "wpuz_gla_shipping_rates",
