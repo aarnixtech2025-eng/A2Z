@@ -65,7 +65,7 @@ function Blog() {
 
       fetchBlogs();
 
-      if (selectedBlog?.id === id) {
+      if (selectedBlog?.id === id || selectedBlog?._id === id) {
         setSelectedBlog(null);
       }
     } catch (error) {
@@ -81,8 +81,13 @@ function Blog() {
 
   const handleStatusChange = async (blog) => {
     try {
-      await axios.put(`${API_URL}/${blog.id}`, {
+      const blogId = blog.id;
+      await axios.put(`${API_URL}/${blogId}`, {
         status: blog.status === "Active" ? "Inactive" : "Active",
+      }, {
+        headers: {
+          "Content-Type": "application/json",
+        },
       });
 
       toast.success("Status Updated");

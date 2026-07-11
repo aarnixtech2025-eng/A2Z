@@ -19,9 +19,13 @@ const optionRoutes = require("./routes/Core/options.routes");
 
 const app = express();
 // console.log("argumnent problem")
+const path = require("path");
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cors()); // ✅ Enable CORS
+
+// Serve uploaded files
+app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
 // Routes
 app.use("/api/blogs", blogRoutes);
