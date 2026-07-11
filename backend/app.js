@@ -1,8 +1,9 @@
 const express = require("express");
 require("dotenv").config();
 const cors=require("cors")
-
+//Blog
 const blogRoutes = require("./routes/blogRoutes");
+//Core
 const usersRoutes = require("./routes/Core/users.routes");
 const postsRoutes = require("./routes/Core/posts.routes");
 const commentRoutes = require("./routes/Core/comments.routes");
@@ -11,7 +12,12 @@ const taxonomyRoutes = require("./routes/Core/termtaxonomy.routes");
 const termRelationshipRoutes = require("./routes/Core/termrelationships.routes");
 const linkRoutes = require("./routes/Core/links.routes");
 const optionRoutes = require("./routes/Core/options.routes");
-
+//Custom
+const awsIndexRoutes = require("./routes/Custom/awsindex.routes");
+const a2zPostRoutes = require("./routes/Custom/a2zposts.routes");
+//Google_Merchant
+const merchantPriceBenchmarkRoutes = require("./routes/Google_Merchant/merchantpricebenchmark.routes");
+const merchantIssuesRoutes = require("./routes/Google_Merchant/merchantissues.routes");
 // const postsRoutes = require("./routes/Core/posts.routes");
 // const commentsRoutes = require("./routes/Core/comments.routes");
 // const termsRoutes = require("./routes/Core/terms.routes");
@@ -24,7 +30,9 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cors()); // ✅ Enable CORS
 
 // Routes
+//blogs
 app.use("/api/blogs", blogRoutes);
+//Core
 app.use("/api/users", usersRoutes);
 app.use("/api/posts", postsRoutes);
 app.use("/api/comments", commentRoutes);
@@ -33,6 +41,13 @@ app.use("/api/term-taxonomy", taxonomyRoutes);
 app.use("/api/term-relationships", termRelationshipRoutes);
 app.use("/api/links", linkRoutes);
 app.use("/api/options", optionRoutes);
+//Custom
+app.use("/api/aws-index", awsIndexRoutes);
+app.use("/api/a2z-posts", a2zPostRoutes);
+//Google_Merchant
+app.use("/api/google-merchant/merchant-price-benchmarks",merchantPriceBenchmarkRoutes);
+app.use("/api/google-merchant/merchant-issues",merchantIssuesRoutes);
+
 
 
 app.get("/", (req, res) => {
