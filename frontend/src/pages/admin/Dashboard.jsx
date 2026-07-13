@@ -21,13 +21,16 @@ function Dashboard() {
         {stats.map((stat, index) => (
           <div
             key={index}
-            className="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm transition-all hover:shadow-lg"
+
+ 
+ 
+            className="rounded-2xl border border-gray-700 bg-gray-800 p-6 shadow-sm transition-all hover:shadow-lg"
           >
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm font-medium text-gray-500">{stat.label}</p>
-                <p className="mt-2 text-3xl font-extrabold text-gray-900">{stat.value}</p>
-                <p className="mt-2 text-sm font-semibold text-green-600">{stat.change}</p>
+                <p className="text-sm font-medium text-gray-400">{stat.label}</p>
+                <p className="mt-2 text-3xl font-extrabold text-white">{stat.value}</p>
+                <p className="mt-2 text-sm font-semibold text-green-400">{stat.change}</p>
               </div>
               <div className={`flex h-14 w-14 items-center justify-center rounded-2xl ${stat.color} text-2xl shadow-lg`}>
                 {stat.icon}
@@ -38,50 +41,50 @@ function Dashboard() {
       </div>
 
       {/* Recent Orders */}
-      <div className="rounded-2xl border border-gray-200 bg-white shadow-sm">
-        <div className="border-b border-gray-200 px-6 py-4">
-          <h2 className="text-lg font-bold text-gray-900">Recent Orders</h2>
+      <div className="rounded-2xl border border-gray-700 bg-gray-800 shadow-sm">
+        <div className="border-b border-gray-700 px-6 py-4">
+          <h2 className="text-lg font-bold text-white">Recent Orders</h2>
         </div>
         <div className="overflow-x-auto">
           <table className="w-full">
-            <thead className="bg-gray-50">
+            <thead className="bg-gray-700">
               <tr>
-                <th className="px-6 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">
+                <th className="px-6 py-3 text-left text-xs font-semibold text-gray-300 uppercase tracking-wider">
                   Order ID
                 </th>
-                <th className="px-6 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">
+                <th className="px-6 py-3 text-left text-xs font-semibold text-gray-300 uppercase tracking-wider">
                   Customer
                 </th>
-                <th className="px-6 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">
+                <th className="px-6 py-3 text-left text-xs font-semibold text-gray-300 uppercase tracking-wider">
                   Product
                 </th>
-                <th className="px-6 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">
+                <th className="px-6 py-3 text-left text-xs font-semibold text-gray-300 uppercase tracking-wider">
                   Amount
                 </th>
-                <th className="px-6 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">
+                <th className="px-6 py-3 text-left text-xs font-semibold text-gray-300 uppercase tracking-wider">
                   Status
                 </th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-gray-200">
+            <tbody className="divide-y divide-gray-700">
               {recentOrders.map((order, index) => (
-                <tr key={index} className="hover:bg-gray-50 transition-colors">
-                  <td className="px-6 py-4 text-sm font-semibold text-brand-600">
+                <tr key={index} className="hover:bg-gray-700 transition-colors">
+                  <td className="px-6 py-4 text-sm font-semibold text-brand-400">
                     {order.id}
                   </td>
-                  <td className="px-6 py-4 text-sm text-gray-900">{order.customer}</td>
-                  <td className="px-6 py-4 text-sm text-gray-600">{order.product}</td>
-                  <td className="px-6 py-4 text-sm font-semibold text-gray-900">
+                  <td className="px-6 py-4 text-sm text-white">{order.customer}</td>
+                  <td className="px-6 py-4 text-sm text-gray-300">{order.product}</td>
+                  <td className="px-6 py-4 text-sm font-semibold text-white">
                     {order.amount}
                   </td>
                   <td className="px-6 py-4">
                     <span
                       className={`inline-flex rounded-full px-3 py-1 text-xs font-semibold ${
                         order.status === "Completed"
-                          ? "bg-green-100 text-green-700"
+                          ? "bg-green-900 text-green-300"
                           : order.status === "Pending"
-                          ? "bg-yellow-100 text-yellow-700"
-                          : "bg-blue-100 text-blue-700"
+                          ? "bg-yellow-900 text-yellow-300"
+                          : "bg-blue-900 text-blue-300"
                       }`}
                     >
                       {order.status}

@@ -28,7 +28,12 @@ function Blog() {
     } catch (error) {
       console.error(error);
 
-      toast.error("Failed to load blogs");
+      toast.error("Failed to load blogs", {
+        style: {
+          background: "#333",
+          color: "#fff",
+        },
+      });
     } finally {
       setLoading(false);
     }
@@ -61,7 +66,12 @@ function Blog() {
     try {
       await axios.delete(`${API_URL}/${id}`);
 
-      toast.success("Blog deleted successfully");
+      toast.success("Blog deleted successfully", {
+        style: {
+          background: "#333",
+          color: "#fff",
+        },
+      });
 
       fetchBlogs();
 
@@ -71,7 +81,12 @@ function Blog() {
     } catch (error) {
       console.error(error);
 
-      toast.error("Delete failed");
+      toast.error("Delete failed", {
+        style: {
+          background: "#333",
+          color: "#fff",
+        },
+      });
     }
   };
 
@@ -81,7 +96,7 @@ function Blog() {
 
   const handleStatusChange = async (blog) => {
     try {
-      const blogId = blog.id;
+      const blogId = blog.id || blog._id; // Fallback in case backend uses _id
       await axios.put(`${API_URL}/${blogId}`, {
         status: blog.status === "Active" ? "Inactive" : "Active",
       }, {
@@ -90,13 +105,23 @@ function Blog() {
         },
       });
 
-      toast.success("Status Updated");
+      toast.success("Status Updated", {
+        style: {
+          background: "#333",
+          color: "#fff",
+        },
+      });
 
       fetchBlogs();
     } catch (error) {
       console.error(error);
 
-      toast.error("Unable to update status");
+      toast.error("Unable to update status", {
+        style: {
+          background: "#333",
+          color: "#fff",
+        },
+      });
     }
   };
 
@@ -123,7 +148,7 @@ function Blog() {
   }, []);
 
   return (
-    <section className="min-h-screen bg-gray-50 p-6">
+    <section className="min-h-screen bg-gray-950 text-gray-100 p-6">
 
       <div className="mx-auto max-w-7xl">
 
@@ -131,11 +156,11 @@ function Blog() {
 
         <div className="mb-6">
 
-          <h1 className="text-3xl font-bold text-gray-900">
+          <h1 className="text-3xl font-bold text-white tracking-tight">
             Blog Management
           </h1>
 
-          <p className="mt-2 text-gray-600">
+          <p className="mt-2 text-gray-400">
             Create, update, delete and manage all blogs.
           </p>
 

@@ -25,32 +25,32 @@ function AdminLayout() {
     `flex items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition-all ${
       isActive
         ? "bg-brand-600 text-white shadow-md"
-        : "text-gray-600 hover:bg-gray-100 hover:text-brand-700"
+        : "text-gray-300 hover:bg-gray-800 hover:text-brand-400"
     }`;
 
   return (
-    <div className="flex min-h-screen bg-gray-50">
+    <div className="flex min-h-screen bg-gray-900">
       {/* Sidebar */}
       <aside
-        className={`fixed inset-y-0 left-0 z-40 transform bg-white border-r border-gray-200 transition-all lg:static lg:translate-x-0 ${
+        className={`fixed inset-y-0 left-0 z-40 transform bg-gray-800 border-r border-gray-700 transition-all lg:static lg:translate-x-0 ${
           sidebarOpen ? "translate-x-0" : "-translate-x-full"
         } ${sidebarCollapsed ? "lg:w-20" : "lg:w-72"} w-72`}
       >
-        <div className="flex h-20 items-center justify-between border-b border-gray-200 px-6">
+        <div className="flex h-20 items-center justify-between border-b border-gray-700 px-6">
           <div className="flex items-center gap-3">
             <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-brand-600 to-brand-700 text-sm font-bold text-white shadow-lg">
               A2Z
             </div>
             <div className={`${sidebarCollapsed ? "lg:hidden" : ""}`}>
-              <span className="block font-bold text-gray-900 text-lg">Admin Portal</span>
-              <span className="block text-xs text-gray-500">A2Z Seals</span>
+              <span className="block font-bold text-white text-lg">Admin Portal</span>
+              <span className="block text-xs text-gray-400">A2Z Seals</span>
             </div>
           </div>
           <button
             type="button"
             aria-label="Toggle sidebar collapse"
             onClick={() => setSidebarCollapsed((v) => !v)}
-            className="hidden lg:block rounded-lg p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-600 transition-colors"
+            className="hidden lg:block rounded-lg p-2 text-gray-400 hover:bg-gray-700 hover:text-gray-200 transition-colors"
           >
             <svg
               className={`h-5 w-5 transition-transform ${sidebarCollapsed ? "rotate-180" : ""}`}
@@ -94,12 +94,12 @@ function AdminLayout() {
 
       {/* Main */}
       <div className="flex flex-1 flex-col">
-        <header className="flex h-20 items-center justify-between border-b border-gray-200 bg-white px-6 lg:px-8 shadow-sm">
+        <header className="flex h-20 items-center justify-between border-b border-gray-700 bg-gray-800 px-6 lg:px-8 shadow-sm">
           <button
             type="button"
             aria-label="Toggle sidebar"
             onClick={() => setSidebarOpen((v) => !v)}
-            className="rounded-xl p-2.5 text-gray-600 hover:bg-gray-100 lg:hidden transition-colors"
+            className="rounded-xl p-2.5 text-gray-300 hover:bg-gray-700 lg:hidden transition-colors"
           >
             <svg
               className="h-6 w-6"
@@ -116,7 +116,7 @@ function AdminLayout() {
             </svg>
           </button>
           <div className="flex items-center gap-4">
-            <h1 className="text-xl font-bold text-gray-900">
+            <h1 className="text-xl font-bold text-white">
               A2Z Seals Admin
             </h1>
           </div>
