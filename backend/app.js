@@ -27,10 +27,19 @@ const shippingTimesRoutes = require(
   "./routes/Google_Merchant/shippingtimes.routes"
 );
 
-// const postsRoutes = require("./routes/Core/posts.routes");
-// const commentsRoutes = require("./routes/Core/comments.routes");
-// const termsRoutes = require("./routes/Core/terms.routes");
-// const optionsRoutes = require("./routes/Core/options.routes");
+
+//Forms
+const formEntryRoutes = require("./routes/Forms/formEntryRoutes");
+const formReportRoutes = require("./routes/Forms/formReport.routes");
+const formViewRoutes = require("./routes/Forms/formView.routes");
+const wpFormsPaymentRoutes = require( "./routes/Forms/wpFormsPayment.routes");
+const wpFormsPaymentMetaRoutes = require("./routes/Forms/wpFormsPaymentMeta.routes");
+const wpFormsTaskMetaRoutes = require("./routes/Forms/wpFormsTaskMeta.routes");
+const wpFormsLogRoutes = require( "./routes/Forms/wpFormsLog.routes");
+//Socail_Marketing
+const b2sUserContactRoutes = require("./routes/Social_Marketing/wpuz_b2s_user_contact_routes");
+
+
 
 const app = express();
 // console.log("argumnent problem")
@@ -58,21 +67,20 @@ app.use("/api/options", optionRoutes);
 app.use("/api/aws-index", awsIndexRoutes);
 app.use("/api/a2z-posts", a2zPostRoutes);
 //Google_Merchant
-app.use(
-   "/api/google-merchant/merchant-price-benchmarks",
-   merchantPriceBenchmarkRoutes,
-);
-app.use("/api/google-merchant/merchant-issues", merchantIssuesRoutes);
-app.use("/api/google-merchant/ads-recommendations", adsRecommendationsRoutes);
-app.use(
-   "/api/google-merchant/attribute-mapping-rules",
-   attributeMappingRulesRoutes,
-);
-app.use("/api/google-merchant/shipping-rates",shippingRatesRoutes);
-app.use(
-  "/api/google-merchant/shipping-times",
-  shippingTimesRoutes
-);
+app.use("/api/google-merchant/merchant-issues",merchantIssuesRoutes);
+app.use("/api/google-merchant/merchant-price-benchmarks",merchantPriceBenchmarkRoutes);
+
+//Forms
+app.use("/api/form-entries",formEntryRoutes);
+app.use("/api/form-reports",formReportRoutes);
+app.use("/api/form-views", formViewRoutes);
+app.use("/api/wpforms-payments",wpFormsPaymentRoutes);
+app.use("/api/wpforms-payment-meta", wpFormsPaymentMetaRoutes);
+app.use("/api/wpforms-task-meta",wpFormsTaskMetaRoutes);  
+app.use("/api/wpforms-logs",wpFormsLogRoutes);
+//Social_Marketing
+app.use("/api/b2s-user-contact",b2sUserContactRoutes);
+
 
 
 app.get("/", (req, res) => {
