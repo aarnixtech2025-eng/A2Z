@@ -340,7 +340,7 @@ if (loading) {
   return (
     <section className="min-h-screen bg-[#f5f8fc]">
       {/* HERO */}
-      <div className="relative overflow-hidden bg-[#061a38] py-16 sm:py-20">
+      <div className="relative overflow-hidden bg-[#061a38] py-8 sm:py-10">
         <div className="absolute inset-0 opacity-20">
           <div
             className="h-full w-full"
@@ -356,16 +356,16 @@ if (loading) {
         <div className="absolute -right-20 bottom-0 h-72 w-72 rounded-full bg-sky-500/20 blur-3xl" />
 
         <div className="relative mx-auto max-w-7xl px-4 text-center sm:px-6 lg:px-8">
-          <span className="inline-flex items-center gap-2 rounded-full border border-[#f5b400]/40 bg-[#f5b400]/10 px-4 py-2 text-xs font-extrabold uppercase tracking-[0.16em] text-[#ffd45b]">
+          <span className="inline-flex items-center gap-2 rounded-full border border-[#f5b400]/40 bg-[#f5b400]/10 px-3 py-1.5 text-[10px] font-extrabold uppercase tracking-[0.16em] text-[#ffd45b]">
             <FaTags />
             A2Z Seals Knowledge Hub
           </span>
 
-          <h1 className="mt-5 text-4xl font-extrabold text-white sm:text-5xl">
+          <h1 className="mt-3 text-2xl font-extrabold text-white sm:text-3xl">
             Latest <span className="text-[#f5b400]">Seal Insights</span>
           </h1>
 
-          <p className="mx-auto mt-4 max-w-2xl text-sm leading-7 text-slate-300 sm:text-base">
+          <p className="mx-auto mt-2 max-w-2xl text-xs leading-6 text-slate-300 sm:text-sm">
             Explore useful articles about hydraulic seals, oil seals, NOK seals,
             seal kits and industrial sealing solutions.
           </p>

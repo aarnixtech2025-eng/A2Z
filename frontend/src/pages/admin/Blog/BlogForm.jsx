@@ -81,7 +81,7 @@ function BlogForm({ selectedBlog, onSuccess, clearSelection }) {
     });
 
     if (selectedBlog.featuredImage) {
-      setPreview(`http://localhost:5000/uploads/${selectedBlog.featuredImage}`);
+      setPreview(`http://localhost:5000/uploads/blogs/${selectedBlog.featuredImage}`);
     }
   }, [selectedBlog]);
 
@@ -130,7 +130,7 @@ function BlogForm({ selectedBlog, onSuccess, clearSelection }) {
     setPreview("");
 
     if (selectedBlog?.featuredImage) {
-      setPreview(`http://localhost:5000/uploads/${selectedBlog.featuredImage}`);
+      setPreview(`http://localhost:5000/uploads/blogs/${selectedBlog.featuredImage}`);
     }
   };
 

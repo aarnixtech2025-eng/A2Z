@@ -3,8 +3,6 @@ const {
   MerchantIssues,
 } = require("./index");
 
-// Merchant Price Benchmark -> Merchant Issues
-
 MerchantPriceBenchmark.hasMany(MerchantIssues, {
   foreignKey: "product_id",
   sourceKey: "product_id",
@@ -16,3 +14,4 @@ MerchantIssues.belongsTo(MerchantPriceBenchmark, {
   targetKey: "product_id",
   as: "benchmark",
 });
+

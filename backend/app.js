@@ -1,6 +1,6 @@
 const express = require("express");
 require("dotenv").config();
-const cors=require("cors")
+const cors = require("cors");
 //Blog
 const blogRoutes = require("./routes/blogRoutes");
 //Core
@@ -18,6 +18,15 @@ const a2zPostRoutes = require("./routes/Custom/a2zposts.routes");
 //Google_Merchant
 const merchantPriceBenchmarkRoutes = require("./routes/Google_Merchant/merchantpricebenchmark.routes");
 const merchantIssuesRoutes = require("./routes/Google_Merchant/merchantissues.routes");
+const adsRecommendationsRoutes = require("./routes/Google_Merchant/adsrecommendations.routes");
+const attributeMappingRulesRoutes = require("./routes/Google_Merchant/attributemappingrules.routes");
+const shippingRatesRoutes = require(
+  "./routes/Google_Merchant/shippingrates.routes"
+);
+const shippingTimesRoutes = require(
+  "./routes/Google_Merchant/shippingtimes.routes"
+);
+
 
 //Forms
 const formEntryRoutes = require("./routes/Forms/formEntryRoutes");
