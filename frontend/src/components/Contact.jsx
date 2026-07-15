@@ -3,381 +3,486 @@ import {
   FaMapMarkerAlt,
   FaPhoneAlt,
   FaEnvelope,
-  FaClock,
   FaPaperPlane,
+  FaClock,
   FaCheckCircle,
-  FaShieldAlt,
-  FaIndustry,
-  FaArrowRight,
 } from "react-icons/fa";
 
-import contactIndustrial from "../assets/logo/conttt.jpg";
+import contactBanner from "../assets/logo/conttt.jpg";
 
 function Contact() {
   const [formData, setFormData] = useState({
     name: "",
-    phone: "",
+    company: "",
     email: "",
+    phone: "",
     message: "",
   });
 
   const [showSuccess, setShowSuccess] = useState(false);
 
-  const handleChange = (event) => {
-    const { name, value } = event.target;
-
-    setFormData((previous) => ({
-      ...previous,
-      [name]: value,
-    }));
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
   };
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
+  const handleSubmit = (e) => {
+    e.preventDefault();
 
-    // Later you can connect this with backend API here.
-    console.log("Inquiry Data:", formData);
+    console.log(formData);
 
     setShowSuccess(true);
 
     setFormData({
       name: "",
-      phone: "",
+      company: "",
       email: "",
+      phone: "",
       message: "",
     });
 
     setTimeout(() => {
       setShowSuccess(false);
-    }, 5000);
+    }, 4000);
   };
 
   return (
-    <main className="overflow-hidden bg-gradient-to-b from-slate-50 via-white to-brand-50/30">
-      {/* Page Header */}
-      <section className="relative overflow-hidden border-b border-slate-100 bg-white py-6 sm:py-8 md:py-10">
-        <div className="absolute -left-24 top-0 h-64 w-64 rounded-full bg-brand-100/50 blur-3xl" />
-        <div className="absolute -right-20 bottom-0 h-72 w-72 rounded-full bg-yellow-100/60 blur-3xl" />
+    <main className="bg-gray-50">
 
-        <div className="relative mx-auto max-w-7xl px-3 text-center sm:px-4 md:px-6 lg:px-8">
-          <span className="inline-flex items-center gap-2 rounded-full border border-brand-100 bg-brand-50 px-3 py-1.5 text-[10px] font-bold uppercase tracking-[0.14em] text-brand-700 sm:px-4 sm:py-2 sm:text-xs">
-            <FaPaperPlane />
-            Contact A2Z Seals
-          </span>
+      {/* ================= HERO ================= */}
 
-          <h1 className="mt-3 text-xl font-extrabold tracking-tight text-brand-900 sm:mt-4 sm:text-2xl md:text-3xl lg:text-4xl">
-            Let's Build Better{" "}
-            <span className="text-brand-600">Sealing Solutions</span>
-          </h1>
+      <section className="relative h-[280px] md:h-[350px] overflow-hidden">
 
-          <p className="mx-auto mt-2 max-w-2xl text-[11px] leading-5 text-slate-600 sm:mt-3 sm:text-xs sm:leading-6 md:text-sm">
-            Speak with our sealing experts for hydraulic seal kits, oil seals,
-            O-rings, custom sealing requirements and industrial machine support.
-          </p>
-        </div>
-      </section>
+        <img
+          src={contactBanner}
+          alt="Contact"
+          className="absolute inset-0 w-full h-full object-cover"
+        />
 
-      {/* Main Contact Card */}
-      <section className="py-6 sm:py-8 md:py-10 lg:py-12">
-        <div className="mx-auto max-w-7xl px-3 sm:px-4 md:px-6 lg:px-8">
-          <div className="grid overflow-hidden rounded-[20px] border border-slate-200 bg-white shadow-[0_25px_70px_rgba(15,23,42,0.12)] lg:grid-cols-[1.02fr_0.98fr] lg:rounded-[28px]">
-            {/* Left Side - Image + Company Details */}
-            <div className="relative min-h-[400px] overflow-hidden sm:min-h-[450px] lg:min-h-full">
-              <img
-                src={contactIndustrial}
-                alt="A2Z Seals Industrial Solutions"
-                className="absolute inset-0 h-full w-full object-cover"
-              />
+        <div className="absolute inset-0 bg-black/55"></div>
 
-              {/* Dark overlay */}
-              <div className="absolute inset-0 bg-gradient-to-br from-brand-950/95 via-brand-900/85 to-slate-950/80" />
+        <div className="relative z-10 flex h-full items-center justify-center">
 
-              {/* Decorative circles */}
-              <div className="absolute -left-16 top-10 h-44 w-44 rounded-full border border-white/10 bg-white/5" />
-              <div className="absolute -bottom-20 -right-16 h-64 w-64 rounded-full border border-yellow-300/20 bg-yellow-400/10" />
+          <div className="text-center text-white">
 
-              <div className="relative z-10 flex h-full flex-col justify-between p-4 text-white sm:p-5 md:p-7 lg:p-8">
-                <div>
-                  <span className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-3 py-1.5 text-[10px] font-bold uppercase tracking-[0.15em] text-yellow-300 backdrop-blur-md sm:px-4 sm:py-2 sm:text-xs">
-                    <FaIndustry />
-                    Industrial Sealing Experts
-                  </span>
+            <h1 className="text-4xl md:text-6xl font-extrabold">
+              Contact Us
+            </h1>
 
-                  <h2 className="mt-3 max-w-lg text-xl font-extrabold leading-tight sm:mt-4 sm:text-2xl md:text-3xl">
-                    Reliable Seals For Every Industrial Challenge.
-                  </h2>
+            <p className="mt-4 text-lg text-gray-200">
+              We are always ready to help you.
+            </p>
 
-                  <p className="mt-2 max-w-xl text-[11px] leading-5 text-slate-200 sm:mt-3 sm:text-xs sm:leading-6 md:text-sm">
-                    A2Z Seals is a trusted manufacturer, importer and exporter
-                    of hydraulic seals, oil seals, seal kits and O-rings for
-                    construction machinery, mining equipment, cement plants,
-                    steel industries and hydraulic systems.
-                  </p>
-
-                  <div className="mt-4 grid gap-2.5 sm:mt-6 sm:gap-3 sm:grid-cols-2">
-                    <div className="rounded-2xl border border-white/15 bg-white/10 p-3 backdrop-blur-md sm:p-4">
-                      <p className="text-xl font-extrabold text-yellow-300 sm:text-2xl">
-                        50+
-                      </p>
-                      <p className="mt-1 text-[10px] font-medium text-slate-200 sm:text-xs">
-                        Industrial Product Categories
-                      </p>
-                    </div>
-
-                    <div className="rounded-2xl border border-white/15 bg-white/10 p-3 backdrop-blur-md sm:p-4">
-                      <p className="text-xl font-extrabold text-yellow-300 sm:text-2xl">
-                        1975
-                      </p>
-                      <p className="mt-1 text-[10px] font-medium text-slate-200 sm:text-xs">
-                        Trusted Since
-                      </p>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Contact Details */}
-                <div className="mt-6 space-y-2.5 sm:mt-8 sm:space-y-3">
-                  <div className="flex items-center gap-3 rounded-2xl border border-white/15 bg-white/10 p-3 backdrop-blur-md sm:gap-4 sm:p-4">
-                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-yellow-400 text-brand-950 shadow-lg sm:h-11 sm:w-11">
-                      <FaMapMarkerAlt />
-                    </div>
-
-                    <div>
-                      <p className="text-[10px] font-semibold uppercase tracking-wide text-slate-300 sm:text-xs">
-                        Visit Us
-                      </p>
-                      <p className="mt-0.5 text-xs font-bold text-white sm:mt-1 sm:text-sm">
-                       P-27 PRINCEP STREET, 2ND FLOOR,
-KOLKATA 700072, INDIA
-                      </p>
-                    </div>
-                  </div>
-
-                  <a
-                    href="tel:+91-98310 98320"
-                    className="flex items-center gap-3 rounded-2xl border border-white/15 bg-white/10 p-3 backdrop-blur-md transition hover:bg-white/20 sm:gap-4 sm:p-4"
-                  >
-                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-yellow-400 text-brand-950 shadow-lg sm:h-11 sm:w-11">
-                      <FaPhoneAlt />
-                    </div>
-
-                    <div>
-                      <p className="text-[10px] font-semibold uppercase tracking-wide text-slate-300 sm:text-xs">
-                        Call Us
-                      </p>
-                      <p className="mt-0.5 text-xs font-bold text-white sm:mt-1 sm:text-sm">
-                        +91-98310 98320
-                      </p>
-                    </div>
-                  </a>
-
-                  <a
-                    href="mailto: a2zseals@gmail.com"
-                    className="flex items-center gap-3 rounded-2xl border border-white/15 bg-white/10 p-3 backdrop-blur-md transition hover:bg-white/20 sm:gap-4 sm:p-4"
-                  >
-                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-yellow-400 text-brand-950 shadow-lg sm:h-11 sm:w-11">
-                      <FaEnvelope />
-                    </div>
-
-                    <div>
-                      <p className="text-[10px] font-semibold uppercase tracking-wide text-slate-300 sm:text-xs">
-                        Email Us
-                      </p>
-                      <p className="mt-0.5 text-xs font-bold text-white sm:mt-1 sm:text-sm">
-                         a2zseals@gmail.com
-                      </p>
-                    </div>
-                  </a>
-                </div>
-              </div>
-            </div>
-
-            {/* Right Side - Form */}
-            <div className="relative bg-white p-4 sm:p-5 md:p-7 lg:p-8">
-              <div className="absolute right-0 top-0 h-40 w-40 rounded-bl-full bg-brand-50" />
-
-              <div className="relative z-10">
-                <span className="inline-flex items-center gap-2 rounded-full bg-yellow-50 px-3 py-1.5 text-[10px] font-bold uppercase tracking-[0.14em] text-brand-800 sm:px-4 sm:py-2 sm:text-xs">
-                  <FaPaperPlane className="text-brand-600" />
-                  Get In Touch
-                </span>
-
-                <h2 className="mt-3 text-xl font-extrabold tracking-tight text-brand-900 sm:mt-4 sm:text-2xl md:text-3xl">
-                  Send Us A Message
-                </h2>
-
-                <p className="mt-2 max-w-lg text-[11px] leading-5 text-slate-600 sm:text-xs sm:leading-6 md:text-sm">
-                  Tell us what you need. Our team will help you find the right
-                  industrial sealing solution for your machinery.
-                </p>
-
-                <form onSubmit={handleSubmit} className="mt-5 space-y-3.5 sm:mt-6 sm:space-y-4">
-                  <div className="grid gap-3.5 sm:gap-4 sm:grid-cols-2">
-                    <div>
-                      <label
-                        htmlFor="name"
-                        className="mb-2 block text-xs font-bold text-slate-800 sm:text-sm"
-                      >
-                        Full Name
-                      </label>
-
-                      <input
-                        type="text"
-                        id="name"
-                        name="name"
-                        value={formData.name}
-                        onChange={handleChange}
-                        required
-                        placeholder="Enter your name"
-                        className="w-full rounded-xl border border-slate-200 bg-slate-50 px-3 py-2.5 text-xs text-slate-800 outline-none transition-all placeholder:text-slate-400 focus:border-brand-500 focus:bg-white focus:ring-4 focus:ring-brand-100 sm:px-4 sm:py-3 sm:text-sm"
-                      />
-                    </div>
-
-                    <div>
-                      <label
-                        htmlFor="phone"
-                        className="mb-2 block text-xs font-bold text-slate-800 sm:text-sm"
-                      >
-                        Phone Number
-                      </label>
-
-                      <input
-                        type="tel"
-                        id="phone"
-                        name="phone"
-                        value={formData.phone}
-                        onChange={handleChange}
-                        required
-                        placeholder="+91 00000 00000"
-                        className="w-full rounded-xl border border-slate-200 bg-slate-50 px-3 py-2.5 text-xs text-slate-800 outline-none transition-all placeholder:text-slate-400 focus:border-brand-500 focus:bg-white focus:ring-4 focus:ring-brand-100 sm:px-4 sm:py-3 sm:text-sm"
-                      />
-                    </div>
-                  </div>
-
-                  <div>
-                    <label
-                      htmlFor="email"
-                      className="mb-2 block text-xs font-bold text-slate-800 sm:text-sm"
-                    >
-                      Email Address
-                    </label>
-
-                    <input
-                      type="email"
-                      id="email"
-                      name="email"
-                      value={formData.email}
-                      onChange={handleChange}
-                      required
-                      placeholder="you@company.com"
-                      className="w-full rounded-xl border border-slate-200 bg-slate-50 px-3 py-2.5 text-xs text-slate-800 outline-none transition-all placeholder:text-slate-400 focus:border-brand-500 focus:bg-white focus:ring-4 focus:ring-brand-100 sm:px-4 sm:py-3.5 sm:text-sm"
-                    />
-                  </div>
-
-                  <div>
-                    <label
-                      htmlFor="message"
-                      className="mb-2 block text-xs font-bold text-slate-800 sm:text-sm"
-                    >
-                      Your Requirement
-                    </label>
-
-                    <textarea
-                      id="message"
-                      name="message"
-                      rows={4}
-                      value={formData.message}
-                      onChange={handleChange}
-                      required
-                      placeholder="Example: I need hydraulic seal kits for JCB / excavator machine..."
-                      className="w-full resize-none rounded-xl border border-slate-200 bg-slate-50 px-3 py-2.5 text-xs text-slate-800 outline-none transition-all placeholder:text-slate-400 focus:border-brand-500 focus:bg-white focus:ring-4 focus:ring-brand-100 sm:px-4 sm:py-3.5 sm:text-sm"
-                    />
-                  </div>
-
-                  <button
-                    type="submit"
-                    className="group flex w-full items-center justify-center gap-3 rounded-xl bg-brand-900 px-5 py-2.5 text-[11px] font-extrabold text-white shadow-lg shadow-brand-900/25 transition-all duration-300 hover:-translate-y-1 hover:bg-brand-700 hover:shadow-xl sm:px-6 sm:py-3 sm:text-sm"
-                  >
-                    Send Message
-                    <FaPaperPlane className="transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1" />
-                  </button>
-
-                  <p className="flex items-center justify-center gap-2 text-center text-[10px] text-slate-500 sm:text-xs">
-                    <FaShieldAlt className="text-brand-600" />
-                    Your inquiry details are safe with A2Z Seals.
-                  </p>
-                </form>
-              </div>
-            </div>
           </div>
+
         </div>
+
       </section>
 
-      {/* About A2Z Industry Section */}
-      <section className="pb-6 sm:pb-8 md:pb-10 lg:pb-12">
-        <div className="mx-auto max-w-7xl px-3 sm:px-4 md:px-6 lg:px-8">
-          <div className="rounded-[20px] border border-brand-100 bg-brand-50/70 p-4 sm:p-5 md:p-7 lg:rounded-[28px]">
-            <div className="grid items-center gap-6 lg:grid-cols-[auto_1fr_auto] lg:gap-8">
-              <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-brand-900 text-xl text-yellow-400 shadow-lg sm:h-16 sm:w-16 sm:text-2xl">
-                <FaIndustry />
-              </div>
 
-              <div>
-                <p className="text-[10px] font-extrabold uppercase tracking-[0.16em] text-brand-600 sm:text-xs">
-                  A2Z Industrial Solutions
-                </p>
 
-                <h2 className="mt-1.5 text-lg font-extrabold text-brand-900 sm:mt-2 sm:text-xl md:text-2xl">
-                  Sealing Performance That Keeps Your Machines Moving
-                </h2>
+      {/* ================= GOOGLE MAP ================= */}
 
-                <p className="mt-1.5 max-w-3xl text-[11px] leading-5 text-slate-600 sm:mt-2 sm:text-xs sm:leading-6 md:text-sm">
-                  From hydraulic cylinders to heavy machinery, A2Z Seals
-                  supplies dependable sealing components that reduce leakage,
-                  improve equipment performance and support long-term machine
-                  reliability.
-                </p>
-              </div>
+      <section className="bg-white py-12">
 
-              <a
-                href="tel:+910000000000"
-                className="inline-flex items-center justify-center gap-2 rounded-xl bg-yellow-400 px-4 py-2.5 text-[11px] font-extrabold text-brand-950 shadow-md transition-all hover:-translate-y-1 hover:bg-yellow-300 sm:px-5 sm:py-3 sm:text-sm"
+        <div className="max-w-7xl mx-auto px-5">
+
+          <div className="overflow-hidden rounded-3xl shadow-xl border">
+
+            <iframe
+              title="A2Z Map"
+              src="https://www.google.com/maps?q=P-27+Princep+Street+Kolkata+700072&output=embed"
+              width="100%"
+              height="420"
+              loading="lazy"
+              allowFullScreen
+              className="border-0"
+            />
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+
+      {/* ================= CONTACT SECTION ================= */}
+
+      <section className="py-16">
+
+        <div className="max-w-7xl mx-auto px-5">
+
+          <div className="grid lg:grid-cols-2 gap-10">
+
+
+
+            {/* ================= LEFT SIDE FORM ================= */}
+
+            <div className="bg-white rounded-3xl shadow-xl p-8">
+
+              <span className="inline-flex items-center gap-2 bg-blue-100 text-blue-700 px-4 py-2 rounded-full font-semibold">
+
+                <FaPaperPlane />
+
+                Contact Form
+
+              </span>
+
+              <h2 className="text-4xl font-bold mt-5">
+                Send us a Message
+              </h2>
+
+              <p className="text-gray-500 mt-3">
+                Fill the form and our team will contact you shortly.
+              </p>
+
+
+
+              <form
+                onSubmit={handleSubmit}
+                className="mt-8 space-y-5"
               >
-                Talk To An Expert
-                <FaArrowRight />
-              </a>
+
+                {/* Full Name */}
+
+                <div>
+
+                  <label className="font-semibold">
+                    Full Name
+                  </label>
+
+                  <input
+                    type="text"
+                    name="name"
+                    value={formData.name}
+                    onChange={handleChange}
+                    placeholder="Enter Full Name"
+                    required
+                    className="mt-2 w-full border rounded-xl p-4 outline-none focus:border-blue-600"
+                  />
+
+                </div>
+
+
+
+                {/* Company */}
+
+                <div>
+
+                  <label className="font-semibold">
+                    Company Name
+                  </label>
+
+                  <input
+                    type="text"
+                    name="company"
+                    value={formData.company}
+                    onChange={handleChange}
+                    placeholder="Company Name"
+                    className="mt-2 w-full border rounded-xl p-4 outline-none focus:border-blue-600"
+                  />
+
+                </div>
+                                {/* Email */}
+
+                <div>
+
+                  <label className="font-semibold">
+                    Email Address
+                  </label>
+
+                  <input
+                    type="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    placeholder="example@gmail.com"
+                    required
+                    className="mt-2 w-full border rounded-xl p-4 outline-none focus:border-blue-600"
+                  />
+
+                </div>
+
+
+
+                {/* Phone */}
+
+                <div>
+
+                  <label className="font-semibold">
+                    Phone Number
+                  </label>
+
+                  <input
+                    type="tel"
+                    name="phone"
+                    value={formData.phone}
+                    onChange={handleChange}
+                    placeholder="+91 9876543210"
+                    required
+                    className="mt-2 w-full border rounded-xl p-4 outline-none focus:border-blue-600"
+                  />
+
+                </div>
+
+
+
+                {/* Message */}
+
+                <div>
+
+                  <label className="font-semibold">
+                    Message
+                  </label>
+
+                  <textarea
+                    rows="5"
+                    name="message"
+                    value={formData.message}
+                    onChange={handleChange}
+                    placeholder="Write your requirement..."
+                    required
+                    className="mt-2 w-full border rounded-xl p-4 outline-none resize-none focus:border-blue-600"
+                  />
+
+                </div>
+
+
+
+                {/* Button */}
+
+                <button
+                  type="submit"
+                  className="w-full bg-[#003366] hover:bg-[#00509d] duration-300 text-white font-bold py-4 rounded-xl flex justify-center items-center gap-3"
+                >
+
+                  <FaPaperPlane />
+
+                  Send Message
+
+                </button>
+
+              </form>
+
             </div>
+
+
+
+
+
+            {/* ================= RIGHT SIDE ================= */}
+
+            <div className="space-y-6">
+
+              {/* Company Card */}
+
+              <div className="bg-[#003366] text-white rounded-3xl p-8 shadow-xl">
+
+                <h2 className="text-4xl font-bold">
+                  A2Z SEALS
+                </h2>
+
+                <p className="mt-4 text-gray-200 leading-8">
+
+                  Hydraulic Seals
+
+                  <br />
+
+                  Oil Seals
+
+                  <br />
+
+                  O-Rings
+
+                  <br />
+
+                  Industrial Sealing Solutions
+
+                </p>
+
+              </div>
+
+
+
+              {/* Address */}
+
+              <div className="bg-white rounded-3xl shadow-lg p-6 flex gap-5">
+
+                <div className="h-14 w-14 rounded-full bg-blue-100 flex items-center justify-center text-blue-700 text-xl">
+
+                  <FaMapMarkerAlt />
+
+                </div>
+
+                <div>
+
+                  <h3 className="font-bold text-xl">
+                    Office Address
+                  </h3>
+
+                  <p className="text-gray-600 mt-2 leading-7">
+
+                    2nd Floor
+
+                    <br />
+
+                    P-27 Princep Street
+
+                    <br />
+
+                    Kolkata - 700072
+
+                    <br />
+
+                    West Bengal, India
+
+                  </p>
+
+                </div>
+
+              </div>
+
+
+
+              {/* Phone */}
+
+              <div className="bg-white rounded-3xl shadow-lg p-6 flex gap-5">
+
+                <div className="h-14 w-14 rounded-full bg-green-100 flex items-center justify-center text-green-700 text-xl">
+
+                  <FaPhoneAlt />
+
+                </div>
+
+                <div>
+
+                  <h3 className="font-bold text-xl">
+                    Phone Number
+                  </h3>
+
+                  <p className="mt-2 text-gray-600">
+
+                    +91 98316 56155
+
+                    <br />
+
+                    +91 98310 98320
+
+                  </p>
+
+                </div>
+
+              </div>
+
+
+
+              {/* Email */}
+
+              <div className="bg-white rounded-3xl shadow-lg p-6 flex gap-5">
+
+                <div className="h-14 w-14 rounded-full bg-red-100 flex items-center justify-center text-red-600 text-xl">
+
+                  <FaEnvelope />
+
+                </div>
+
+                <div>
+
+                  <h3 className="font-bold text-xl">
+                    Email Address
+                  </h3>
+
+                  <p className="mt-2 text-gray-600">
+
+                    a2zseals@gmail.com
+
+                  </p>
+
+                </div>
+
+              </div>
+
+
+
+              {/* Working Hours */}
+
+              <div className="bg-white rounded-3xl shadow-lg p-6 flex gap-5">
+
+                <div className="h-14 w-14 rounded-full bg-yellow-100 flex items-center justify-center text-yellow-600 text-xl">
+
+                  <FaClock />
+
+                </div>
+
+                <div>
+
+                  <h3 className="font-bold text-xl">
+                    Working Hours
+                  </h3>
+
+                  <p className="mt-2 text-gray-600">
+
+                    Monday - Saturday
+
+                    <br />
+
+                    10:00 AM - 7:00 PM
+
+                  </p>
+
+                </div>
+
+              </div>
+
+            </div>
+
           </div>
-        </div>
-      </section>
 
-      {/* Success Popup */}
+        </div>
+
+      </section>
+            {/* ================= SUCCESS POPUP ================= */}
+
       {showSuccess && (
-        <div className="fixed inset-0 z-[100] flex items-center justify-center bg-slate-950/50 px-4 backdrop-blur-sm">
-          <div className="w-full max-w-md rounded-[28px] bg-white p-8 text-center shadow-2xl">
-            <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-green-100 text-3xl text-green-600">
-              <FaCheckCircle />
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 backdrop-blur-sm">
+
+          <div className="w-[90%] max-w-md rounded-3xl bg-white p-8 text-center shadow-2xl animate-[fadeIn_.3s_ease]">
+
+            <div className="mx-auto flex h-20 w-20 items-center justify-center rounded-full bg-green-100">
+
+              <FaCheckCircle className="text-5xl text-green-600" />
+
             </div>
 
-            <h3 className="mt-5 text-2xl font-extrabold text-brand-900">
-              Inquiry Sent Successfully!
-            </h3>
+            <h2 className="mt-6 text-3xl font-bold text-gray-800">
+              Thank You!
+            </h2>
 
-            <p className="mt-3 text-sm leading-6 text-slate-600">
-              Your inquiry has been sent successfully. We will get back to you
-              soon.
+            <p className="mt-4 text-gray-600 leading-7">
+
+              Your message has been sent successfully.
+
+              <br />
+
+              Our team will contact you soon.
+
             </p>
 
             <button
-              type="button"
               onClick={() => setShowSuccess(false)}
-              className="mt-6 rounded-xl bg-brand-900 px-6 py-3 text-sm font-bold text-white transition hover:bg-brand-700"
+              className="mt-8 rounded-xl bg-[#003366] px-8 py-3 font-semibold text-white transition hover:bg-[#00509d]"
             >
               Close
             </button>
+
           </div>
+
         </div>
       )}
+
     </main>
   );
 }
