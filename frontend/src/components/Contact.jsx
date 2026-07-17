@@ -146,17 +146,16 @@ function Contact() {
                       <p className="text-[10px] font-semibold uppercase tracking-wide text-slate-300 sm:text-xs">
                         Visit Us
                       </p>
-                      <p className="mt-0.5 text-xs font-bold text-white sm:mt-1 sm:text-sm">
-                       P-27 PRINCEP STREET, 2ND FLOOR,
-KOLKATA 700072, INDIA
-                      </p>
+
+                      <a
+                        href="#contact-map"
+                        className="mt-0.5 inline-block text-xs font-bold text-white transition-colors duration-300 hover:text-orange-500 active:text-orange-600 sm:mt-1 sm:text-sm"
+                      >
+                        P-27 PRINCEP STREET, 2ND FLOOR, KOLKATA 700072, INDIA
+                      </a>
                     </div>
                   </div>
-
-                  <a
-                    href="tel:+91-98310 98320"
-                    className="flex items-center gap-3 rounded-2xl border border-white/15 bg-white/10 p-3 backdrop-blur-md transition hover:bg-white/20 sm:gap-4 sm:p-4"
-                  >
+                  <div className="flex items-center gap-3 rounded-2xl border border-white/15 bg-white/10 p-3 backdrop-blur-md transition hover:bg-white/20 sm:gap-4 sm:p-4">
                     <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-yellow-400 text-brand-950 shadow-lg sm:h-11 sm:w-11">
                       <FaPhoneAlt />
                     </div>
@@ -165,16 +164,17 @@ KOLKATA 700072, INDIA
                       <p className="text-[10px] font-semibold uppercase tracking-wide text-slate-300 sm:text-xs">
                         Call Us
                       </p>
-                      <p className="mt-0.5 text-xs font-bold text-white sm:mt-1 sm:text-sm">
-                        +91-98310 98320
-                      </p>
-                    </div>
-                  </a>
 
-                  <a
-                    href="mailto: a2zseals@gmail.com"
-                    className="flex items-center gap-3 rounded-2xl border border-white/15 bg-white/10 p-3 backdrop-blur-md transition hover:bg-white/20 sm:gap-4 sm:p-4"
-                  >
+                      <a
+                        href="tel:+919831098320"
+                        className="mt-0.5 inline-block text-xs font-bold text-white transition-colors duration-300 hover:text-orange-500 active:text-orange-600 sm:mt-1 sm:text-sm"
+                      >
+                        +91-98310 98320
+                      </a>
+                    </div>
+                  </div>
+
+                  <div className="flex items-center gap-3 rounded-2xl border border-white/15 bg-white/10 p-3 backdrop-blur-md transition hover:bg-white/20 sm:gap-4 sm:p-4">
                     <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-yellow-400 text-brand-950 shadow-lg sm:h-11 sm:w-11">
                       <FaEnvelope />
                     </div>
@@ -183,11 +183,15 @@ KOLKATA 700072, INDIA
                       <p className="text-[10px] font-semibold uppercase tracking-wide text-slate-300 sm:text-xs">
                         Email Us
                       </p>
-                      <p className="mt-0.5 text-xs font-bold text-white sm:mt-1 sm:text-sm">
-                         a2zseals@gmail.com
-                      </p>
+
+                      <a
+                        href="mailto:a2zseals@gmail.com"
+                        className="mt-0.5 inline-block text-xs font-bold text-white transition-colors duration-300 hover:text-orange-500 active:text-orange-600 sm:mt-1 sm:text-sm"
+                      >
+                        a2zseals@gmail.com
+                      </a>
                     </div>
-                  </a>
+                  </div>
                 </div>
               </div>
             </div>
@@ -211,7 +215,10 @@ KOLKATA 700072, INDIA
                   industrial sealing solution for your machinery.
                 </p>
 
-                <form onSubmit={handleSubmit} className="mt-5 space-y-3.5 sm:mt-6 sm:space-y-4">
+                <form
+                  onSubmit={handleSubmit}
+                  className="mt-5 space-y-3.5 sm:mt-6 sm:space-y-4"
+                >
                   <div className="grid gap-3.5 sm:gap-4 sm:grid-cols-2">
                     <div>
                       <label
@@ -296,7 +303,7 @@ KOLKATA 700072, INDIA
 
                   <button
                     type="submit"
-                    className="group flex w-full items-center justify-center gap-3 rounded-xl bg-brand-900 px-5 py-2.5 text-[11px] font-extrabold text-white shadow-lg shadow-brand-900/25 transition-all duration-300 hover:-translate-y-1 hover:bg-brand-700 hover:shadow-xl sm:px-6 sm:py-3 sm:text-sm"
+                    className="group flex w-full items-center justify-center gap-3 rounded-xl bg-[#0B2A4A] px-5 py-2.5 text-[11px] font-extrabold text-white shadow-lg shadow-slate-900/25 transition-all duration-300 hover:-translate-y-1 hover:bg-yellow-400 hover:text-[#0B2A4A] hover:shadow-xl sm:px-6 sm:py-3 sm:text-sm"
                   >
                     Send Message
                     <FaPaperPlane className="transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1" />
@@ -312,7 +319,29 @@ KOLKATA 700072, INDIA
           </div>
         </div>
       </section>
-
+      {/* Google Map Section */}
+      <section
+        id="contact-map"
+        className="scroll-mt-24 pb-8 sm:pb-10 md:pb-12 lg:pb-16"
+      >
+        <div className="mx-auto max-w-7xl px-3 sm:px-4 md:px-6 lg:px-8">
+          <div className="overflow-hidden rounded-[20px] border border-slate-200 bg-white shadow-[0_25px_70px_rgba(15,23,42,0.12)] lg:rounded-[28px]">
+            <div className="relative h-[300px] w-full sm:h-[380px] md:h-[450px] lg:h-[500px]">
+              <iframe
+                src="https://www.google.com/maps?q=P-27%20Princep%20Street%202nd%20Floor%20Kolkata%20700072%20India&output=embed"
+                width="100%"
+                height="100%"
+                style={{ border: 0 }}
+                allowFullScreen=""
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                title="A2Z Seals Location"
+                className="absolute inset-0 h-full w-full"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
       {/* About A2Z Industry Section */}
       <section className="pb-6 sm:pb-8 md:pb-10 lg:pb-12">
         <div className="mx-auto max-w-7xl px-3 sm:px-4 md:px-6 lg:px-8">

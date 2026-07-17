@@ -39,6 +39,8 @@ const wpFormsLogRoutes = require( "./routes/Forms/wpFormsLog.routes");
 //Socail_Marketing
 const b2sUserContactRoutes = require("./routes/Social_Marketing/wpuz_b2s_user_contact_routes");
 
+//new route with new pages 
+const aboutRoutes = require("./routes/about.routes");
 
 
 const app = express();
@@ -81,10 +83,12 @@ app.use("/api/wpforms-logs",wpFormsLogRoutes);
 //Social_Marketing
 app.use("/api/b2s-user-contact",b2sUserContactRoutes);
 
+//new routes with new pages
+app.use("/api/about", aboutRoutes);
 
 
 app.get("/", (req, res) => {
-  res.send("Server is Running");
+   res.send("Server is Running");
 });
 
 module.exports = app;
