@@ -91,39 +91,39 @@ export default function About() {
   };
 
   return (
-    <div className="max-w-5xl mx-auto p-6 bg-white shadow-xl rounded-xl border border-gray-100">
-      <h1 className="text-2xl font-extrabold text-[#0b2545] mb-8 border-b pb-4 border-[#D7B25B]">About Us Management</h1>
+    <div className="max-w-5xl mx-auto p-6 bg-white dark:bg-gray-800 shadow-xl rounded-xl border border-gray-100 dark:border-gray-700 transition-colors duration-300">
+      <h1 className="text-2xl font-extrabold text-[#0b2545] dark:text-white mb-8 border-b pb-4 border-[#D7B25B] dark:border-yellow-400">About Us Management</h1>
       
       <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div className="col-span-1 md:col-span-2">
-          <label className="block text-sm font-bold text-gray-700 mb-1">Title</label>
-          <input type="text" value={aboutData.title} onChange={(e) => setAboutData({ ...aboutData, title: e.target.value })} className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-[#D7B25B]" required />
+          <label className="block text-sm font-bold text-gray-700 dark:text-gray-300 mb-1">Title</label>
+          <input type="text" value={aboutData.title} onChange={(e) => setAboutData({ ...aboutData, title: e.target.value })} className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white rounded-lg focus:ring-2 focus:ring-[#D7B25B] dark:focus:ring-blue-500 transition-colors duration-300" required />
         </div>
 
         <div className="col-span-1 md:col-span-2">
-          <label className="block text-sm font-bold text-gray-700 mb-1">Description</label>
-          <textarea value={aboutData.description} onChange={(e) => setAboutData({ ...aboutData, description: e.target.value })} rows="4" className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-[#D7B25B]" required />
+          <label className="block text-sm font-bold text-gray-700 dark:text-gray-300 mb-1">Description</label>
+          <textarea value={aboutData.description} onChange={(e) => setAboutData({ ...aboutData, description: e.target.value })} rows="4" className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white rounded-lg focus:ring-2 focus:ring-[#D7B25B] dark:focus:ring-blue-500 transition-colors duration-300" required />
         </div>
 
         <div className="col-span-1 md:col-span-2">
-          <label className="block text-sm font-bold text-gray-700 mb-1">Our Approach</label>
-          <textarea value={aboutData.ourApproach} onChange={(e) => setAboutData({ ...aboutData, ourApproach: e.target.value })} rows="3" className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-[#D7B25B]" />
+          <label className="block text-sm font-bold text-gray-700 dark:text-gray-300 mb-1">Our Approach</label>
+          <textarea value={aboutData.ourApproach} onChange={(e) => setAboutData({ ...aboutData, ourApproach: e.target.value })} rows="3" className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white rounded-lg focus:ring-2 focus:ring-[#D7B25B] dark:focus:ring-blue-500 transition-colors duration-300" />
         </div>
 
         {/* File Uploads */}
-        <div className="p-4 border rounded-lg bg-gray-50">
-          <label className="block text-sm font-bold text-gray-700 mb-2">Primary Image</label>
-          <input type="file" onChange={(e) => handleImageUpload(e, "image1")} className="w-full text-sm" />
+        <div className="p-4 border border-gray-200 dark:border-gray-600 rounded-lg bg-gray-50 dark:bg-gray-700 transition-colors duration-300">
+          <label className="block text-sm font-bold text-gray-700 dark:text-gray-300 mb-2">Primary Image</label>
+          <input type="file" onChange={(e) => handleImageUpload(e, "image1")} className="w-full text-sm dark:text-gray-300" />
           {aboutData.image1 && <img src={aboutData.image1.startsWith('http') ? aboutData.image1 : `${import.meta.env.VITE_API_URL}/uploads/${aboutData.image1}`} className="mt-2 h-24 object-cover rounded" alt="Preview 1" />}
         </div>
 
-        <div className="p-4 border rounded-lg bg-gray-50">
-          <label className="block text-sm font-bold text-gray-700 mb-2">Secondary Image</label>
-          <input type="file" onChange={(e) => handleImageUpload(e, "image2")} className="w-full text-sm" />
+        <div className="p-4 border border-gray-200 dark:border-gray-600 rounded-lg bg-gray-50 dark:bg-gray-700 transition-colors duration-300">
+          <label className="block text-sm font-bold text-gray-700 dark:text-gray-300 mb-2">Secondary Image</label>
+          <input type="file" onChange={(e) => handleImageUpload(e, "image2")} className="w-full text-sm dark:text-gray-300" />
           {aboutData.image2 && <img src={aboutData.image2.startsWith('http') ? aboutData.image2 : `${import.meta.env.VITE_API_URL}/uploads/${aboutData.image2}`} className="mt-2 h-24 object-cover rounded" alt="Preview 2" />}
         </div>
 
-        <button type="submit" disabled={loading} className="col-span-1 md:col-span-2 bg-[#D7B25B] text-[#0b2545] font-bold py-3 rounded-lg hover:bg-[#c89a38] transition duration-300">
+        <button type="submit" disabled={loading} className="col-span-1 md:col-span-2 bg-[#D7B25B] dark:bg-blue-600 text-[#0b2545] dark:text-white font-bold py-3 rounded-lg hover:bg-[#c89a38] dark:hover:bg-blue-700 transition duration-300">
           {loading ? "SAVING..." : "SAVE ABOUT SECTION"}
         </button>
       </form>

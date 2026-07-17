@@ -16,6 +16,11 @@ router.get(
   "/featured",
   ProductController.getFeaturedProducts
 );
+// Update Product Featured Status
+router.put(
+  "/:id/featured",
+  ProductController.updateProductFeatured
+);
 // Products By Category
 router.get(
   "/category/:slug",

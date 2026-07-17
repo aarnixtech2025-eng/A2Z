@@ -33,6 +33,7 @@ import AdminGallery from "./admin/pages/Photo";
 import AdminThreeD from "./admin/pages/HD";
 import Portfolio from "./admin/pages/portfolio";
 import Settings from "./admin/pages/settings/Settings";
+import FeaturedProducts from "./admin/pages/FeaturedProducts";
 import TestimonialsPage from "./pages/testimonialspage";
 import LogoSettings from "./admin/pages/settings/LogoSettings";
 import ContactSettings from "./admin/pages/settings/ContactSettings";
@@ -144,6 +145,10 @@ export default function App() {
   element={< CoursesAdmin/>}
   />
   <Route
+  path="featured-products"
+  element={<FeaturedProducts/>}
+  />
+  <Route
   path="profile"
   element={<Profile/>}
   />
@@ -179,6 +184,7 @@ export default function App() {
         <Route path="courses" element={<Courses />} />
         <Route path="category/:slug" element={<CategoryProducts />} />
         <Route path="shop/product/:slug" element={<ProductDetails />} />
+        <Route path="shop/products" element={<AllProducts />} />
         <Route path="products" element={<AllProducts />} />
         </Route>
 

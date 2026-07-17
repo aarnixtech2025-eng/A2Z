@@ -102,7 +102,12 @@ THEN pm.meta_value END
 MAX(
 CASE WHEN pm.meta_key='_product_image_gallery'
 THEN pm.meta_value END
-) gallery_ids
+) gallery_ids,
+
+MAX(
+CASE WHEN pm.meta_key='_featured'
+THEN pm.meta_value END
+) is_featured
 
 FROM wpuz_posts p
 
@@ -172,7 +177,9 @@ LIMIT :limit OFFSET :offset
 
       categories: categories[product.ID] || [],
 
-      tags: tags[product.ID] || []
+      tags: tags[product.ID] || [],
+
+      isFeatured: product.is_featured === 'yes'
 
     }));
 
@@ -247,13 +254,83 @@ ${where}
 
   async getFeaturedProducts(){
 
-    return await this.getAllProducts({
+    const products = await this.getAllProducts({
         page:1,
-        limit:6,
+        limit:100,
         search:""
     });
 
-} // =======================================
+    // Filter products that have featured meta key
+    const featuredProductIds = await sequelize.query(`
+      SELECT post_id
+      FROM wpuz_postmeta
+      WHERE meta_key = '_featured'
+      AND meta_value = 'yes'
+    `, { type: QueryTypes.SELECT });
+
+    const featuredIds = featuredProductIds.map(p => p.post_id);
+
+    const featuredProducts = products.products.filter(p => 
+      featuredIds.includes(p.id)
+    ).slice(0, 6);
+
+    return {
+      success: true,
+      products: featuredProducts
+    };
+
+  }
+
+  // =======================================
+  // UPDATE PRODUCT FEATURED STATUS
+  // =======================================
+
+  async updateProductFeatured(productId, isFeatured) {
+    try {
+      // Check if meta already exists
+      const existing = await sequelize.query(`
+        SELECT meta_id
+        FROM wpuz_postmeta
+        WHERE post_id = :productId
+        AND meta_key = '_featured'
+      `, {
+        replacements: { productId },
+        type: QueryTypes.SELECT
+      });
+
+      if (existing.length > 0) {
+        // Update existing
+        await sequelize.query(`
+          UPDATE wpuz_postmeta
+          SET meta_value = :isFeatured
+          WHERE post_id = :productId
+          AND meta_key = '_featured'
+        `, {
+          replacements: { 
+            productId, 
+            isFeatured: isFeatured ? 'yes' : 'no' 
+          },
+          type: QueryTypes.UPDATE
+        });
+      } else {
+        // Insert new
+        await sequelize.query(`
+          INSERT INTO wpuz_postmeta (post_id, meta_key, meta_value)
+          VALUES (:productId, '_featured', :isFeatured)
+        `, {
+          replacements: { 
+            productId, 
+            isFeatured: isFeatured ? 'yes' : 'no' 
+          },
+          type: QueryTypes.INSERT
+        });
+      }
+
+      return { success: true };
+    } catch (error) {
+      throw error;
+    }
+  } // =======================================
   // THUMBNAIL MAP
   // =======================================
 

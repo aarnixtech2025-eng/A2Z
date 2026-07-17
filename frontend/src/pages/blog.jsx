@@ -30,6 +30,8 @@ import nokSealant from "../assets/images/bearing.jpg";
 
 
 const categories = [
+  "All",
+  "Blog",
   "Oil Seals",
   "Hydraulic Seals",
   "Seal Kits",
@@ -51,8 +53,11 @@ const fetchBlogs = async () => {
   try {
     const res = await axios.get("http://localhost:5000/api/blogs");
 
+    console.log("Raw API response:", res.data.data);
+    console.log("Published blogs:", res.data.data.filter((blog) => blog.status === "published"));
+
     const blogs = res.data.data
-      .filter((blog) => blog.status === "Active")
+      .filter((blog) => blog.status === "published")
       .map((blog) => ({
         id: blog.id,
         title: blog.title,
@@ -63,7 +68,9 @@ const fetchBlogs = async () => {
           year: "numeric",
         }),
         image: blog.featuredImage
-          ? `http://localhost:5000/uploads/blogs/${blog.featuredImage}`
+          ? blog.featuredImage.startsWith('http')
+            ? blog.featuredImage
+            : `http://localhost:5000${blog.featuredImage.startsWith('/uploads') ? blog.featuredImage : `/uploads/${blog.featuredImage}`}`
           : bearingOilSeal, // default image
 
         excerpt: blog.shortDescription,
@@ -77,8 +84,10 @@ const fetchBlogs = async () => {
       }));
 
     setBlogPosts(blogs);
+    console.log("Processed blogs:", blogs);
+    console.log("Blog posts state set to:", blogs.length, "items");
   } catch (err) {
-    console.log(err);
+    console.error("Error fetching blogs:", err);
   } finally {
     setLoading(false);
   }

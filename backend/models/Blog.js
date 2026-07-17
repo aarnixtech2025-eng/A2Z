@@ -10,9 +10,14 @@ const Blog = sequelize.define("Blog", {
 
   shortDescription: DataTypes.TEXT,
 
-  content: DataTypes.TEXT("long"),
+  description: DataTypes.TEXT("long"),
 
-  image: DataTypes.STRING,
+  featuredImage: DataTypes.STRING,
+
+  author: {
+    type: DataTypes.STRING,
+    defaultValue: "Admin"
+  },
 
   status: {
     type: DataTypes.ENUM("draft", "published"),

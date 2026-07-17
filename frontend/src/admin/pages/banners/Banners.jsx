@@ -83,35 +83,35 @@ export default function Banners() {
   };
 
   return (
-    <div className="max-w-5xl mx-auto p-6 bg-gray-50 min-h-screen">
-      <h1 className="text-3xl font-extrabold text-[#0b2545] mb-8 border-b-2 border-[#D7B25B] pb-4">Banners Management</h1>
+    <div className="max-w-5xl mx-auto p-6 bg-gray-900 min-h-screen">
+      <h1 className="text-3xl font-extrabold text-white mb-8 border-b-2 border-yellow-400 pb-4">Banners Management</h1>
 
       {/* Form Section */}
-      <div className="bg-white rounded-xl shadow-sm border p-8 mb-8">
-        <h2 className="text-xl font-bold text-gray-800 mb-6">{editingBanner ? "Edit Banner Entry" : "Add New Banner"}</h2>
+      <div className="bg-gray-800 rounded-xl shadow-sm border border-gray-700 p-8 mb-8">
+        <h2 className="text-xl font-bold text-white mb-6">{editingBanner ? "Edit Banner Entry" : "Add New Banner"}</h2>
         <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div className="md:col-span-2">
-            <label className="block text-sm font-bold text-gray-700 mb-2">Title</label>
-            <input type="text" value={formData.title} onChange={(e) => setFormData({ ...formData, title: e.target.value })} className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-[#D7B25B]" placeholder="Enter title" />
+            <label className="block text-sm font-bold text-gray-300 mb-2">Title</label>
+            <input type="text" value={formData.title} onChange={(e) => setFormData({ ...formData, title: e.target.value })} className="w-full px-4 py-2 border border-gray-600 rounded-lg bg-gray-700 text-white focus:ring-2 focus:ring-blue-500 transition-colors duration-300" placeholder="Enter title" />
           </div>
           <div className="md:col-span-2">
-            <label className="block text-sm font-bold text-gray-700 mb-2">Description</label>
-            <textarea value={formData.description} onChange={(e) => setFormData({ ...formData, description: e.target.value })} rows="3" className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-[#D7B25B]" placeholder="Enter description" />
+            <label className="block text-sm font-bold text-gray-300 mb-2">Description</label>
+            <textarea value={formData.description} onChange={(e) => setFormData({ ...formData, description: e.target.value })} rows="3" className="w-full px-4 py-2 border border-gray-600 rounded-lg bg-gray-700 text-white focus:ring-2 focus:ring-blue-500 transition-colors duration-300" placeholder="Enter description" />
           </div>
 
           <div className="md:col-span-2 grid grid-cols-1 sm:grid-cols-5 gap-4">
             {[1, 2, 3, 4, 5].map((num) => (
               <div key={num} className="space-y-2">
-                <label className="block text-xs font-bold text-gray-500 uppercase">Banner {num}</label>
-                <input type="file" onChange={(e) => handleBannerUpload(e, `banner${num}`)} className="text-xs w-full" />
+                <label className="block text-xs font-bold text-gray-400 uppercase">Banner {num}</label>
+                <input type="file" onChange={(e) => handleBannerUpload(e, `banner${num}`)} className="text-xs w-full text-gray-300" />
                 {formData[`banner${num}`] && <img src={URL.createObjectURL(formData[`banner${num}`])} className="h-20 w-full object-cover rounded shadow" />}
               </div>
             ))}
           </div>
 
           <div className="flex gap-4 items-center">
-            <button type="submit" className="bg-[#0b2545] text-white px-8 py-3 rounded-lg font-bold hover:bg-[#1a3d6d] transition">{loading ? "Saving..." : "Save Banner"}</button>
-            {editingBanner && <button type="button" onClick={resetForm} className="text-gray-600 font-medium">Cancel</button>}
+            <button type="submit" className="bg-blue-600 text-white px-8 py-3 rounded-lg font-bold hover:bg-blue-700 transition transition-colors duration-300">{loading ? "Saving..." : "Save Banner"}</button>
+            {editingBanner && <button type="button" onClick={resetForm} className="text-gray-400 font-medium hover:text-white transition-colors duration-300">Cancel</button>}
           </div>
         </form>
       </div>
@@ -119,14 +119,14 @@ export default function Banners() {
       {/* List Section */}
       <div className="grid gap-6">
         {banners.map((banner) => (
-          <div key={banner.id} className="bg-white p-6 rounded-xl border shadow-sm flex flex-col md:flex-row justify-between items-center gap-4">
+          <div key={banner.id} className="bg-gray-800 p-6 rounded-xl border border-gray-700 shadow-sm flex flex-col md:flex-row justify-between items-center gap-4">
             <div>
-              <h3 className="text-lg font-bold text-[#0b2545]">{banner.title}</h3>
-              <p className="text-sm text-gray-600">{banner.description}</p>
+              <h3 className="text-lg font-bold text-white">{banner.title}</h3>
+              <p className="text-sm text-gray-300">{banner.description}</p>
             </div>
             <div className="flex gap-2">
-              <button onClick={() => handleEdit(banner)} className="px-4 py-2 text-sm bg-gray-100 hover:bg-gray-200 rounded font-bold">Edit</button>
-              <button onClick={() => handleDelete(banner.id)} className="px-4 py-2 text-sm bg-red-50 text-red-600 hover:bg-red-100 rounded font-bold">Delete</button>
+              <button onClick={() => handleEdit(banner)} className="px-4 py-2 text-sm bg-gray-700 hover:bg-gray-600 rounded font-bold text-white transition-colors duration-300">Edit</button>
+              <button onClick={() => handleDelete(banner.id)} className="px-4 py-2 text-sm bg-red-900/30 text-red-400 hover:bg-red-900/50 rounded font-bold transition-colors duration-300">Delete</button>
             </div>
           </div>
         ))}

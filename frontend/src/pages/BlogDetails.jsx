@@ -114,14 +114,18 @@ mb-8
 md:mb-10
 "
         >
-          {blog.content || blog.shortDescription}
+          {blog.description || blog.shortDescription}
         </p>
 
         {/* IMAGE */}
-        {blog.image && (
+        {blog.featuredImage && (
           <div className="flex justify-center">
             <img
-              src={`${import.meta.env.VITE_API_URL}${blog.image.startsWith('/uploads/') ? blog.image : `/uploads/${blog.image}`}`}
+              src={
+                blog.featuredImage.startsWith('http')
+                  ? blog.featuredImage
+                  : `${import.meta.env.VITE_API_URL || 'http://localhost:5000'}${blog.featuredImage.startsWith('/uploads') ? blog.featuredImage : `/uploads/${blog.featuredImage}`}`
+              }
               alt={blog.title}
              className="
 w-full

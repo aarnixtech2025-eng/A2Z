@@ -161,6 +161,29 @@ class ProductController {
 
   }
 
+  // ==========================================
+  // UPDATE PRODUCT FEATURED STATUS
+  // ==========================================
+  async updateProductFeatured(req, res, next) {
+
+    try {
+
+      const { id } = req.params;
+      const { isFeatured } = req.body;
+
+      await ProductService.updateProductFeatured(id, isFeatured);
+
+      return res.status(200).json({
+        success: true,
+        message: "Product featured status updated successfully"
+      });
+
+    } catch (error) {
+      next(error);
+    }
+
+  }
+
 }
 
 module.exports = new ProductController();

@@ -7,7 +7,8 @@ exports.createBlog = async (req, res) => {
     const {
       title,
       shortDescription,
-      content,
+      description,
+      author,
       status
     } = req.body;
 
@@ -20,9 +21,10 @@ exports.createBlog = async (req, res) => {
       title,
       slug,
       shortDescription,
-      content,
-      image: req.file ? req.file.filename : (req.body.image || null),
-      status,
+      description,
+      author,
+      featuredImage: req.file ? req.file.filename : (req.body.featuredImage || req.body.existingImage || null),
+      status: status || "Active",
       createdBy: req.admin.id
     });
 
@@ -105,15 +107,16 @@ exports.updateBlog = async (req, res) => {
       });
     }
 
-    const slug = slugify(req.body.title, {
-      lower: true,
-      strict: true
-    });
+    const slug = req.body.title
+      ? slugify(req.body.title, { lower: true, strict: true })
+      : blog.slug;
 
     await blog.update({
       ...req.body,
       slug,
-      image: req.file ? req.file.filename : (req.body.image || blog.image)
+      featuredImage: req.file
+        ? req.file.filename
+        : (req.body.featuredImage || req.body.existingImage || blog.featuredImage)
     });
 
     res.status(200).json({

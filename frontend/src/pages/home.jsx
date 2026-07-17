@@ -1,5 +1,6 @@
-import { useRef } from "react";
+import { useRef, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import axios from "axios";
 import {
   FaArrowRight,
   FaAward,
@@ -50,6 +51,35 @@ const brandLinks = {
 
 function Home() {
   const brandsScrollRef = useRef(null);
+  const [featuredProducts, setFeaturedProducts] = useState([]);
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    fetchFeaturedProducts();
+    fetchProducts();
+  }, []);
+
+  const fetchFeaturedProducts = async () => {
+    try {
+      const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/products/featured`);
+      if (response.data.success) {
+        setFeaturedProducts(response.data.products);
+      }
+    } catch (error) {
+      console.error("Error fetching featured products:", error);
+    }
+  };
+
+  const fetchProducts = async () => {
+    try {
+      const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/products`);
+      if (response.data.products) {
+        setProducts(response.data.products.slice(0, 6));
+      }
+    } catch (error) {
+      console.error("Error fetching products:", error);
+    }
+  };
 
   const scrollBrands = (direction) => {
     const container = brandsScrollRef.current;
@@ -139,39 +169,6 @@ function Home() {
     },
   ];
 
-  const featuredProducts = [
-    {
-      title: "Hydraulic Cylinder Seal Kit",
-      image: hydraulicSealKit,
-      to: "/shop/products",
-    },
-    {
-      title: "JCB Seal Kit",
-      image: rockBreakerSeal,
-      to: "/shop/products",
-    },
-    {
-      title: "Oil Seal",
-      image: oilSeal,
-      to: "/shop/products",
-    },
-    {
-      title: "O-Ring Kit",
-      image: oRing,
-      to: "/shop/products",
-    },
-    {
-      title: "Floating Seal",
-      image: floatingSeal,
-      to: "/shop/products",
-    },
-    {
-      title: "Rock Breaker Seal Kit",
-      image: constructionSeal,
-      to: "/shop/products",
-    },
-  ];
-
   const industries = [
     { title: "Construction", icon: <FaTools />, to: "/industries/construction" },
     { title: "Mining", icon: <FaTruck />, to: "/industries/mining" },
@@ -210,33 +207,39 @@ function Home() {
       {/* Product Categories */}
       <section className="py-6 sm:py-8 lg:py-10">
         <div className="mx-auto max-w-7xl px-3 sm:px-4 md:px-6 lg:px-8">
-          <div className="mb-4 text-center sm:mb-6">
+          <div className="mb-4 flex items-center justify-between sm:mb-6">
             <h2 className="text-xl font-extrabold text-[#061a38] sm:text-2xl lg:text-3xl">
-              Our <span className="text-[#f5b400]">Product Categories</span>
+              Our <span className="text-[#f5b400]">Products</span>
             </h2>
+            <Link
+              to="/products"
+              className="inline-flex items-center gap-2 px-4 py-2 bg-[#f5b400] text-white text-sm font-bold rounded-lg hover:bg-[#e5a600] transition-colors duration-300"
+            >
+              View All <FaArrowRight className="text-xs" />
+            </Link>
           </div>
 
           <div className="grid grid-cols-2 gap-3 sm:gap-4 sm:grid-cols-3 lg:grid-cols-6">
-            {categories.map((category) => (
+            {products.map((product) => (
               <Link
-                key={category.title}
-                to={category.to}
+                key={product.id}
+                to={`/shop/product/${product.slug}`}
                 className="group rounded-xl border border-slate-200 bg-white p-2.5 text-center shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-[#f5b400] hover:shadow-lg sm:p-3"
               >
                 <div className="flex h-20 items-center justify-center overflow-hidden rounded-lg bg-slate-50 sm:h-24 lg:h-28">
                   <img
-                    src={category.image}
-                    alt={category.title}
+                    src={product.thumbnail || hydraulicSealKit}
+                    alt={product.title}
                     className="h-full w-full object-contain p-1.5 transition duration-500 group-hover:scale-110 sm:p-2"
                   />
                 </div>
 
                 <h3 className="mt-2 min-h-[32px] text-[10px] font-extrabold leading-4 text-[#061a38] sm:mt-3 sm:min-h-[38px] sm:text-xs sm:leading-5">
-                  {category.title}
+                  {product.title}
                 </h3>
 
                 <span className="mt-1.5 inline-flex items-center gap-1 text-[10px] font-bold text-[#e5a600] sm:mt-2 sm:text-[11px]">
-                  View Products <FaArrowRight className="text-[8px] sm:text-[9px]" />
+                  ₹{product.price} <FaArrowRight className="text-[8px] sm:text-[9px]" />
                 </span>
               </Link>
             ))}
@@ -339,15 +342,15 @@ function Home() {
           </div>
 
           <div className="grid grid-cols-2 gap-3 sm:gap-4 sm:grid-cols-3 lg:grid-cols-6">
-            {featuredProducts.map((product) => (
+            {featuredProducts.length > 0 ? featuredProducts.map((product) => (
               <Link
-                key={product.title}
-                to={product.to}
+                key={product.id}
+                to={`/product/${product.slug}`}
                 className="group rounded-xl border border-slate-200 bg-white p-2.5 text-center shadow-sm transition hover:-translate-y-1 hover:border-[#f5b400] hover:shadow-lg sm:p-3"
               >
                 <div className="h-20 overflow-hidden rounded-lg bg-slate-50 sm:h-24 lg:h-28">
                   <img
-                    src={product.image}
+                    src={product.thumbnail || hydraulicSealKit}
                     alt={product.title}
                     className="h-full w-full object-contain p-1.5 transition duration-500 group-hover:scale-110 sm:p-2"
                   />
@@ -358,10 +361,14 @@ function Home() {
                 </h3>
 
                 <span className="mt-1.5 inline-flex items-center gap-1 text-[10px] font-bold text-[#e5a600] sm:mt-2 sm:text-[11px]">
-                  View Details <FaArrowRight className="text-[8px] sm:text-[9px]" />
+                  ₹{product.price} <FaArrowRight className="text-[8px] sm:text-[9px]" />
                 </span>
               </Link>
-            ))}
+            )) : (
+              <div className="col-span-full text-center text-slate-500 py-8">
+                No featured products available
+              </div>
+            )}
           </div>
         </div>
       </section>

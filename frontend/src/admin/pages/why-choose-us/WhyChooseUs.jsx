@@ -184,23 +184,23 @@ export default function WhyChooseUs() {
 
   return (
     <div className="max-w-6xl mx-auto">
-      <h1 className="text-3xl font-bold text-gray-800 mb-6">Why Choose Us Management</h1>
+      <h1 className="text-3xl font-bold text-white mb-6">Why Choose Us Management</h1>
 
       {/* Form */}
-      <div className="bg-white rounded-lg shadow-md p-6 mb-8">
-        <h2 className="text-xl font-semibold mb-4">
+      <div className="bg-gray-900 rounded-lg shadow-md p-6 mb-8 border border-gray-700">
+        <h2 className="text-xl font-semibold mb-4 text-white">
           {editingItem ? "Edit Why Choose Us" : "Add Why Choose Us"}
         </h2>
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
+            <label className="block text-sm font-medium text-gray-300 mb-2">
               Image
             </label>
             <input
               type="file"
               onChange={handleImageUpload}
               accept="image/*"
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg"
+              className="w-full px-4 py-2 border border-gray-600 rounded-lg bg-gray-800 text-white"
             />
             {formData.imageFile ? (
               <img
@@ -218,20 +218,20 @@ export default function WhyChooseUs() {
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
+            <label className="block text-sm font-medium text-gray-300 mb-2">
               Description
             </label>
             <textarea
               value={formData.description}
               onChange={(e) => setFormData({ ...formData, description: e.target.value })}
               rows="4"
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#D7B25B] focus:border-transparent"
+              className="w-full px-4 py-2 border border-gray-600 rounded-lg bg-gray-800 text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors duration-300"
               placeholder="Enter description"
             />
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
+            <label className="block text-sm font-medium text-gray-300 mb-2">
               Features
             </label>
             <div className="space-y-2">
@@ -241,13 +241,13 @@ export default function WhyChooseUs() {
                     type="text"
                     value={feature}
                     onChange={(e) => handleFeatureChange(index, e.target.value)}
-                    className="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#D7B25B] focus:border-transparent"
+                    className="flex-1 px-4 py-2 border border-gray-600 rounded-lg bg-gray-800 text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors duration-300"
                     placeholder={`Feature ${index + 1}`}
                   />
                   <button
                     type="button"
                     onClick={() => removeFeature(index)}
-                    className="px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600"
+                    className="px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors duration-300"
                   >
                     Remove
                   </button>
@@ -256,7 +256,7 @@ export default function WhyChooseUs() {
               <button
                 type="button"
                 onClick={addFeature}
-                className="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600"
+                className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors duration-300"
               >
                 Add Feature
               </button>
@@ -265,75 +265,75 @@ export default function WhyChooseUs() {
 
           <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
+              <label className="block text-sm font-medium text-gray-300 mb-2">
                 Clients
               </label>
               <input
                 type="number"
                 value={formData.clients}
                 onChange={(e) => setFormData({ ...formData, clients: parseInt(e.target.value) || 0 })}
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#D7B25B] focus:border-transparent"
+                className="w-full px-4 py-2 border border-gray-600 rounded-lg bg-gray-800 text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors duration-300"
                 placeholder="0"
               />
             </div>
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
+              <label className="block text-sm font-medium text-gray-300 mb-2">
                 Projects
               </label>
               <input
                 type="number"
                 value={formData.projects}
                 onChange={(e) => setFormData({ ...formData, projects: parseInt(e.target.value) || 0 })}
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#D7B25B] focus:border-transparent"
+                className="w-full px-4 py-2 border border-gray-600 rounded-lg bg-gray-800 text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors duration-300"
                 placeholder="0"
               />
             </div>
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
+              <label className="block text-sm font-medium text-gray-300 mb-2">
                 Services
               </label>
               <input
                 type="number"
                 value={formData.services}
                 onChange={(e) => setFormData({ ...formData, services: parseInt(e.target.value) || 0 })}
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#D7B25B] focus:border-transparent"
+                className="w-full px-4 py-2 border border-gray-600 rounded-lg bg-gray-800 text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors duration-300"
                 placeholder="0"
               />
             </div>
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
+              <label className="block text-sm font-medium text-gray-300 mb-2">
                 Rewards
               </label>
               <input
                 type="number"
                 value={formData.rewards}
                 onChange={(e) => setFormData({ ...formData, rewards: parseInt(e.target.value) || 0 })}
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#D7B25B] focus:border-transparent"
+                className="w-full px-4 py-2 border border-gray-600 rounded-lg bg-gray-800 text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors duration-300"
                 placeholder="0"
               />
             </div>
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
+              <label className="block text-sm font-medium text-gray-300 mb-2">
                 Experience (Years)
               </label>
               <input
                 type="number"
                 value={formData.experience}
                 onChange={(e) => setFormData({ ...formData, experience: parseInt(e.target.value) || 0 })}
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#D7B25B] focus:border-transparent"
+                className="w-full px-4 py-2 border border-gray-600 rounded-lg bg-gray-800 text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors duration-300"
                 placeholder="0"
               />
             </div>
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
+            <label className="block text-sm font-medium text-gray-300 mb-2">
               Status
             </label>
             <select
               value={formData.status}
               onChange={(e) => setFormData({ ...formData, status: e.target.value })}
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#D7B25B] focus:border-transparent"
+              className="w-full px-4 py-2 border border-gray-600 rounded-lg bg-gray-800 text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors duration-300"
             >
               <option value="active">Active</option>
               <option value="inactive">Inactive</option>
@@ -344,7 +344,7 @@ export default function WhyChooseUs() {
             <button
               type="submit"
               disabled={loading}
-              className="flex-1 text-blue-600 font-semibold hover:underline disabled:opacity-50"
+              className="flex-1 text-blue-400 font-semibold hover:underline disabled:opacity-50 transition-colors duration-300"
             >
               {loading ? "Saving..." : editingItem ? "Update" : "Add"}
             </button>
@@ -352,7 +352,7 @@ export default function WhyChooseUs() {
               <button
                 type="button"
                 onClick={resetForm}
-                className="text-gray-500 font-medium hover:underline"
+                className="text-gray-400 font-medium hover:underline transition-colors duration-300"
               >
                 Cancel
               </button>
@@ -362,16 +362,16 @@ export default function WhyChooseUs() {
       </div>
 
       {/* List */}
-      <div className="bg-white rounded-lg shadow-md p-6">
-        <h2 className="text-xl font-semibold mb-4">Why Choose Us Entries</h2>
+      <div className="bg-gray-900 rounded-lg shadow-md p-6 border border-gray-700">
+        <h2 className="text-xl font-semibold mb-4 text-white">Why Choose Us Entries</h2>
         {whyChooseUsList.length === 0 ? (
-          <p className="text-gray-500 text-center py-8">No entries found</p>
+          <p className="text-gray-400 text-center py-8">No entries found</p>
         ) : (
           <div className="space-y-6">
             {whyChooseUsList.map((item) => (
               <div
                 key={item.id}
-                className="border border-gray-200 rounded-lg p-4"
+                className="border border-gray-700 rounded-lg p-4 bg-gray-800"
               >
                 {item.image && (
                   <img
@@ -381,12 +381,12 @@ export default function WhyChooseUs() {
                   />
                 )}
                 {item.description && (
-                  <p className="text-gray-600 mb-4">{item.description}</p>
+                  <p className="text-gray-300 mb-4">{item.description}</p>
                 )}
                 {item.features && item.features.length > 0 && (
                   <div className="mb-4">
-                    <h4 className="font-semibold mb-2">Features:</h4>
-                    <ul className="list-disc list-inside">
+                    <h4 className="font-semibold mb-2 text-white">Features:</h4>
+                    <ul className="list-disc list-inside text-gray-300">
                       {item.features.map((feature, index) => (
                         <li key={index}>{feature}</li>
                       ))}
@@ -395,27 +395,27 @@ export default function WhyChooseUs() {
                 )}
                 <div className="grid grid-cols-2 md:grid-cols-5 gap-4 mb-4">
                   <div>
-                    <span className="font-semibold">Clients:</span> {item.clients}
+                    <span className="font-semibold text-white">Clients:</span> <span className="text-gray-300">{item.clients}</span>
                   </div>
                   <div>
-                    <span className="font-semibold">Projects:</span> {item.projects}
+                    <span className="font-semibold text-white">Projects:</span> <span className="text-gray-300">{item.projects}</span>
                   </div>
                   <div>
-                    <span className="font-semibold">Services:</span> {item.services}
+                    <span className="font-semibold text-white">Services:</span> <span className="text-gray-300">{item.services}</span>
                   </div>
                   <div>
-                    <span className="font-semibold">Rewards:</span> {item.rewards}
+                    <span className="font-semibold text-white">Rewards:</span> <span className="text-gray-300">{item.rewards}</span>
                   </div>
                   <div>
-                    <span className="font-semibold">Experience:</span> {item.experience} yrs
+                    <span className="font-semibold text-white">Experience:</span> <span className="text-gray-300">{item.experience} yrs</span>
                   </div>
                 </div>
                 <div className="flex items-center justify-between">
                   <span
                     className={`px-3 py-1 rounded-full text-xs font-medium ${
                       item.status === "active"
-                        ? "bg-green-100 text-green-800"
-                        : "bg-red-100 text-red-800"
+                        ? "bg-green-900/30 text-green-400"
+                        : "bg-red-900/30 text-red-400"
                     }`}
                   >
                     {item.status}
@@ -423,19 +423,19 @@ export default function WhyChooseUs() {
                   <div className="flex gap-2">
                     <button
                       onClick={() => handleEdit(item)}
-                      className="text-blue-600 font-medium hover:underline text-sm"
+                      className="text-blue-400 font-medium hover:underline text-sm transition-colors duration-300"
                     >
                       Edit
                     </button>
                     <button
                       onClick={() => handleStatusToggle(item.id, item.status)}
-                      className="text-yellow-600 font-medium hover:underline text-sm"
+                      className="text-yellow-400 font-medium hover:underline text-sm transition-colors duration-300"
                     >
                       {item.status === "active" ? "Deactivate" : "Activate"}
                     </button>
                     <button
                       onClick={() => handleDelete(item.id)}
-                      className="text-red-500 font-medium hover:underline text-sm"
+                      className="text-red-400 font-medium hover:underline text-sm transition-colors duration-300"
                     >
                       Delete
                     </button>

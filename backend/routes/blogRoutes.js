@@ -24,7 +24,7 @@ const {
 router.post(
   "/",
   protect,
-  upload.single("image"),
+  upload.single("featuredImage"),
   createBlog
 );
 
@@ -35,7 +35,7 @@ router.get("/:id", getBlog);
 router.put(
   "/:id",
   protect,
-  upload.single("image"),
+  upload.single("featuredImage"),
   updateBlog
 );
 
