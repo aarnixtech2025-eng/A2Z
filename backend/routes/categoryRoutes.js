@@ -1,22 +1,26 @@
-// const express = require("express");
+const express = require("express");
 
-// const router = express.Router();
+const router = express.Router();
 
-// const {
-//   createCategory,
-//   getAllCategories,
-//   getCategoryById,
-//   updateCategory,
-//   deleteCategory,
-// } = require("../controllers/categoryController");
+const CategoryController =
+require("../controllers/CategoryController");
 
-// const { protect } = require("../middleware/authMiddleware");
+// Get Category Tree
+router.get(
+  "/tree",
+  CategoryController.getCategoryTree
+);
 
-// router.post("/", protect, createCategory);
+// Get All Categories
+router.get(
+  "/",
+  CategoryController.getAllCategories
+);
 
-// router.get("/", getAllCategories);
-// router.get("/:id", getCategoryById);
-// router.put("/:id", protect, updateCategory);
-// router.delete("/:id", protect, deleteCategory);
+// Get Category By Slug
+router.get(
+  "/:slug",
+  CategoryController.getCategoryBySlug
+);
 
-// module.exports = router;
+module.exports = router;

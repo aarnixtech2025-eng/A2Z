@@ -16,7 +16,7 @@ exports.protect = async (req, res, next) => {
       process.env.JWT_SECRET
     );
 
-    req.user = decoded;
+    req.admin = decoded;
 
     next();
   } catch (error) {
@@ -29,7 +29,7 @@ exports.protect = async (req, res, next) => {
 
 exports.authorize = (...roles) => {
   return (req, res, next) => {
-    if (!roles.includes(req.user.role)) {
+    if (!roles.includes(req.admin.role)) {
       return res.status(403).json({
         success: false,
         message: "Access denied"

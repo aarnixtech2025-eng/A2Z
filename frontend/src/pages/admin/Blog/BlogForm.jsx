@@ -25,7 +25,7 @@ function BlogForm({ selectedBlog, onSuccess, clearSelection }) {
     title: "",
     slug: "",
     author: "Admin",
-    status: "Active",
+    status: "published",
     shortDescription: "",
     description: "",
   });
@@ -75,13 +75,17 @@ function BlogForm({ selectedBlog, onSuccess, clearSelection }) {
       title: selectedBlog.title || "",
       slug: selectedBlog.slug || "",
       author: selectedBlog.author || "Admin",
-      status: selectedBlog.status || "Active",
+      status: selectedBlog.status || "published",
       shortDescription: selectedBlog.shortDescription || "",
       description: selectedBlog.description || "",
     });
 
     if (selectedBlog.featuredImage) {
-      setPreview(`http://localhost:5000/uploads/blogs/${selectedBlog.featuredImage}`);
+      setPreview(
+        selectedBlog.featuredImage.startsWith('http')
+          ? selectedBlog.featuredImage
+          : `http://localhost:5000${selectedBlog.featuredImage.startsWith('/uploads') ? selectedBlog.featuredImage : `/uploads/${selectedBlog.featuredImage}`}`
+      );
     }
   }, [selectedBlog]);
 
@@ -95,7 +99,7 @@ function BlogForm({ selectedBlog, onSuccess, clearSelection }) {
       title: "",
       slug: "",
       author: "Admin",
-      status: "Active",
+      status: "published",
       shortDescription: "",
       description: "",
     });
@@ -130,7 +134,11 @@ function BlogForm({ selectedBlog, onSuccess, clearSelection }) {
     setPreview("");
 
     if (selectedBlog?.featuredImage) {
-      setPreview(`http://localhost:5000/uploads/blogs/${selectedBlog.featuredImage}`);
+      setPreview(
+        selectedBlog.featuredImage.startsWith('http')
+          ? selectedBlog.featuredImage
+          : `http://localhost:5000${selectedBlog.featuredImage.startsWith('/uploads') ? selectedBlog.featuredImage : `/uploads/${selectedBlog.featuredImage}`}`
+      );
     }
   };
 
@@ -394,8 +402,8 @@ function BlogForm({ selectedBlog, onSuccess, clearSelection }) {
                       onChange={handleChange}
                       className="w-full appearance-none rounded-xl border border-slate-300 bg-slate-950 px-3 py-2.5 pl-9 pr-8 text-sm text-white outline-none transition focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10"
                     >
-                      <option value="Active">Active / Public</option>
-                      <option value="Inactive">Inactive / Draft</option>
+                      <option value="published">Published / Active</option>
+                      <option value="draft">Draft / Inactive</option>
                     </select>
                     <FaToggleOn className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-600 text-xs" />
                     <div className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-slate-500">

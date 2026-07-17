@@ -167,7 +167,13 @@ function BlogTable({
                     <td className="px-6 py-4 whitespace-nowrap">
                       <div className="relative h-16 w-24 overflow-hidden rounded-xl border border-slate-800 bg-slate-950">
                         <img
-                          src={blog.featuredImage ? `http://localhost:5000/uploads/blogs/${blog.featuredImage}` : "/placeholder.png"}
+                          src={
+                            blog.featuredImage
+                              ? blog.featuredImage.startsWith('http')
+                                ? blog.featuredImage
+                                : `http://localhost:5000${blog.featuredImage.startsWith('/uploads') ? blog.featuredImage : `/uploads/${blog.featuredImage}`}`
+                              : "/placeholder.png"
+                          }
                           alt={blog.title}
                           className="h-full w-full object-cover brightness-90 transition-transform duration-300 group-hover:scale-105 group-hover:brightness-100"
                           onError={(e) => { e.target.src = "https://placehold.co/600x400/0f172a/fff?text=No+Image"; }}

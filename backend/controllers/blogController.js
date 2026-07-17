@@ -1,147 +1,149 @@
-const Blog = require("../models/Blog/blogs.js");
-const multer=require("multer");
-// Create Blog
+const { Blog } = require("../models");
+const { Op } = require("sequelize");
+const slugify = require("slugify");
+
 exports.createBlog = async (req, res) => {
-try {
+  try {
+    const {
+      title,
+      shortDescription,
+      description,
+      author,
+      status
+    } = req.body;
 
-        console.log(req.body);
+    const slug = slugify(title, {
+      lower: true,
+      strict: true
+    });
 
-        console.log(req.file);
+    const blog = await Blog.create({
+      title,
+      slug,
+      shortDescription,
+      description,
+      author,
+      featuredImage: req.file ? req.file.filename : (req.body.featuredImage || req.body.existingImage || null),
+      status: status || "Active",
+      createdBy: req.admin.id
+    });
 
-        const blog = await Blog.create({
+    res.status(201).json({
+      success: true,
+      message: "Blog created successfully",
+      data: blog
+    });
 
-            title: req.body.title,
-
-            slug: req.body.slug,
-
-            shortDescription: req.body.shortDescription,
-
-            description: req.body.description,
-
-            author: req.body.author,
-
-            status: req.body.status,
-
-            featuredImage: req.file
-                ? req.file.filename
-                : null,
-
-        });
-
-        res.status(201).json({
-
-            success:true,
-
-            data:blog
-
-        });
-
-    }catch (error) {
-    console.log(error);
+  } catch (error) {
+    console.error("Error creating blog:", error);
     res.status(500).json({
       success: false,
-      message: error.message,
+      message: error.message
     });
   }
 };
 
-// Get All Blogs
-exports.getAllBlogs = async (req, res) => {
+exports.getBlogs = async (req, res) => {
   try {
-    console.log("sdfjskdfh")
+    console.log("Fetching blogs from database...");
     const blogs = await Blog.findAll({
-      order: [["createdAt", "DESC"]],
+      order: [["createdAt", "DESC"]]
     });
+    console.log("Blogs fetched successfully:", blogs.length);
 
     res.status(200).json({
       success: true,
       count: blogs.length,
-      data: blogs,
+      data: blogs
     });
+
   } catch (error) {
+    console.error("Error fetching blogs:", error);
     res.status(500).json({
       success: false,
-      message: error.message,
+      message: error.message
     });
   }
 };
 
-// Get Single Blog
-exports.getBlogById = async (req, res) => {
+exports.getBlog = async (req, res) => {
   try {
-    const blog = await Blog.findByPk(req.params.id);
+
+    const blog = await Blog.findByPk(
+      req.params.id
+    );
 
     if (!blog) {
       return res.status(404).json({
         success: false,
-        message: "Blog not found",
+        message: "Blog not found"
       });
     }
 
     res.status(200).json({
       success: true,
-      data: blog,
+      data: blog
     });
+
   } catch (error) {
     res.status(500).json({
       success: false,
-      message: error.message,
+      message: error.message
     });
   }
 };
 
-// Update Blog
 exports.updateBlog = async (req, res) => {
   try {
-    const blog = await Blog.findByPk(req.params.id);
+
+    const blog = await Blog.findByPk(
+      req.params.id
+    );
 
     if (!blog) {
       return res.status(404).json({
         success: false,
-        message: "Blog not found",
+        message: "Blog not found"
       });
     }
 
-    const updateData = {
-      title: req.body.title,
-      slug: req.body.slug,
-      author: req.body.author,
-      status: req.body.status,
-      shortDescription: req.body.shortDescription,
-      description: req.body.description,
-    };
+    const slug = req.body.title
+      ? slugify(req.body.title, { lower: true, strict: true })
+      : blog.slug;
 
-    // Handle image update
-    if (req.file) {
-      updateData.featuredImage = req.file.filename;
-    } else if (req.body.existingImage) {
-      updateData.featuredImage = req.body.existingImage;
-    }
-
-    await blog.update(updateData);
+    await blog.update({
+      ...req.body,
+      slug,
+      featuredImage: req.file
+        ? req.file.filename
+        : (req.body.featuredImage || req.body.existingImage || blog.featuredImage)
+    });
 
     res.status(200).json({
       success: true,
       message: "Blog updated successfully",
-      data: blog,
+      data: blog
     });
+
   } catch (error) {
     res.status(500).json({
       success: false,
-      message: error.message,
+      message: error.message
     });
   }
 };
 
-// Delete Blog
 exports.deleteBlog = async (req, res) => {
   try {
-    const blog = await Blog.findByPk(req.params.id);
+
+    const blog = await Blog.findByPk(
+      req.params.id
+    );
 
     if (!blog) {
       return res.status(404).json({
         success: false,
-        message: "Blog not found",
+        message: "Blog not found"
       });
     }
 
@@ -149,12 +151,13 @@ exports.deleteBlog = async (req, res) => {
 
     res.status(200).json({
       success: true,
-      message: "Blog deleted successfully",
+      message: "Blog deleted successfully"
     });
+
   } catch (error) {
     res.status(500).json({
       success: false,
-      message: error.message,
+      message: error.message
     });
   }
 };
